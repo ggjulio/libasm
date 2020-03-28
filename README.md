@@ -79,6 +79,28 @@
 |      ...      |        ...         |                         ...                                   |
 
 
+### jump symbols
 
+| Jump symbol (signed) | Jump symbol (unsigned) | result of cmp a, b    |
+|       :---:          |          :---:         |        :---:          |
+|         je           |            -           |        a =  b         |
+|         jne          |            -           |        a != b         |
+|         jg           |           ja           |        a >  b         |
+|         jge          |           jae          |        a >= b         |
+|         jl           |           jb           |        a <  b         |
+|         jle          |           jbe          |        a <= b         |
+|         jz           |            -           |        a =  0         |
+|         jnz          |            -           |        a != 0         |
+|         jo           |            -           | Overflow occured      |
+|         jno          |            -           | Overlow did not occur |
+|         js           |            -           | Jump if signed        |
+|         jns          |            -           | Jump if not signed    |
 
+### Registers as pointers
 
+The default registers can be treated as pointers.
+To treat a register as  a pointer, surround the register name with square brackets.
+Such as, "rax" becomes "[rax]".
+
+mov rax, rbx      # loads the value of rbx into rax    
+mov rax, [rbx]    # loads the value the rbx register is pointing to, into rax. Like dereferencing pointer in c
