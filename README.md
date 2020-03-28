@@ -46,14 +46,15 @@ syscall input by register :
 | 6        | r9        |
 
 
-| syscall   |    ID     |   ARG1   |     ARG2     |   ARG3   |    ARG4   |    ARG5  |    ARG6   |
-|-----------|-----------|  :---:   |--------------|----------|-----------|----------|-----------|
-| sys_read  |     0     |    fd    | **&** buffer |  count   |           |          |           |
-| sys_write |     1     |    fd    | **&** buffer |  count   |           |          |           |
-| sys_open  |     2     | filename |     Flags    |  mode    |           |          |           |
-| sys_close |     3     |    fd    |              |          |           |          |           |
-|    ...    |    ...    |   ...    |     ...      |   ...    |   ...     |   ...    |   ...     |
-| pwritev2  |    328    |   ...    |     ...      |   ...    |   ...     |   ...    |   ...     |
+| syscall   | ID (%rax) | ARG_1 (%rdi)| ARG_2 (%rdi) | ARG_3 (%rdi) | ARG_4 (%rdi) | ARG_5 (%rdi) | ARG_6 (%rdi) |
+|-----------|-----------|     :---:   |     :---:    |     :---:    |--------------|--------------|--------------|
+| sys_read  |     0     |      fd     | **&** buffer |    count     |              |              |              |
+| sys_write |     1     |      fd     | **&** buffer |    count     |              |              |              |
+| sys_open  |     2     |   filename  |     Flags    |    mode      |              |              |              |
+| sys_close |     3     |      fd     |              |              |              |              |              |
+| sys_exit  |    60     |  error_code |     ...      |     ...      |     ...      |      ...     |     ...      |
+|    ...    |    ...    |     ...     |     ...      |     ...      |     ...      |      ...     |     ...      |
+| pwritev2  |    328    |     ...     |     ...      |     ...      |     ...      |      ...     |     ...      |
 
 
 
