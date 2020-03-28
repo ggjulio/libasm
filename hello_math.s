@@ -6,62 +6,32 @@
 ;    By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2020/03/20 15:20:02 by juligonz          #+#    #+#              ;
-;    Updated: 2020/03/27 02:11:12 by juligonz         ###   ########.fr        ;
+;    Updated: 2020/03/28 09:04:35 by juligonz         ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
 
 section .data
-	text1 db "What is your name ?", 10
-	text2 db "Hello, "
-	
-section .bss
-	name resb 16
+	digit db 5, 10
 	
 section .text
 	global _start
 
 _start:
 	
-	call _printText1
-	call _getName
-	call _printText2
-	call _printName
+	call _printRAXDigit
 	
 	mov rax, 60
 	mov rdi, 0
 	syscall
 
 	
-_printText1:
+_printRAXDigit:
+	add rax, 48
+	mov [digit], al
 	mov rax, 1
 	mov rdi, 1
-	mov rsi, text1
-	mov rdx, 20
+	mov rsi, digit
+	mov rdx, 2
 	syscall
 	ret
-
-_getName:
-	mov rax, 0
-	mov rdi, 0
-	mov rsi, name
-	syscall
-	ret
-	
-_printText2:
-	mov rax, 1
-	mov rdi, 1
-	mov rsi, text2
-	mov rdx, 7
-	syscall
-	ret
-
-	
-_printName:
-	mov rax, 1
-	mov rdi, 1
-	mov rsi, name
-	mov rdx, 16
-	syscall
-	ret
-
