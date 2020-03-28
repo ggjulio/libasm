@@ -33,7 +33,7 @@
 | r15b  | r15w   | r15d   | **r15**|
 
 
-syscall input by register :
+### syscall input by register :
 
 | Argument | Registers |
 |----------|-----------|
@@ -45,8 +45,7 @@ syscall input by register :
 | 5        | r8        |
 | 6        | r9        |
 
-
-| syscall   | ID (%rax) | ARG_1 (%rdi)| ARG_2 (%rdi) | ARG_3 (%rdi) | ARG_4 (%rdi) | ARG_5 (%rdi) | ARG_6 (%rdi) |
+| syscall   | ID (%rax) | ARG_1 (%rdi)| ARG_2 (%rsi) | ARG_3 (%rdx) | ARG_4 (%r10) | ARG_5 (%r8) | ARG_6 (%r9) |
 |-----------|-----------|     :---:   |     :---:    |     :---:    |--------------|--------------|--------------|
 | sys_read  |     0     |      fd     | **&** buffer |    count     |              |              |              |
 | sys_write |     1     |      fd     | **&** buffer |    count     |              |              |              |
@@ -55,6 +54,30 @@ syscall input by register :
 | sys_exit  |    60     |  error_code |     ...      |     ...      |     ...      |      ...     |     ...      |
 |    ...    |    ...    |     ...     |     ...      |     ...      |     ...      |      ...     |     ...      |
 | pwritev2  |    328    |     ...     |     ...      |     ...      |     ...      |      ...     |     ...      |
+
+
+### Flags 
+
+| Flag symbol |    Description         |
+|    :---:    |         ---            |
+|     CF      |    Carry               |
+|     PF      |    Parity              |
+|     ZF      |    Zero                |
+|     SF      |    Sign                |
+|     OF      |    Overflow            |
+|     AF      |    Adjust              |
+|     IF      |    Interrupt Enabed    |
+
+
+### Pointers 
+
+| Pointer Name  |      Meaning       |                       Description                             |
+|---------------|--------------------|---------------------------------------------------------------|
+| rip (eip, ip) | Index pointer      | Points to next address to be executed in the control flow.    |
+| rsp (esp, sp) | Stack pointer      | Points to the top address of the stack.                       |
+| rbp (ebp, bp)  | Stack base pointer | Points to the bottom of the stack.                            |
+|      ...      |        ...         |                         ...                                   |
+
 
 
 
