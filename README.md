@@ -1,24 +1,23 @@
+
 Registers :
-
-00000000 00000000 00000000 00000000 00000000 00000000 00000000 00000000
-
+<html>
+<body>
+<div color="blue" border="10" font-size="48px">hello</div>
+<div style="color:red; border:10px; font-size:48px">hello</div>
+</body>
+</html>
+<div style="color:red; border:10px; font-size:48px"></div>
 <table>
   <tr>
-    <td>00000000</td>
-    <td>00000000</td>
-    <td>00000000</td>
-    <td>00000000</td>
-    <td>00000000</td>
-    <td>00000000</td>
-    <td>00000000</td>
-    <td>00000000</td>
+    <td>00000000</td><td>00000000</td><td>00000000</td><td>00000000</td>
+    <td>00000000</td><td>00000000</td><td>00000000</td><td>00000000</td>
   </tr>
-  <tr>
-    <td colspan="6"></td>
-    <td colspan="2">al</td>
-  </tr>
-  
+  <tr style="background-color:red"><td colspan="7"></td><td colspan="1" align="center"  style="background-color:red">al</td></tr>
+  <tr><td colspan="6"></td><td colspan="2" align="center">ax</td></tr>
+  <tr><td colspan="4"></td><td colspan="4" align="center">eax</td></tr>
+  <tr><td colspan="8" align="center">rax</td></tr>
 </table>
+
 
 | 8-bit | 16-bit | 32-bit | 64-bit |
 |-------|--------|--------|--------|
@@ -50,3 +49,7 @@ syscall input by register :
 | 4        | r10       |
 | 5        | r8        |
 | 6        | r9        |
+
+
+
+
