@@ -1,19 +1,13 @@
 
-Registers :
-<html>
-<body>
-<div color="blue" border="10" font-size="48px">hello</div>
-<div style="color:red; border:10px; font-size:48px">hello</div>
-</body>
-</html>
-<div style="color:red; border:10px; font-size:48px"></div>
+### Registers :
+
 <table>
   <tr>
     <td>00000000</td><td>00000000</td><td>00000000</td><td>00000000</td>
     <td>00000000</td><td>00000000</td><td>00000000</td><td>00000000</td>
   </tr>
-  <tr style="background-color:red"><td colspan="7"></td><td colspan="1" align="center"  style="background-color:red">al</td></tr>
-  <tr><td colspan="6"></td><td colspan="2" align="center">ax</td></tr>
+  <tr><td colspan="7"></td><td colspan="1" align="center">al </td></tr>
+  <tr><td colspan="6"></td><td colspan="2" align="center">ax </td></tr>
   <tr><td colspan="4"></td><td colspan="4" align="center">eax</td></tr>
   <tr><td colspan="8" align="center">rax</td></tr>
 </table>
@@ -21,7 +15,7 @@ Registers :
 
 | 8-bit | 16-bit | 32-bit | 64-bit |
 |-------|--------|--------|--------|
-| al    | ax     | eax    | rax    |
+| al    | ax     | eax    | **rax**    |
 | bl    | bx     | ebx    | rbx    |
 | cl    | cx     | ecx    | rcx    |
 | dl    | dx     | edx    | rdx    |
