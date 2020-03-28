@@ -104,3 +104,36 @@ Such as, "rax" becomes "[rax]".
 
 mov rax, rbx      # loads the value of rbx into rax    
 mov rax, [rbx]    # loads the value the rbx register is pointing to, into rax. Like dereferencing pointer in c
+
+### Math operations list
+
+| Operation Name | Operation Name (signed)  |      Description     |
+|       ---      |          :---:           |          ---         |
+|    add a, b    |             -            |     a = a + b        |
+|    sub a, b    |             -            |     a = a - b        |
+|    mul reg     |         imul reg         |   rax = rax * reg    |
+|    div reg     |         idiv reg         |   rax = rax / reg    |
+|    neg reg     |             -            |   reg = -reg         |
+|    inc reg     |             -            |   reg = reg + 1      |
+|    dec reg     |             -            |   reg = reg - 1      |
+|    adc a, b    |             -            |     a = a + b + CF   |
+|    sbb a, b    |             -            |     a = a - b - CF   |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
