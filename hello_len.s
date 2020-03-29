@@ -6,33 +6,41 @@
 ;    By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
 ;    Created: 2020/03/20 15:20:02 by juligonz          #+#    #+#              ;
-;    Updated: 2020/03/29 18:14:17 by juligonz         ###   ########.fr        ;
+;    Updated: 2020/03/29 19:21:52 by juligonz         ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
 
 section .data
-	digit db 7, 10
+	text db "Hello, world!", 10,0
 	
 section .text
 	global _start
 
 _start:
-	mov rax, 6
-	mov rbx, 1
-	div rbx
-	call _printRAXDigit
+
+	mov rax, text
+	call _print
+	
 	mov rax, 60
 	mov rdi, 0
 	syscall
 
-	
-_printRAXDigit:
-	add rax, 48
-	mov [digit], al
+	;; input : rax as a pointer to string
+	;; output : print string at rax
+_print:
+	push rax
+	mov rbx, 0
+_printLoop:
+	inc rax
+	inc rbx
+	mov cl, [rax]
+	cmp cl, 0
+	jne _printLoop
+
 	mov rax, 1
 	mov rdi, 1
-	mov rsi, digit
-	mov rdx, 2
+	pop rsi
+	mov rdx, rbx
 	syscall
 	ret

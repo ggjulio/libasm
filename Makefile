@@ -6,7 +6,7 @@
 #    By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/18 10:11:39 by juligonz          #+#    #+#              #
-#    Updated: 2020/03/28 09:40:10 by juligonz         ###   ########.fr        #
+#    Updated: 2020/03/28 09:51:02 by juligonz         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -32,12 +32,15 @@ all: $(NAME)
 
 $(OBJ_DIR)/%.o: %.s
 	mkdir -p $(OBJ_DIR)
-	$(AS) $(ASFLAGS) $? -o $@
+	$(AS) $(ASFLAGS) $< -o $@
 
 $(NAME): $(OBJ)
 	@echo "Compiling $(NAME)  ..."
 	ar rcs $(NAME) $^
 	$(info Compiled $(NAME))
+
+debug: $(NAME)
+	gcc
 
 clean:
 	rm -rf $(OBJ_DIR)
