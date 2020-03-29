@@ -122,9 +122,16 @@ mov rax, [rbx]    # loads the value the rbx register is pointing to, into rax. L
 
 
 
+### Stack operations
 
+|   Operation    |                   Description                   |
+|     :---:      |                       ---                       |
+| push reg/value | Pushes a value onto the stack                   |
+| pop reg        | Pops a value off the stack and stores it in reg |
+| mov reg, [rsp] | Stores the peek value in reg                    |
 
-
+Note : Usually in places where you can use registers, you can also use pointers.
+Such as, instead of "pop reg", you can use "pop [label]" to pop a value off the stack directly into a position in memory.
 
 
 
