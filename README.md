@@ -135,7 +135,27 @@ Such as, instead of "pop reg", you can use "pop [label]" to pop a value off the 
 
 
 
+### Defining macro
 
+
+
+- name : Name of macro.
+- argc : NUmber of arguments the macro will take. Within the macro body, these inputs are referenced using "%n". "%1" == first input, "%2" == the second...
+- macro body : the definition of the macro
+
+```nasm
+%macro <name> <argc>
+  <macro body>
+%endmacro
+
+; Example :
+
+%macro exit 0
+  mov rax, 60
+  mov rdi, 0
+  syscall
+%endmacro
+ ```
 
 
 
