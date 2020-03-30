@@ -60,15 +60,17 @@
 
 ### Flags 
 
-| Flag symbol |    Description         |
-|    :---:    |         ---            |
-|     CF      |    Carry               |
-|     PF      |    Parity              |
-|     ZF      |    Zero                |
-|     SF      |    Sign                |
-|     OF      |    Overflow            |
-|     AF      |    Adjust              |
-|     IF      |    Interrupt Enabed    |
+| Flag symbol |        Type Flag       |        Description                    |
+|    :---:    |         ---            |        ---                            | 
+|     CF      |    Carry               |   It contains the carry of 0 or 1 from a high-order bit (leftmost) after an arithmetic operation. It also stores the contents of last bit of a shift or rotate operation. |
+|     PF      |    Parity              | It indicates the total number of 1-bits in the result obtained from an arithmetic operation. An even number of 1-bits clears the parity flag to 0 and an odd number of 1-bits sets the parity flag to 1. |
+|     ZF      |    Zero                | It indicates the result of an arithmetic or comparison operation. A nonzero result clears the zero flag to 0, and a zero result sets it to 1. |
+|     SF      |    Sign                | It shows the sign of the result of an arithmetic operation. This flag is set according to the sign of a data item following the arithmetic operation. The sign is indicated by the high-order of leftmost bit. A positive result clears the value of SF to 0 and negative result sets it to 1. |
+|     OF      |    Overflow            | It indicates the overflow of a high-order bit (leftmost bit) of data after a signed arithmetic operation.   |
+|     AF      |    Auxiliary Carry     | It contains the carry from bit 3 to bit 4 following an arithmetic operation; used for specialized arithmetic. The AF is set when a 1-byte arithmetic operation causes a carry from bit 3 into bit 4. |
+|     IF      |    Interrupt Enabed    | It determines whether the external interrupts like keyboard entry, etc., are to be ignored or processed. It disables the external interrupt when the value is 0 and enables interrupts when set to 1. |
+|     TF      |    Trap                |  It allows setting the operation of the processor in single-step mode. The DEBUG program we used sets the trap flag, so we could step through the execution one instruction at a time. |
+|     DF      |    Direction           | It determines left or right direction for moving or comparing string data. When the DF value is 0, the string operation takes left-to-right direction and when the value is set to 1, the string operation takes right-to-left direction.  |
 
 
 ### Pointers 
