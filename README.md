@@ -11,6 +11,14 @@
 | extended precision   |    dt       |
 
 
+### NASM code-sections 
+|  | |
+| ----   |   ----- |
+| .text  | Code               |
+| .data  | Initialized Data   |
+| .bss   | Uninitialized Data |
+
+
 ### Registers :
 
 <table>
