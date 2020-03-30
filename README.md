@@ -119,7 +119,7 @@ mov rax, [rbx]    # loads the value the rbx register is pointing to, into rax. L
 |    adc a, b    |             -            |     a = a + b + CF   |
 |    sbb a, b    |             -            |     a = a - b - CF   |
 
-
+%rdx hold the remainder of division. Also, if %rdx is not zero, %rax and %rdx will act as a 128bits registers. To avoid unexpected results. Set %rdx to 0.
 
 
 ### Stack operations
