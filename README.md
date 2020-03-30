@@ -145,7 +145,7 @@ Such as, instead of "pop reg", you can use "pop [label]" to pop a value off the 
 | mov dest, src | Move data between registers, load immediate data into registers, move data between registers and memory. |
 | push src      | Insert a value onto the stack.  Useful for passing arguments, saving registers, etc.                     |
 | pop dest      | Remove topmost value from the stack.  Equivalent to "mov dest, [rsp]; add 8,rsp".                        |
-| call func     | Push the address of the next instruction and start executing func.                                       |
+| call label     | Push the address of the next instruction and start executing func.                                       |
 | ret           | Pop the return program counter, and jump there.  Ends a subroutine.                                      |
 | add dest, src | dest = dest + src                                                                                        |
 | mul src       | Multiply rax and src as unsigned integers, and put the result in rax.  High 64 bits of product (usually zero) go into rdx                                                                                                          |
