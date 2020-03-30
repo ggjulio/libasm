@@ -138,6 +138,25 @@ Note : Usually in places where you can use registers, you can also use pointers.
 Such as, instead of "pop reg", you can use "pop [label]" to pop a value off the stack directly into a position in memory.
 
 
+### Instructions
+
+|               |                                                 Purpose                                                  |
+|       ---     |                                                   ---                                                    |
+| mov dest, src | Move data between registers, load immediate data into registers, move data between registers and memory. |
+| push src      | Insert a value onto the stack.  Useful for passing arguments, saving registers, etc.                     |
+| pop dest      | Remove topmost value from the stack.  Equivalent to "mov dest, [rsp]; add 8,rsp".                        |
+| call func     | Push the address of the next instruction and start executing func.                                       |
+| ret           | Pop the return program counter, and jump there.  Ends a subroutine.                                      |
+| add dest, src | dest = dest + src                                                                                        |
+| mul src       | Multiply rax and src as unsigned integers, and put the result in rax.  High 64 bits of product (usually zero) go into rdx                                                                                                          |
+| div src       | Divide rax by src, and put the ratio into rax, and the remainder into rdx. Bizarrely, on input rdx must be zero, or you get a SIGFPE.                                                                                                 |
+| shr val,bits  | Bitshift a value right by a constant, or the low 8 bits of rcx ("cl"). Shift count MUST go in rcx, no other register will do!                                                                                                          |
+| jmp label     | Goto the instruction label:.  Skips anything else in the way.                                            |
+| cmp a,b       | Compare two values.  Sets flags that are used by the conditional jumps (below).                          |
+| jl label      | Goto label if previous comparison came out as less-than.  Other conditionals available are:
+jle (<=), je (==), jge (>=), jg (>), jne (!=), and many others.
+Also available in unsigned comparisons: jb (<), jbe (<=), ja (>), jae (>=).  |
+
 
 ### Defining macro
 
