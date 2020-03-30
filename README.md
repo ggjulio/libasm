@@ -186,6 +186,12 @@ _start:
   syscall
 ```
 
+### Including extrernal files
+
+```nasm
+%include "filename,inc"
+```
+
 
 
 
