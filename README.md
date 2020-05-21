@@ -12,11 +12,11 @@
 
 
 ### NASM code-sections 
-|  | |
-| ----   |   ----- |
-| .text  | Code               |
-| .data  | Initialized Data   |
-| .bss   | Uninitialized Data |
+| Segment  |    Meaning         |  c equivalent example  |
+|   ----   |        -----       |       ---------        |
+| .text    | Code               |  printf("%d", i);      |
+| .data    | Initialized Data   |  int i = 1;            |
+| .bss     | Uninitialized Data |  int i;                |
 
 
 ### Registers :
