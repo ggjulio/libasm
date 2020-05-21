@@ -12,14 +12,14 @@
 
 
 ### NASM code-sections 
-| Segment  |    Meaning         |  c equivalent example  |
-|   ----   |        -----       |       ---------        |
-| .text    | Code               |  printf("%d", i);      |
-| .data    | Initialized Data   |  int i = 1;            |
-| [.bss](#bss)     | Uninitialized Data |  int i;                |
+| Segment       |    Meaning         |  c equivalent example  |
+|   ----        |        -----       |       ---------        |
+| .text         | Code               |  printf("%d", i);      |
+| [.data](#bss) | Initialized Data   |  int i = 1;            |
+| [.bss](#bss)  | Uninitialized Data |  int i;                |
 
 
-#### .data (`Initialized Data`) :
+#### <a name="data">.data</a> (`Initialized Data`) :
 
 |     unit    |          | Size in bytes (octet) |  c equivalent example  |
 |     ----    |   ----   |        -----          |       ---------        |
@@ -31,7 +31,7 @@
 
 `d` stand for `defined`.
 
-#### .bss <a name="bss"></a> (`Uninitialized Data`) :
+#### <a name="bss">.bss</a> (`Uninitialized Data`) :
 
 |     unit    |          | Size in bytes (octet) |  c equivalent example  |
 |     ----    |   ----   |        -----          |       ---------        |
