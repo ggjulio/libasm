@@ -21,17 +21,19 @@ section .bss
 section .text
 	global _start
 
+
+%macro exit 0
+	mov rax, 60
+	mov rdi, 0
+	syscall
+%endmacro
+
 _start:
-	
 	call _printText1
 	call _getName
 	call _printText2
 	call _printName
-	
-	mov rax, 60
-	mov rdi, 0
-	syscall
-
+	exit
 	
 _printText1:
 	mov rax, 1

@@ -1,50 +1,32 @@
 ;******************************************************************************;
 ;                                                                              ;
 ;                                                         :::      ::::::::    ;
-;    hello.s                                            :+:      :+:    :+:    ;
+;    hello_print_int.s                                  :+:      :+:    :+:    ;
 ;                                                     +:+ +:+         +:+      ;
 ;    By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
-;    Created: 2020/03/20 15:20:02 by juligonz          #+#    #+#              ;
-;    Updated: 2020/03/29 19:57:45 by juligonz         ###   ########.fr        ;
+;    Created: 2020/03/30 19:06:33 by juligonz          #+#    #+#              ;
+;    Updated: 2020/03/31 07:29:11 by juligonz         ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
+section .bss
+	digitSpace resb 100
+	digitSpacePos resb 8
 
-section .data
-	text db "Hello, world!", 10,0
-	
 section .text
 	global _start
 
-%macro exit 0
+_start:
+	mov rax, 123
+	call _printRAX
+
 	mov rax, 60
 	mov rdi, 0
-	syscall
-%endmacro
+	suscall
 	
-_start:
 
-	mov rax, text
-	call _print
+_printRAX:
+	mov rcx, digitSpace
+	mov rbx, 10
 	
-	exit
-
-	;; input : rax as a pointer to string
-	;; output : print string at rax
-_print:
-	push rax
-	mov rbx, 0
-_printLoop:
-	inc rax
-	inc rbx
-	mov cl, [rax]
-	cmp cl, 0
-	jne _printLoop
-
-	mov rax, 1
-	mov rdi, 1
-	pop rsi
-	mov rdx, rbx
-	syscall
-	ret

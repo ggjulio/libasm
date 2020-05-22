@@ -1,7 +1,7 @@
 ;******************************************************************************;
 ;                                                                              ;
 ;                                                         :::      ::::::::    ;
-;    hello.s                                            :+:      :+:    :+:    ;
+;    ft_strlen.s                                        :+:      :+:    :+:    ;
 ;                                                     +:+ +:+         +:+      ;
 ;    By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
@@ -10,41 +10,23 @@
 ;                                                                              ;
 ;******************************************************************************;
 
+_strlen:
 
-section .data
-	text db "Hello, world!", 10,0
-	
-section .text
-	global _start
+  push  rcx            ; save and clear out counter
+  xor   rcx, rcx
 
-%macro exit 0
-	mov rax, 60
-	mov rdi, 0
-	syscall
-%endmacro
-	
-_start:
+_strlen_next:
 
-	mov rax, text
-	call _print
-	
-	exit
+  cmp   [rdi], byte 0  ; null byte yet?
+  jz    _strlen_null   ; yes, get out
 
-	;; input : rax as a pointer to string
-	;; output : print string at rax
-_print:
-	push rax
-	mov rbx, 0
-_printLoop:
-	inc rax
-	inc rbx
-	mov cl, [rax]
-	cmp cl, 0
-	jne _printLoop
+  inc   rcx            ; char is ok, count it
+  inc   rdi            ; move to next char
+  jmp   _strlen_next   ; process again
 
-	mov rax, 1
-	mov rdi, 1
-	pop rsi
-	mov rdx, rbx
-	syscall
-	ret
+_strlen_null:
+
+  mov   rax, rcx       ; rcx = the length (put in rax)
+
+  pop   rcx            ; restore rcx
+  ret
