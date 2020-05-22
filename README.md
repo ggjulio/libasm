@@ -93,6 +93,7 @@
 |    ...    |    ...    |     ...     |     ...      |     ...      |     ...      |      ...     |     ...      |
 | pwritev2  |    328    |     ...     |     ...      |     ...      |     ...      |      ...     |     ...      |
 
+[See full table](https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/)
 
 ### Flags 
 
@@ -258,7 +259,11 @@ https://www.nesono.com/sites/default/files/lldb%20cheat%20sheet.pdf
 ### ressources
 
 ##### call convention
-https://beta.hackndo.com/conventions-d-appel/#fastcall-fast-calling-convention
+https://beta.hackndo.com/conventions-d-appel
 https://h-deb.clg.qc.ca/Sujets/AuSecours/Conventions-appel.html
 https://docs.microsoft.com/fr-fr/cpp/build/x64-calling-convention?view=vs-2019
+
+#### call tables
+https://filippo.io/linux-syscall-table/
+https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/
 
