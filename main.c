@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/05/22 16:47:09 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/05/22 18:46:35 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void print_title(char *s)
 	printf("\n%s%s%d/ %s :%s\n\n", _BLUE, _BOLD, n++, s, _R);
 }
 
-int main(int ac, char **av)
+int main()
 {
 	print_title("ft_strlen"); printf("%s", _GREEN);
 	

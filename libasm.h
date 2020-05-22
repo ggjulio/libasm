@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:10:24 by juligonz          #+#    #+#             */
-/*   Updated: 2020/05/22 16:19:07 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/05/22 16:50:27 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,13 @@
 
 # include <unistd.h>
 
-size_t			ft_strlen(const char *s);
-char			*ft_strcpy(char *dest, const char *src);
-int				ft_strcmp(const char *s1, const char *s2);
-char			*ft_strdup(const char *s);
+size_t		ft_strlen(const char *s);
+char		*ft_strcpy(char *dest, const char *src);
+int			ft_strcmp(const char *s1, const char *s2);
+char		*ft_strdup(const char *s);
 
-
-// ft_write (man 2 write)
-// ft_read (man 2 read)◦
-
+ssize_t		ft_write(int fd, const void *buf, size_t count);
+ssize_t 	ft_read(int fd, void *buf, size_t count);
 
 
 // ft_atoi_base (Comme celui de piscine)•

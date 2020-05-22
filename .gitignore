@@ -3,6 +3,7 @@
 .\#*
 debug
 a.out
+.vscode/
 
 # Prerequisites
 *.d

@@ -70,12 +70,17 @@ $(OBJ_DIR)/%.o: %.s
 $(NAME): $(OBJ)
 	@ar rcs $(NAME) $^
 	@echo "$(_GREEN)Compiled : $(_MAGENTA)$(NAME)$(_R)"
-	@echo "\nRun $(_YELLOW)$(_BLINK)$(_BOLD)make debug$(_R) to run the test"
+	@echo "\nDo $(_YELLOW)$(_BLINK)$(_BOLD)make run$(_R) to run tests"
 
-debug: $(NAME)
-	@$(CC) main.c -L. -l asm -o debug
+run: $(NAME)
+	@$(CC) $(CFLAGS) main.c -L. -l asm -o debug
 	@echo "$(_BOLD)$(_RED)########################## $(_GREEN)Let's go !$(_RED) ##########################$(_R)"
 	@./debug
+
+debug: $(NAME)
+	@$(CC) $(CFLAGS) main.c -L. -l asm -o debug
+	@echo "$(_BOLD)$(_RED)########################## $(_GREEN)Let's go !$(_RED) ##########################$(_R)"
+	@lldb ./debug
 		
 clean:
 	@rm -rf $(OBJ_DIR)
