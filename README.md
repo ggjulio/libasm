@@ -251,6 +251,10 @@ _start:
 %include "filename,inc"
 ```
 
+### Debugging using lldb
+
+https://www.nesono.com/sites/default/files/lldb%20cheat%20sheet.pdf
+
 
 
 
