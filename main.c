@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/05/22 13:27:34 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/05/22 14:18:51 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int main(int ac, char **av)
 {
-	printf("%zu", ft_strlen("ff"));	
+	printf("%zu", ft_strlen("34"));	
 
 	return (0);
 }

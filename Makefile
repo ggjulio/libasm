@@ -1,3 +1,38 @@
+# https://misc.flogisoft.com/bash/tip_colors_and_formatting
+_BOLD      =\e[1m
+_DIM       =\e[2m
+_UNDERLINE =\e[4m
+_BLINK     =\e[5m
+_REVERSE   =\e[7m
+_HIDDEN    =\e[8m
+
+# RESET list
+_R          =\e[0m
+_RBOLD      =\e[21m
+_RDIM       =\e[22m
+_RUNDERLINE =\e[24m
+_RBLINK     =\e[25m
+_RREVERSE   =\e[27m
+_RHIDDEN    =\e[28m
+
+# Colors
+_RED      =\e[91m
+_GREEN    =\e[92m
+_YELLOW   =\e[93m
+_BLUE     =\e[94m
+_MAGENTA  =\e[35m
+_CYAN     =\e[96m
+_WHITE    =\e[97m
+
+# Inverted, i.e. colored backgrounds
+_IRED     =\e[101m
+_IGREEN   =\e[102m
+_IYELLOW  =\e[103m
+_IBLUE    =\e[104m
+_IMAGENTA =\e[45m
+_ICYAN    =\e[106m
+_IWHITE   =\e[107m
+
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
@@ -6,15 +41,13 @@
 #    By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/18 10:11:39 by juligonz          #+#    #+#              #
-#    Updated: 2020/05/22 13:26:14 by juligonz         ###   ########.fr        #
+#    Updated: 2020/05/22 14:34:02 by juligonz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME       = libasm.a
 DEBUG_EXEC = debug
 
-SRC_DIR = srcs
-INC_DIR = includes
 OBJ_DIR = obj
 
 SRC = ft_strlen.s
@@ -25,32 +58,44 @@ CC      = clang
 CFLAGS  = -Wall -Wextra -Werror -g # -fsanitize=address  -fsanitize=undefined -fstack-protector  
 
 AS      = nasm
-ASFLAGS = -f elf64
+SFLAGS = -f elf64
 
 
 all: $(NAME)
 
 $(OBJ_DIR)/%.o: %.s
-	mkdir -p $(OBJ_DIR)
-	$(AS) $(ASFLAGS) $< -o $@
+	@mkdir -p $(OBJ_DIR)
+	@$(AS) $(SFLAGS) $< -o $@
 
 $(NAME): $(OBJ)
-	@echo "Compiling $(NAME)  ..."
-	ar rcs $(NAME) $^
-	$(info Compiled $(NAME))
+	@ar rcs $(NAME) $^
+	@echo "$(_GREEN)Compiled : $(_MAGENTA)$(NAME)$(_R)"
+	@echo "\nRun $(_YELLOW)$(_BLINK)$(_BOLD)make debug$(_R) to run the test"
 
 debug: $(NAME)
-	$(CC)  
-
+	@$(CC) main.c -L. -l asm -o debug
+	@echo "$(_BOLD)$(_RED)########################## $(_GREEN)Let's go !$(_RED) ##########################$(_R)"
+	@./debug
+		
 clean:
-	rm -rf $(OBJ_DIR)
-	@echo ".o removed !"
+	@rm -rf $(OBJ_DIR)
+	@echo "$(_RED)Removed : $(_MAGENTA) /$(OBJ_DIR)$(_MAGENTA)"
 
 fclean: clean
-	rm -f $(NAME) $(DEBUG_EXEC)
-	@echo "$(NAME) and $(DEBUG_EXEC) deleted"
+	@rm -f $(NAME) $(DEBUG_EXEC)
+	@echo "$(_RED)Removed : $(_MAGENTA)$(NAME), $(DEBUG_EXEC)$(_R)"
 
-re: fclean all
+re_echo:
+	@echo "$(_CYAN)Redoing $(_BOLD)ALLL $(_R)$(_CYAN)$(_DIM)the things $(_R)$(_BLINK)$(_BOLD)$(_YELLOW)...$(_R)\n\n"
 
+show:
+	@echo "$(_CYAN)CC     :$(_RED)  $(CC)$(_END)"
+	@echo "$(_CYAN)CFLAGS :$(_RED)  $(CFLAGS)$(_END)\n"
+	@echo "$(_CYAN)AS     :$(_RED)  $(AS)$(_END)"
+	@echo "$(_CYAN)CFLAGS :$(_RED)  $(SFLAGS)$(_END)\n"
+	@echo "$(_CYAN)SRC    :$(_RED)  $(SRC)$(_END)"
+	@echo "$(_CYAN)OBJ    :$(_RED)  $(OBJ)$(_END)"
 
-.PHONY: clean fclean re all bonus debug
+re: re_echo fclean all
+
+.PHONY: clean fclean re all bonus debug re_message
