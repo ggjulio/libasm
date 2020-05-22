@@ -2,18 +2,6 @@
 
 ### [Data size](https://www.nasm.us/doc/nasmdoc3.html)
 
-
-    1  byte  (8 bit):   byte,  DB, RESB
-    2  bytes (16 bit):  word,  DW, RESW
-    4  bytes (32 bit):  dword, DD, RESD
-    8  bytes (64 bit):  qword, DQ, RESQ
-    10 bytes (80 bit):  tword, DT, REST
-    16 bytes (128 bit): oword, DO, RESO, DDQ, RESDQ
-    32 bytes (256 bit): yword, DY, RESY
-    64 bytes (512 bit): zword, DZ, RESZ
-
-
-
 | Size in bytes |  Size in bits |  prefixe   | Initialized ([.data](#data)) | Uninitialized ([.bss](#bss))|
 |    ---        |       ---     |    ---     |     ---                      |      ---                    |
 | 1             | 8             | byte       | db                           | resb                        |
@@ -24,29 +12,6 @@
 | 16            | 128           | oword      | do / ddq                     | reso / resdq                |
 | 32            | 256           | yword      | dy                           | resy                        |
 | 64            | 512           | zword      | dz                           | resz                        |
-
-##### Example
-
-`
-db      0x55                ; just the byte 0x55     
-db      0x55,0x56,0x57      ; three bytes in succession      
-db      'a',0x55            ; character constants are OK   
-db      'hello',13,10,'$'   ; so are string constants   
-dw      0x1234              ; 0x34 0x12   
-dw      'a'                 ; 0x41 0x00 (it's just a number)   
-dw      'ab'                ; 0x41 0x42 (character constant)   
-dw      'abc'               ; 0x41 0x42 0x43 0x00 (string)   
-dd      0x12345678          ; 0x78 0x56 0x34 0x12   
-dq      0x1122334455667788  ; 0x88 0x77 0x66 0x55 0x44 0x33 0x22 0x11X   
-ddq     0x112233445566778899aabbccddeeff00   
-; 0x00 0xff 0xee 0xdd 0xcc 0xbb 0xaa 0x99   
-; 0x88 0x77 0x66 0x55 0x44 0x33 0x22 0x11   
-do     0x112233445566778899aabbccddeeff00 ; same as previous   
-dd      1.234567e20         ; floating-point constant   
-dq      1.234567e20         ; double-precision float   
-dt      1.234567e20         ; extended-precision float   
-`
-
 
 ### NASM code-sections 
 | Segment       |    Meaning         |  c equivalent example  |
