@@ -81,7 +81,7 @@
 | r15b  | r15w   | r15d   | **r15**|              -                 |
 
 
-### syscall input by register :
+### syscall input by register (Fast call convention):
 
 | syscall   | ID (%rax) | ARG_1 (%rdi)| ARG_2 (%rsi) | ARG_3 (%rdx) | ARG_4 (%r10) | ARG_5 (%r8) | ARG_6 (%r9) |
 |-----------|-----------|     :---:   |     :---:    |     :---:    |--------------|--------------|--------------|
