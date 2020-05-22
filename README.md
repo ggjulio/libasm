@@ -14,16 +14,16 @@
 
 
 
-| Size in bytes |      Size in bits  |  prefixes  | Initialized | Uninitialized |
-|    ---        |          ---       |    ---     |     ---     |      ---      |
-| 1             | 8                  | byte       | db          | resb          |
-| 2             | 16                 | word       | dw          | resw          |
-| 4             | 32                 | dword      | dd          | resd          |
-| 8             | 64                 | qword      | dq          | resq          |
-| 10            | 80                 | tword      | dt          | rest          |
-| 16            | 128                | oword      | do / ddq    | reso / resdq  |
-| 32            | 256                | yword      | dy          | resy          |
-| 64            | 512                | zword      | dz          | resz          |
+| Size in bytes |  Size in bits |  prefixe   | Initialized ([.data](#data)) | Uninitialized ([.bss](#bss))|
+|    ---        |       ---     |    ---     |     ---                      |      ---                    |
+| 1             | 8             | byte       | db                           | resb                        |
+| 2             | 16            | word       | dw                           | resw                        |
+| 4             | 32            | dword      | dd                           | resd                        |
+| 8             | 64            | qword      | dq                           | resq                        |
+| 10            | 80            | tword      | dt                           | rest                        |
+| 16            | 128           | oword      | do / ddq                     | reso / resdq                |
+| 32            | 256           | yword      | dy                           | resy                        |
+| 64            | 512           | zword      | dz                           | resz                        |
 
 ##### Example
 
@@ -52,7 +52,7 @@ dt      1.234567e20         ; extended-precision float
 | Segment       |    Meaning         |  c equivalent example  |
 |   ----        |        -----       |       ---------        |
 | .text         | Code               |  printf("%d", i);      |
-| [.data](#bss) | Initialized Data   |  int i = 1;            |
+| [.data](#data) | Initialized Data   |  int i = 1;            |
 | [.bss](#bss)  | Uninitialized Data |  int i;                |
 
 
