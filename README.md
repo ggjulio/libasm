@@ -61,7 +61,7 @@
 </table>
 
 
-| 8-bit | 16-bit | 32-bit | 64-bit |                                |
+| 8-bit | 16-bit | 32-bit | 64-bit |           Purpose              |
 |-------|--------|--------|--------|               ----             |
 | al    | ax     | eax    | **rax**| accumulaor                     |
 | bl    | bx     | ebx    | **rbx**| base, addressing               |
@@ -81,7 +81,7 @@
 | r15b  | r15w   | r15d   | **r15**|              -                 |
 
 
-### syscall input by register (Fastcall convention):
+### syscall input by register ([Fastcall convention](https://h-deb.clg.qc.ca/Sujets/AuSecours/Conventions-appel.html)):
 
 | syscall   | ID (%rax) | ARG_1 (%rdi)| ARG_2 (%rsi) | ARG_3 (%rdx) | ARG_4 (%r10) | ARG_5 (%r8) | ARG_6 (%r9) |
 |-----------|-----------|     :---:   |     :---:    |     :---:    |--------------|--------------|--------------|
@@ -115,7 +115,7 @@
 |---------------|--------------------|---------------------------------------------------------------|
 | rip (eip, ip) | Index pointer      | Points to next address to be executed in the control flow.    |
 | rsp (esp, sp) | Stack pointer      | Points to the top address of the stack.                       |
-| rbp (ebp, bp)  | Stack base pointer | Points to the bottom of the stack.                            |
+| rbp (ebp, bp) | Stack base pointer | Points to the bottom of the stack.                            |
 |      ...      |        ...         |                         ...                                   |
 
 
@@ -245,10 +245,10 @@ _start:
   syscall
 ```
 
-### Including extrernal files
+### Including external files
 
 ```nasm
-%include "filename,inc"
+%include "filename.inc"
 ```
 
 ### Debugging using lldb
@@ -259,5 +259,6 @@ https://www.nesono.com/sites/default/files/lldb%20cheat%20sheet.pdf
 
 ##### x64 call convention
 https://docs.microsoft.com/fr-fr/cpp/build/x64-calling-convention?view=vs-2019
+https://h-deb.clg.qc.ca/Sujets/AuSecours/Conventions-appel.html
 
 
