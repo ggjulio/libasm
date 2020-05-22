@@ -1,3 +1,5 @@
+## Reminder
+
 ### Data
 
 |          Size        | Instruction |
@@ -12,11 +14,37 @@
 
 
 ### NASM code-sections 
-|  | |
-| ----   |   ----- |
-| .text  | Code               |
-| .data  | Initialized Data   |
-| .bss   | Uninitialized Data |
+| Segment       |    Meaning         |  c equivalent example  |
+|   ----        |        -----       |       ---------        |
+| .text         | Code               |  printf("%d", i);      |
+| [.data](#bss) | Initialized Data   |  int i = 1;            |
+| [.bss](#bss)  | Uninitialized Data |  int i;                |
+
+
+#### <a name="data">.data</a> (`Initialized Data`) :
+
+|     unit    |          | Size in bytes (octet) |     c equivalent example              |
+|     ----    |   ----   |        -----          |          ---------                    |
+| Byte        | db       | 1                     |  `char c = 'a';`                      |
+| Word        | dw       | 2                     |  `short int i = 4;`                   |
+| Double Word | dd       | 4                     |  `int i = 42;`  `float f = 1.4f;`     |
+| Quad Word   | dq       | 8                     |  `long int i = 13;`  `double d = 1.4;`|
+| 10 bytes    | dt       | 10                    |  `long double d = 4.42;`              |
+
+`d` stand for `defined`.
+
+#### <a name="bss">.bss</a> (`Uninitialized Data`) :
+
+|     unit    |          | Size in bytes (octet) |     c equivalent example  |
+|     ----    |   ----   |        -----          |          ---------        |
+| Byte        | resb     | 1                     | `char c;`                 |
+| Word        | resw     | 2                     | `short int i;`            |
+| Double Word | resd     | 4                     | `int i;`  `float f;`      |
+| Quad Word   | resq     | 8                     | `long int i;` `double d;` |
+| 10 bytes    | rest     | 10                    | `long double d;`          |
+
+`res` stand for `reserved`.
+
 
 
 ### Registers :
@@ -53,7 +81,7 @@
 | r15b  | r15w   | r15d   | **r15**|              -                 |
 
 
-### syscall input by register :
+### syscall input by register (Fastcall convention):
 
 | syscall   | ID (%rax) | ARG_1 (%rdi)| ARG_2 (%rsi) | ARG_3 (%rdx) | ARG_4 (%r10) | ARG_5 (%r8) | ARG_6 (%r9) |
 |-----------|-----------|     :---:   |     :---:    |     :---:    |--------------|--------------|--------------|
