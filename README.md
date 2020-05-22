@@ -23,25 +23,25 @@
 
 #### <a name="data">.data</a> (`Initialized Data`) :
 
-|     unit    |          | Size in bytes (octet) |  c equivalent example  |
-|     ----    |   ----   |        -----          |       ---------        |
-| Byte        | db       | 1                     |  char c = 'a';         |
-| Word        | dw       | 2                     |  short int i = 4;      |
-| Double Word | dd       | 4                     |  int i = 42;           |
-| Quad Word   | dq       | 8                     |  long int i = 13;      |
-| 10 bytes    | dt       | 10                    |  long double d = 4.42; |
+|     unit    |          | Size in bytes (octet) |     c equivalent example              |
+|     ----    |   ----   |        -----          |          ---------                    |
+| Byte        | db       | 1                     |  `char c = 'a';`                      |
+| Word        | dw       | 2                     |  `short int i = 4;`                   |
+| Double Word | dd       | 4                     |  `int i = 42;`  `float f = 1.4f;`     |
+| Quad Word   | dq       | 8                     |  `long int i = 13;`  `double d = 1.4;`|
+| 10 bytes    | dt       | 10                    |  `long double d = 4.42;`              |
 
 `d` stand for `defined`.
 
 #### <a name="bss">.bss</a> (`Uninitialized Data`) :
 
-|     unit    |          | Size in bytes (octet) |  c equivalent example  |
-|     ----    |   ----   |        -----          |       ---------        |
-| Byte        | resb     | 1                     |  char c;               |
-| Word        | resw     | 2                     |  short int i;          |
-| Double Word | resd     | 4                     |  int i;                |
-| Quad Word   | resq     | 8                     |  long int i;           |
-| 10 bytes    | rest     | 10                    |  long double d;        |
+|     unit    |          | Size in bytes (octet) |     c equivalent example  |
+|     ----    |   ----   |        -----          |          ---------        |
+| Byte        | resb     | 1                     | `char c;`                 |
+| Word        | resw     | 2                     | `short int i;`            |
+| Double Word | resd     | 4                     | `int i;`  `float f;`      |
+| Quad Word   | resq     | 8                     | `long int i;` `double d;` |
+| 10 bytes    | rest     | 10                    | `long double d;`          |
 
 `res` stand for `reserved`.
 
