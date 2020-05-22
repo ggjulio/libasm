@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/05/22 18:46:35 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/05/22 19:18:35 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,29 +54,29 @@ int main()
 	printf("%zu == %zu\n", strlen("34"), ft_strlen("34"));	
 	printf("%zu == %zu\n", strlen("123"), ft_strlen("123"));	
 
-	print_title("ft_strcpy"); printf("%s", _GREEN);
+	// print_title("ft_strcpy"); printf("%s", _GREEN);
 
-	print_title("ft_strcmp"); printf("%s", _GREEN);
+	// print_title("ft_strcmp"); printf("%s", _GREEN);
 
-	print_title("ft_strdup"); printf("%s", _GREEN);
+	// print_title("ft_strdup"); printf("%s", _GREEN);
 
-	print_title("ft_write"); printf("%s", _GREEN);
+	// print_title("ft_write"); printf("%s", _GREEN);
 
-	print_title("ft_read"); printf("%s", _GREEN);
+	// print_title("ft_read"); printf("%s", _GREEN);
 
 
-	//Bonus Part
-	printf("%s%s######################## %sBonus functions %s########################\n", _BOLD, _GREEN, _RED , _GREEN);
+	// //Bonus Part
+	// printf("%s%s######################## %sBonus functions %s########################\n", _BOLD, _GREEN, _RED , _GREEN);
 	
-	print_title("ft_atoi_base"); printf("%s", _GREEN);
+	// print_title("ft_atoi_base"); printf("%s", _GREEN);
 	
-	print_title("ft_list_push_front"); printf("%s", _GREEN);
+	// print_title("ft_list_push_front"); printf("%s", _GREEN);
 	
-	print_title("ft_list_size"); printf("%s", _GREEN);
+	// print_title("ft_list_size"); printf("%s", _GREEN);
 	
-	print_title("ft_list_sort"); printf("%s", _GREEN);
+	// print_title("ft_list_sort"); printf("%s", _GREEN);
 	
-	print_title("ft_list_remove_if"); printf("%s", _GREEN);
+	// print_title("ft_list_remove_if"); printf("%s", _GREEN);
 
 	return (0);
 }

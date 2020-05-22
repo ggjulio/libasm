@@ -1,28 +1,51 @@
 ## Reminder
 
-### Data
+### [Data size](https://www.nasm.us/doc/nasmdoc3.html)
 
 
-    1 byte (8 bit): byte, DB, RESB
-    2 bytes (16 bit): word, DW, RESW
-    4 bytes (32 bit): dword, DD, RESD
-    8 bytes (64 bit): qword, DQ, RESQ
-    10 bytes (80 bit): tword, DT, REST
+    1  byte  (8 bit):   byte,  DB, RESB
+    2  bytes (16 bit):  word,  DW, RESW
+    4  bytes (32 bit):  dword, DD, RESD
+    8  bytes (64 bit):  qword, DQ, RESQ
+    10 bytes (80 bit):  tword, DT, REST
     16 bytes (128 bit): oword, DO, RESO, DDQ, RESDQ
     32 bytes (256 bit): yword, DY, RESY
     64 bytes (512 bit): zword, DZ, RESZ
 
 
 
-|size in bytes |      Size in bits  | Instruction |
-||          ---         |     ---     |
-|| 8-bits               |    db       |
-|| 16-bits              |    dw       |
-|| 32-bits              |    dd       |
-|| 64-bits              |    ddq / do |
-|| float                |    dd       |
-|| double               |    dq       |
-|| extended precision   |    dt       |
+| Size in bytes |      Size in bits  |  prefixes  | Initialized | Uninitialized |
+|    ---        |          ---       |    ---     |     ---     |      ---      |
+| 1             | 8                  | byte       | db          | resb          |
+| 2             | 16                 | word       | dw          | resw          |
+| 4             | 32                 | dword      | dd          | resd          |
+| 8             | 64                 | qword      | dq          | resq          |
+| 10            | 80                 | tword      | dt          | rest          |
+| 16            | 128                | oword      | do / ddq    | reso / resdq  |
+| 32            | 256                | yword      | dy          | resy          |
+| 64            | 512                | zword      | dz          | resz          |
+
+##### Example
+
+`
+db      0x55                ; just the byte 0x55
+db      0x55,0x56,0x57      ; three bytes in succession
+db      'a',0x55            ; character constants are OK
+db      'hello',13,10,'$'   ; so are string constants
+dw      0x1234              ; 0x34 0x12
+dw      'a'                 ; 0x41 0x00 (it's just a number)
+dw      'ab'                ; 0x41 0x42 (character constant)
+dw      'abc'               ; 0x41 0x42 0x43 0x00 (string)
+dd      0x12345678          ; 0x78 0x56 0x34 0x12
+dq      0x1122334455667788  ; 0x88 0x77 0x66 0x55 0x44 0x33 0x22 0x11
+ddq     0x112233445566778899aabbccddeeff00
+; 0x00 0xff 0xee 0xdd 0xcc 0xbb 0xaa 0x99
+; 0x88 0x77 0x66 0x55 0x44 0x33 0x22 0x11
+do     0x112233445566778899aabbccddeeff00 ; same as previous
+dd      1.234567e20         ; floating-point constant
+dq      1.234567e20         ; double-precision float
+dt      1.234567e20         ; extended-precision float
+`
 
 
 ### NASM code-sections 
@@ -35,6 +58,8 @@
 
 #### <a name="data">.data</a> (`Initialized Data`) :
 
+DB, DW, DD, DQ, DT, DDQ, and DO are used to declare initialized data in the output file. They can be invoked in a wide range of ways:
+
 |     unit    |          | Size in bytes (octet) |     c equivalent example              |
 |     ----    |   ----   |        -----          |          ---------                    |
 | Byte        | db       | 1                     |  `char c = 'a';`                      |
@@ -46,6 +71,8 @@
 `d` stand for `defined`.
 
 #### <a name="bss">.bss</a> (`Uninitialized Data`) :
+
+RESB, RESW, RESD, RESQ, REST, RESDQ, and RESO are designed to be used in the BSS section of a module: they declare uninitialised storage space. Each takes a single operand, which is the number of bytes, words, doublewords or whatever to reserve. NASM does not support the MASM/TASM syntax of reserving uninitialised space by writing DW ? or similar things: this is what it does instead. The operand to a RESB-type pseudo-instruction is a critical expression: see Section 3.8.
 
 |     unit    |          | Size in bytes (octet) |     c equivalent example  |
 |     ----    |   ----   |        -----          |          ---------        |

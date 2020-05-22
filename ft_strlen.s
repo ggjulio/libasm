@@ -12,12 +12,20 @@
 
 global ft_strlen
 
-ft_strlen:
+ ft_strlen:
+; 	push rcx		; save rcx to the stack, to be able 
+; 	xor rcx, rcx	; reset rcx to 0 using exclusive or
+
+
+
+
+
+
 	push  rcx            ; save and clear out counter
 	xor   rcx, rcx
 
 _strlen_next:
-	cmp   [rdi], byte 0  ; null byte yet?
+	cmp   [rdi], DWORD 0  ; null byte yet?
 	jz    _strlen_null   ; yes, get out	
 	inc   rcx            ; char is ok, count it
 	inc   rdi            ; move to next char
