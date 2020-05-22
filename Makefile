@@ -79,23 +79,24 @@ debug: $(NAME)
 		
 clean:
 	@rm -rf $(OBJ_DIR)
-	@echo "$(_RED)Removed : $(_MAGENTA) /$(OBJ_DIR)$(_MAGENTA)"
+	@echo "$(_RED)Removed :$(_MAGENTA) $(OBJ_DIR)/$(_MAGENTA)"
 
 fclean: clean
 	@rm -f $(NAME) $(DEBUG_EXEC)
 	@echo "$(_RED)Removed : $(_MAGENTA)$(NAME), $(DEBUG_EXEC)$(_R)"
 
 re_echo:
-	@echo "$(_CYAN)Redoing $(_BOLD)ALLL $(_R)$(_CYAN)$(_DIM)the things $(_R)$(_BLINK)$(_BOLD)$(_YELLOW)...$(_R)\n\n"
+	@echo "$(_CYAN)Redoing $(_BOLD)ALLL $(_R)$(_CYAN)$(_DIM)the things $(_R)$(_BLINK)$(_BOLD)$(_YELLOW)...$(_R)\n"
+
+re: re_echo fclean all
 
 show:
 	@echo "$(_CYAN)CC     :$(_RED)  $(CC)$(_END)"
 	@echo "$(_CYAN)CFLAGS :$(_RED)  $(CFLAGS)$(_END)\n"
 	@echo "$(_CYAN)AS     :$(_RED)  $(AS)$(_END)"
-	@echo "$(_CYAN)CFLAGS :$(_RED)  $(SFLAGS)$(_END)\n"
+	@echo "$(_CYAN)SFLAGS :$(_RED)  $(SFLAGS)$(_END)\n"
 	@echo "$(_CYAN)SRC    :$(_RED)  $(SRC)$(_END)"
 	@echo "$(_CYAN)OBJ    :$(_RED)  $(OBJ)$(_END)"
 
-re: re_echo fclean all
 
-.PHONY: clean fclean re all bonus debug re_message
+.PHONY: clean fclean re all bonus debug re_message show
