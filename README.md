@@ -255,6 +255,9 @@ _start:
 
 https://www.nesono.com/sites/default/files/lldb%20cheat%20sheet.pdf
 
+### ressources
 
+##### x64 call convention
+https://docs.microsoft.com/fr-fr/cpp/build/x64-calling-convention?view=vs-2019
 
 
