@@ -10,7 +10,7 @@
 ;                                                                              ;
 ;******************************************************************************;
 
-_strlen:
+ft_strlen:
 
   push  rcx            ; save and clear out counter
   xor   rcx, rcx

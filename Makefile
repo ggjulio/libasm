@@ -6,7 +6,7 @@
 #    By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/18 10:11:39 by juligonz          #+#    #+#              #
-#    Updated: 2020/05/22 13:19:48 by juligonz         ###   ########.fr        #
+#    Updated: 2020/05/22 13:26:14 by juligonz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRC = ft_strlen.s
 
 OBJ     = $(addprefix  $(OBJ_DIR)/,$(SRC:%.s=%.o))
 
-CC      = gcc
+CC      = clang
 CFLAGS  = -Wall -Wextra -Werror -g # -fsanitize=address  -fsanitize=undefined -fstack-protector  
 
 AS      = nasm
@@ -40,7 +40,7 @@ $(NAME): $(OBJ)
 	$(info Compiled $(NAME))
 
 debug: $(NAME)
-	gcc
+	$(CC)  
 
 clean:
 	rm -rf $(OBJ_DIR)

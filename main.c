@@ -6,15 +6,16 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/05/22 13:24:44 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/05/22 13:27:34 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftasm.h"
+#include <stdio.h>
 
 int main(int ac, char **av)
 {
-	printf("e");
+	printf("%zu", ft_strlen("ff"));	
 
 	return (0);
 }
