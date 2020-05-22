@@ -23,8 +23,6 @@
 
 #### <a name="data">.data</a> (`Initialized Data`) :
 
-DB, DW, DD, DQ, DT, DDQ, and DO are used to declare initialized data in the output file. They can be invoked in a wide range of ways:
-
 |     unit    |          | Size in bytes (octet) |     c equivalent example              |
 |     ----    |   ----   |        -----          |          ---------                    |
 | Byte        | db       | 1                     |  `char c = 'a';`                      |
@@ -36,8 +34,6 @@ DB, DW, DD, DQ, DT, DDQ, and DO are used to declare initialized data in the outp
 `d` stand for `defined`.
 
 #### <a name="bss">.bss</a> (`Uninitialized Data`) :
-
-RESB, RESW, RESD, RESQ, REST, RESDQ, and RESO are designed to be used in the BSS section of a module: they declare uninitialised storage space. Each takes a single operand, which is the number of bytes, words, doublewords or whatever to reserve. NASM does not support the MASM/TASM syntax of reserving uninitialised space by writing DW ? or similar things: this is what it does instead. The operand to a RESB-type pseudo-instruction is a critical expression: see Section 3.8.
 
 |     unit    |          | Size in bytes (octet) |     c equivalent example  |
 |     ----    |   ----   |        -----          |          ---------        |
