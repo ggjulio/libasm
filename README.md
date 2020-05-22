@@ -81,7 +81,7 @@
 | r15b  | r15w   | r15d   | **r15**|              -                 |
 
 
-### syscall input by register ([Fastcall convention](https://h-deb.clg.qc.ca/Sujets/AuSecours/Conventions-appel.html)):
+### syscall input by register ([Fastcall convention](https://beta.hackndo.com/conventions-d-appel/#fastcall-fast-calling-convention)):
 
 | syscall   | ID (%rax) | ARG_1 (%rdi)| ARG_2 (%rsi) | ARG_3 (%rdx) | ARG_4 (%r10) | ARG_5 (%r8) | ARG_6 (%r9) |
 |-----------|-----------|     :---:   |     :---:    |     :---:    |--------------|--------------|--------------|
@@ -257,8 +257,8 @@ https://www.nesono.com/sites/default/files/lldb%20cheat%20sheet.pdf
 
 ### ressources
 
-##### x64 call convention
-https://docs.microsoft.com/fr-fr/cpp/build/x64-calling-convention?view=vs-2019
+##### call convention
+https://beta.hackndo.com/conventions-d-appel/#fastcall-fast-calling-convention
 https://h-deb.clg.qc.ca/Sujets/AuSecours/Conventions-appel.html
-
+https://docs.microsoft.com/fr-fr/cpp/build/x64-calling-convention?view=vs-2019
 
