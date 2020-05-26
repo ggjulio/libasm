@@ -41,7 +41,7 @@ _IWHITE   =\e[107m
 #    By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/18 10:11:39 by juligonz          #+#    #+#              #
-#    Updated: 2020/05/22 14:34:02 by juligonz         ###   ########.fr        #
+#    Updated: 2020/05/26 13:33:23 by juligonz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,7 @@ debug: $(NAME)
 	@$(CC) $(CFLAGS) main.c -L. -l asm -o debug
 	@echo "$(_BOLD)$(_RED)########################## $(_GREEN)Let's go !$(_RED) ##########################$(_R)"
 	@lldb ./debug
-		
+
 clean:
 	@rm -rf $(OBJ_DIR)
 	@echo "$(_RED)Removed :$(_MAGENTA) $(OBJ_DIR)/$(_MAGENTA)"
@@ -104,4 +104,4 @@ show:
 	@echo "$(_CYAN)OBJ    :$(_RED)  $(OBJ)$(_END)"
 
 
-.PHONY: clean fclean re all bonus debug re_message show
+.PHONY: clean fclean re all bonus debug re_echo show
