@@ -294,9 +294,11 @@ https://www.raywenderlich.com/615-assembly-register-calling-convention-tutorial
 #### call tables
 https://filippo.io/linux-syscall-table/
 https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/
+https://blog.packagecloud.io/eng/2016/04/05/the-definitive-guide-to-linux-system-calls/
 
 #### Man
 https://software.intel.com/sites/default/files/managed/39/c5/325462-sdm-vol-1-2abcd-3abcd.pdf
+https://blog.packagecloud.io/eng/2016/04/05/the-definitive-guide-to-linux-system-calls/
 
 ### Instructions 
 https://fr.wikipedia.org/wiki/Jeu_d%27instructions_x86

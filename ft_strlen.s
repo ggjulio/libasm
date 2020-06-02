@@ -13,17 +13,11 @@
 global ft_strlen
 
 ft_strlen:
- 	push rcx		; save rcx to the stack, to respect fascall convention
-	mov rcx, 0		; reset rcx to 0
-
-_strlen_next:
-	cmp   [rdi], BYTE 0  ; is null byte ? 
-	jz    _strlen_null   ; if yes, break the loop	
-	inc   rcx            ; char is ok, count it
-	inc   rdi            ; move to next char
-	jmp   _strlen_next   ; process again	
-
-_strlen_null:
-	mov   rax, rcx     ; we move rcx (the lenght) into rax, because, 
-	pop   rcx            ; we pop rcx
-	ret
+        mov rcx, -1	 ; to set all the bits to true. (same as 0xffffffff)
+        mov rsi, rdi ; backup rdi
+        mov al, 0    ; look for \0
+        repne scasb  ; actually do the search
+        sub rdi, rsi ; save the string length
+        dec rdi      ; don't count the \0 in the string length
+        mov rax, rdi ; save the return value
+        ret
