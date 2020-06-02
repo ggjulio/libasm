@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/05/22 19:18:35 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/06/02 17:01:34 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,36 +46,61 @@ void print_title(char *s)
 	printf("\n%s%s%d/ %s :%s\n\n", _BLUE, _BOLD, n++, s, _R);
 }
 
-int main()
+void test_ft_strlen()
 {
 	print_title("ft_strlen"); printf("%s", _GREEN);
-	
-	printf("%zu == %zu\n", strlen(""), ft_strlen(""));	
-	printf("%zu == %zu\n", strlen("34"), ft_strlen("34"));	
+
+	printf("%zu == %zu\n", strlen(""), ft_strlen(""));
+	printf("%zu == %zu\n", strlen("34"), ft_strlen("34"));
 	printf("%zu == %zu\n", strlen("123"), ft_strlen("123"));	
+}
 
-	// print_title("ft_strcpy"); printf("%s", _GREEN);
+void test_ft_strcpy()
+{
+	print_title("ft_strcpy"); printf("%s", _GREEN);
+	
+}
 
-	// print_title("ft_strcmp"); printf("%s", _GREEN);
+void test_ft_strcmp()
+{
+	print_title("ft_strcmp"); printf("%s", _GREEN);
+	
+}
 
-	// print_title("ft_strdup"); printf("%s", _GREEN);
+void test_ft_strdup()
+{
+	print_title("ft_strdup"); printf("%s", _GREEN);
 
-	// print_title("ft_write"); printf("%s", _GREEN);
+}
 
-	// print_title("ft_read"); printf("%s", _GREEN);
+void test_ft_write()
+{
+	print_title("ft_write"); printf("%s", _GREEN);
 
+}
+
+void test_ft_read()
+{
+	print_title("ft_read"); printf("%s", _GREEN);
+
+}
+
+
+int main()
+{
+	test_ft_strlen();
+	test_ft_strcpy();
+	test_ft_strcmp();
+	test_ft_strdup();
+	test_ft_write();
+	test_ft_read();
 
 	// //Bonus Part
 	// printf("%s%s######################## %sBonus functions %s########################\n", _BOLD, _GREEN, _RED , _GREEN);
-	
 	// print_title("ft_atoi_base"); printf("%s", _GREEN);
-	
 	// print_title("ft_list_push_front"); printf("%s", _GREEN);
-	
 	// print_title("ft_list_size"); printf("%s", _GREEN);
-	
 	// print_title("ft_list_sort"); printf("%s", _GREEN);
-	
 	// print_title("ft_list_remove_if"); printf("%s", _GREEN);
 
 	return (0);

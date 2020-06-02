@@ -12,26 +12,18 @@
 
 global ft_strlen
 
- ft_strlen:
-; 	push rcx		; save rcx to the stack, to be able 
-; 	xor rcx, rcx	; reset rcx to 0 using exclusive or
-
-
-
-
-
-
-	push  rcx            ; save and clear out counter
-	xor   rcx, rcx
+ft_strlen:
+ 	push rcx		; save rcx to the stack, to respect fascall convention
+	mov rcx, 0		; reset rcx to 0
 
 _strlen_next:
-	cmp   [rdi], DWORD 0  ; null byte yet?
-	jz    _strlen_null   ; yes, get out	
+	cmp   [rdi], BYTE 0  ; is null byte ? 
+	jz    _strlen_null   ; if yes, break the loop	
 	inc   rcx            ; char is ok, count it
 	inc   rdi            ; move to next char
 	jmp   _strlen_next   ; process again	
 
 _strlen_null:
-	mov   rax, rcx       ; rcx = the length (put in rax)
-	pop   rcx            ; restore rcx
+	mov   rax, rcx     ; we move rcx (the lenght) into rax, because, 
+	pop   rcx            ; we pop rcx
 	ret

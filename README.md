@@ -93,6 +93,8 @@
 |    ...    |    ...    |     ...     |     ...      |     ...      |     ...      |      ...     |     ...      |
 | pwritev2  |    328    |     ...     |     ...      |     ...      |     ...      |      ...     |     ...      |
 
+Also, the return value goes into %rax.
+
 [See full table](https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/)
 
 ### Flags 
@@ -195,6 +197,31 @@ jle (<=), je (==), jge (>=), jg (>), jne (!=), and many others.
 Also available in unsigned comparisons: jb (<), jbe (<=), ja (>), jae (>=).  |
 
 
+### String instructions ([more here](https://software.intel.com/sites/default/files/managed/39/c5/325462-sdm-vol-1-2abcd-3abcd.pdf))
+
+|               |                                                 Purpose                                                  |
+|       ---     |                                                   ---                                                    |
+| mov dest, src | Move data between registers, load immediate data into registers, move data between registers and memory. |
+| MOVS / MOVSB  |  Move string/Move byte string.                  | 
+| MOVS / MOVSW  |  Move string/Move word string.                  |
+| MOVS / MOVSD  |  Move string/Move doubleword string.            |
+| CMPS / CMPSB  |  Compare string/Compare byte string.            |
+| CMPS / CMPSW  |  Compare string/Compare word string.            |
+| CMPS / CMPSD  |  Compare string/Compare doubleword string.      |
+| SCAS / SCASB  |  Scan string/Scan byte string.                  |
+| SCAS / SCASW  |  Scan string/Scan word string.                  |
+| SCAS / SCASD  |  Scan string/Scan doubleword string.            |
+| LODS / LODSB  |  Load string/Load byte string.                  |
+| LODS / LODSW  |  Load string/Load word string.                  |
+| LODS / LODSD  |  Load string/Load doubleword string.            |
+| STOS / STOSB  |  Store string/Store byte string.                |
+| STOS / STOSW  |  Store string/Store word string.                |
+| STOS / STOSD  |  Store string/Store doubleword string.          |
+| REP           |  Repeat while ECX not zero.                     |
+| REPE / REPZ     |  Repeat while equal/Repeat while zero.          |
+| REPNE / REPNZ |  Repeat while not equal/Repeat while not zero.  |
+
+
 ### Defining macro
 
 
@@ -262,8 +289,11 @@ https://www.nesono.com/sites/default/files/lldb%20cheat%20sheet.pdf
 https://beta.hackndo.com/conventions-d-appel
 https://h-deb.clg.qc.ca/Sujets/AuSecours/Conventions-appel.html
 https://docs.microsoft.com/fr-fr/cpp/build/x64-calling-convention?view=vs-2019
+https://www.raywenderlich.com/615-assembly-register-calling-convention-tutorial
 
 #### call tables
 https://filippo.io/linux-syscall-table/
 https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/
 
+#### Man
+https://software.intel.com/sites/default/files/managed/39/c5/325462-sdm-vol-1-2abcd-3abcd.pdf
