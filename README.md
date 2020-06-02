@@ -199,27 +199,26 @@ Also available in unsigned comparisons: jb (<), jbe (<=), ja (>), jae (>=).  |
 
 ### String instructions ([more here](https://software.intel.com/sites/default/files/managed/39/c5/325462-sdm-vol-1-2abcd-3abcd.pdf))
 
-|               |                                                 Purpose                                                  |
-|       ---     |                                                   ---                                                    |
-| mov dest, src | Move data between registers, load immediate data into registers, move data between registers and memory. |
-| MOVS / MOVSB  |  Move string/Move byte string.                  | 
-| MOVS / MOVSW  |  Move string/Move word string.                  |
-| MOVS / MOVSD  |  Move string/Move doubleword string.            |
-| CMPS / CMPSB  |  Compare string/Compare byte string.            |
-| CMPS / CMPSW  |  Compare string/Compare word string.            |
-| CMPS / CMPSD  |  Compare string/Compare doubleword string.      |
-| SCAS / SCASB  |  Scan string/Scan byte string.                  |
-| SCAS / SCASW  |  Scan string/Scan word string.                  |
-| SCAS / SCASD  |  Scan string/Scan doubleword string.            |
-| LODS / LODSB  |  Load string/Load byte string.                  |
-| LODS / LODSW  |  Load string/Load word string.                  |
-| LODS / LODSD  |  Load string/Load doubleword string.            |
-| STOS / STOSB  |  Store string/Store byte string.                |
-| STOS / STOSW  |  Store string/Store word string.                |
-| STOS / STOSD  |  Store string/Store doubleword string.          |
-| REP           |  Repeat while ECX not zero.                     |
-| REPE / REPZ     |  Repeat while equal/Repeat while zero.          |
-| REPNE / REPNZ |  Repeat while not equal/Repeat while not zero.  |
+|               |                      Purpose                    |
+|       ---     |                        ---                      |
+| MOVS / MOVSB  |  Move string / Move byte string.                  | 
+| MOVS / MOVSW  |  Move string / Move word string.                  |
+| MOVS / MOVSD  |  Move string / Move doubleword string.            |
+| CMPS / CMPSB  |  Compare string / Compare byte string.            |
+| CMPS / CMPSW  |  Compare string / Compare word string.            |
+| CMPS / CMPSD  |  Compare string / Compare doubleword string.      |
+| SCAS / SCASB  |  [Scan string](https://www.felixcloutier.com/x86/scas:scasb:scasw:scasd) / [Scan byte string](https://www.gladir.com/LEXIQUE/ASM/scasb.htm) |
+| SCAS / SCASW  |  Scan string / Scan word string.                  |
+| SCAS / SCASD  |  Scan string / Scan doubleword string.            |
+| LODS / LODSB  |  Load string / Load byte string.                  |
+| LODS / LODSW  |  Load string / Load word string.                  |
+| LODS / LODSD  |  Load string / Load doubleword string.            |
+| STOS / STOSB  |  Store string / Store byte string.                |
+| STOS / STOSW  |  Store string / Store word string.                |
+| STOS / STOSD  |  Store string / Store doubleword string.          |
+| REP           |  Repeat while ECX not zero.                       |
+| REPE / REPZ   |  Repeat while equal / Repeat while zero.          |
+| REPNE / REPNZ |  Repeat while not equal / Repeat while not zero.  |
 
 
 ### Defining macro
@@ -286,6 +285,7 @@ https://www.nesono.com/sites/default/files/lldb%20cheat%20sheet.pdf
 ### ressources
 
 ##### call convention
+https://wiki.osdev.org/Calling_Conventions
 https://beta.hackndo.com/conventions-d-appel
 https://h-deb.clg.qc.ca/Sujets/AuSecours/Conventions-appel.html
 https://docs.microsoft.com/fr-fr/cpp/build/x64-calling-convention?view=vs-2019
@@ -297,3 +297,13 @@ https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/
 
 #### Man
 https://software.intel.com/sites/default/files/managed/39/c5/325462-sdm-vol-1-2abcd-3abcd.pdf
+
+### Instructions 
+https://fr.wikipedia.org/wiki/Jeu_d%27instructions_x86
+
+#### other
+
+##### string instructions
+[repn scasb](https://books.google.fr/books?id=veMTOpapeZkC&pg=PT366&lpg=PT366&dq=repne+scas+tuto&source=bl&ots=_lKLckx8fG&sig=ACfU3U3P0jYXeNL3P9q2Xo0ZdTdoxbM_Ug&hl=fr&sa=X&ved=2ahUKEwi9ucyyuuPpAhXUDmMBHe84BYgQ6AEwB3oECAoQAQ#v=snippet&q=repne%20scasb&f=false)
+https://www.conradk.com/codebase/2017/06/06/x86-64-assembly-from-scratch/
+https://www.csc.depauw.edu/~bhoward/asmtut/asmtut7.html
