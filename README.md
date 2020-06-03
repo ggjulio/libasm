@@ -282,7 +282,15 @@ _start:
 
 https://www.nesono.com/sites/default/files/lldb%20cheat%20sheet.pdf
 
-### ressources
+### Errno and ___error
+https://pubs.opengroup.org/onlinepubs/009695399/functions/errno.html
+https://pubs.opengroup.org/onlinepubs/9699919799/
+https://stackoverflow.com/questions/29047592/accessing-errno-h-in-assembly-language
+https://stackoverflow.com/questions/44319762/how-to-use-errno-from-asm
+https://www.thegeekstuff.com/2010/10/linux-error-codes/
+man errno
+man error
+### Ressources
 
 ##### call convention
 https://wiki.osdev.org/Calling_Conventions
@@ -306,6 +314,9 @@ https://fr.wikipedia.org/wiki/Jeu_d%27instructions_x86
 #### other
 
 ##### string instructions
-[repn scasb](https://books.google.fr/books?id=veMTOpapeZkC&pg=PT366&lpg=PT366&dq=repne+scas+tuto&source=bl&ots=_lKLckx8fG&sig=ACfU3U3P0jYXeNL3P9q2Xo0ZdTdoxbM_Ug&hl=fr&sa=X&ved=2ahUKEwi9ucyyuuPpAhXUDmMBHe84BYgQ6AEwB3oECAoQAQ#v=snippet&q=repne%20scasb&f=false)
-https://www.conradk.com/codebase/2017/06/06/x86-64-assembly-from-scratch/
+[repn scasb](https://books.google.fr/books?id=veMTOpapeZkC&pg=PT366&lpg=PT366&dq=repne+scas+tuto&source=bl&ots=_lKLckx8fG&sig=ACfU3U3P0jYXeNL3P9q2Xo0ZdTdoxbM_Ug&hl=fr&sa=X&ved=2ahUKEwi9ucyyuuPpAhXUDmMBHe84BYgQ6AEwB3oECAoQAQ#v=snippet&q=repne%20scasb&f=false)   
+https://www.conradk.com/codebase/2017/06/06/x86-64-assembly-from-scratch/   
 https://www.csc.depauw.edu/~bhoward/asmtut/asmtut7.html
+
+#### Best practice
+https://www.codeproject.com/Articles/1116188/40-Basic-Practices-in-Assembly-Language-Programmin#Introduction
