@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/06/02 17:01:34 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/06/03 21:58:42 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void print_title(char *s)
 
 void test_ft_strlen()
 {
-	print_title("ft_strlen"); printf("%s", _GREEN);
+	print_title("ft_strlen"); printf("%s", _YELLOW);
 
 	printf("%zu == %zu\n", strlen(""), ft_strlen(""));
 	printf("%zu == %zu\n", strlen("34"), ft_strlen("34"));
@@ -58,6 +58,16 @@ void test_ft_strlen()
 void test_ft_strcpy()
 {
 	print_title("ft_strcpy"); printf("%s", _GREEN);
+
+	char s1[10] = "salut";
+	char s2[10] = "\0";
+	
+	s1[6] = 'A';
+	s1[7] = 'a';
+	
+	printf("\"%s\" == \"%s\"\n", "", s2);
+	ft_strcpy(s2, s1);
+	printf("\"%s\" == \"%s\"\n", s1, s2);	
 	
 }
 

@@ -201,7 +201,7 @@ Also available in unsigned comparisons: jb (<), jbe (<=), ja (>), jae (>=).  |
 
 |               |                      Purpose                    |
 |       ---     |                        ---                      |
-| MOVS / MOVSB  |  Move string / Move byte string.                  | 
+| MOVS / MOVSB  |  [Move string](http://faydoc.tripod.com/cpu/movsb.htm) / [Move byte string](https://www.esaracco.fr/documentation/assembly/assembly/copie-de-chaine.html).                  | 
 | MOVS / MOVSW  |  Move string / Move word string.                  |
 | MOVS / MOVSD  |  Move string / Move doubleword string.            |
 | CMPS / CMPSB  |  Compare string / Compare byte string.            |
@@ -216,10 +216,12 @@ Also available in unsigned comparisons: jb (<), jbe (<=), ja (>), jae (>=).  |
 | STOS / STOSB  |  Store string / Store byte string.                |
 | STOS / STOSW  |  Store string / Store word string.                |
 | STOS / STOSD  |  Store string / Store doubleword string.          |
-| REP           |  Repeat while ECX not zero.                       |
+| REP           |  [Repeat while ECX not zero.](http://faydoc.tripod.com/cpu/repne.htm)                       |
 | REPE / REPZ   |  Repeat while equal / Repeat while zero.          |
 | REPNE / REPNZ |  Repeat while not equal / Repeat while not zero.  |
 
+
+[more](https://medium.com/@ophirharpaz/a-summary-of-x86-string-instructions-87566a28c20c)
 
 ### Defining macro
 
@@ -293,6 +295,7 @@ man error
 ### Ressources
 
 ##### call convention
+https://www.agner.org/optimize/calling_conventions.pdf
 https://wiki.osdev.org/Calling_Conventions
 https://beta.hackndo.com/conventions-d-appel
 https://h-deb.clg.qc.ca/Sujets/AuSecours/Conventions-appel.html
@@ -306,7 +309,9 @@ https://blog.packagecloud.io/eng/2016/04/05/the-definitive-guide-to-linux-system
 
 #### Man
 https://software.intel.com/sites/default/files/managed/39/c5/325462-sdm-vol-1-2abcd-3abcd.pdf
-https://blog.packagecloud.io/eng/2016/04/05/the-definitive-guide-to-linux-system-calls/
+https://blog.packagecloud.io/eng/2016/04/05/the-definitive-guide-to-linux-system-calls/  
+https://stackoverflow.com/tags/x86/info   
+
 
 ### Instructions 
 https://fr.wikipedia.org/wiki/Jeu_d%27instructions_x86
@@ -320,3 +325,10 @@ https://www.csc.depauw.edu/~bhoward/asmtut/asmtut7.html
 
 #### Best practice
 https://www.codeproject.com/Articles/1116188/40-Basic-Practices-in-Assembly-Language-Programmin#Introduction
+
+
+#### cld and std direction flag
+https://stackoverflow.com/questions/23860583/x86-abi-should-df-flag-be-always-0   
+https://c9x.me/x86/html/file_module_x86_id_29.html
+https://en.wikipedia.org/wiki/Direction_flag
+https://www.agner.org/optimize/calling_conventions.pdf
