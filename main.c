@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/06/03 21:58:42 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/06/06 21:26:24 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ void test_ft_strlen()
 {
 	print_title("ft_strlen"); printf("%s", _YELLOW);
 
-	printf("%zu == %zu\n", strlen(""), ft_strlen(""));
-	printf("%zu == %zu\n", strlen("34"), ft_strlen("34"));
-	printf("%zu == %zu\n", strlen("123"), ft_strlen("123"));	
+	printf("%zu == %zu\n", ft_strlen(""), 	strlen(""));
+	printf("%zu == %zu\n", ft_strlen("34"), strlen("34"));
+	printf("%zu == %zu\n", ft_strlen("123"),strlen("123"));	
 }
 
 void test_ft_strcpy()
@@ -60,12 +60,8 @@ void test_ft_strcpy()
 	print_title("ft_strcpy"); printf("%s", _GREEN);
 
 	char s1[10] = "salut";
-	char s2[10] = "\0";
-	
-	s1[6] = 'A';
-	s1[7] = 'a';
-	
-	printf("\"%s\" == \"%s\"\n", "", s2);
+	char s2[10] = "012345678";
+
 	ft_strcpy(s2, s1);
 	printf("\"%s\" == \"%s\"\n", s1, s2);	
 	
@@ -74,7 +70,19 @@ void test_ft_strcpy()
 void test_ft_strcmp()
 {
 	print_title("ft_strcmp"); printf("%s", _GREEN);
+	char s1[5] = "abc";
+	char s2[5] = "abc";
 	
+	char s3[5] = "abe";
+	char s4[5] = "aba";
+	char s5[5] = "cab";
+
+	printf("%d == %d\n", ft_strcmp(s1,s5), strcmp(s1,s5));
+	printf("%d == %d\n", ft_strcmp(s1,s2), strcmp(s1,s2));
+	printf("%d == %d\n", ft_strcmp(s1,s3), strcmp(s1,s3));
+	printf("%d == %d\n", ft_strcmp(s1,s4), strcmp(s1,s4));
+
+		
 }
 
 void test_ft_strdup()

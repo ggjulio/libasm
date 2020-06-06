@@ -283,6 +283,13 @@ _start:
 ### Debugging using lldb
 
 https://www.nesono.com/sites/default/files/lldb%20cheat%20sheet.pdf
+http://nickdesaulniers.github.io/blog/2016/01/20/debugging-x86-64-assembly-with-lldb-and-dtrace/
+[lldb - switch from at&t to intel syntax](https://stackoverflow.com/questions/9829136/setting-disassembly-flavour-to-intel-in-lldb) :   
+`settings set target.x86-disassembly-flavor intel`
+
+### debugging reverse engineering
+
+https://mirrors.ocf.berkeley.edu/parrot/misc/openbooks/programming/ReverseEngineeringForBeginners.en.pdf
 
 ### Errno and ___error
 https://pubs.opengroup.org/onlinepubs/009695399/functions/errno.html
@@ -309,9 +316,11 @@ https://blog.packagecloud.io/eng/2016/04/05/the-definitive-guide-to-linux-system
 
 #### Man
 https://software.intel.com/sites/default/files/managed/39/c5/325462-sdm-vol-1-2abcd-3abcd.pdf
+https://planetpdf.com/codecuts/pdfs/aoa.pdf
+http://www.egr.unlv.edu/~ed/assembly64.pdf
+https://sites.google.com/site/microprocessorsbits/string-instructions/cmps-cmpsb-cmpsw
 https://blog.packagecloud.io/eng/2016/04/05/the-definitive-guide-to-linux-system-calls/  
 https://stackoverflow.com/tags/x86/info   
-
 
 ### Instructions 
 https://fr.wikipedia.org/wiki/Jeu_d%27instructions_x86
@@ -319,7 +328,8 @@ https://fr.wikipedia.org/wiki/Jeu_d%27instructions_x86
 #### other
 
 ##### string instructions
-[repn scasb](https://books.google.fr/books?id=veMTOpapeZkC&pg=PT366&lpg=PT366&dq=repne+scas+tuto&source=bl&ots=_lKLckx8fG&sig=ACfU3U3P0jYXeNL3P9q2Xo0ZdTdoxbM_Ug&hl=fr&sa=X&ved=2ahUKEwi9ucyyuuPpAhXUDmMBHe84BYgQ6AEwB3oECAoQAQ#v=snippet&q=repne%20scasb&f=false)   
+[repn scasb](https://books.google.fr/books?id=veMTOpapeZkC&pg=PT366&lpg=PT366&dq=repne+scas+tuto&source=bl&ots=_lKLckx8fG&sig=ACfU3U3P0jYXeNL3P9q2Xo0ZdTdoxbM_Ug&hl=fr&sa=X&ved=2ahUKEwi9ucyyuuPpAhXUDmMBHe84BYgQ6AEwB3oECAoQAQ#v=snippet&q=repne%20scasb&f=false)
+[end conditions](https://c9x.me/x86/html/file_module_x86_id_279.html)   
 https://www.conradk.com/codebase/2017/06/06/x86-64-assembly-from-scratch/   
 https://www.csc.depauw.edu/~bhoward/asmtut/asmtut7.html
 
