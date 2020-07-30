@@ -15,8 +15,8 @@ global ft_strcmp
 ft_strcmp:
 	cld
 	mov rcx, -1
-	repe cmpsb
 	mov   al, [rdi]
+	repe cmpsb
 	sub   al, [rsi]
 	movsx rax, al
 	ret
