@@ -15,11 +15,12 @@ global ft_strcmp
 ft_strcmp:
 	cld
 	mov rcx, -1
-	mov   al, [rdi]
+	mov   al, BYTE [rdi]
 	repe cmpsb
-	sub   al, [rsi]
+	sub   al,  [si]
 	movsx rax, al
 	ret
+
 
 	; cld
 	

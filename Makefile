@@ -71,7 +71,8 @@ $(OBJ_DIR)/%.o: %.s
 $(NAME): $(OBJ)
 	@ar rcs $(NAME) $^
 	@echo "$(_GREEN)Compiled : $(_MAGENTA)$(NAME)$(_R)"
-	@echo "\nDo $(_YELLOW)$(_BLINK)$(_BOLD)make run$(_R) to run tests"
+	@echo "\nDo $(_YELLOW)$(_BOLD)make debug$(_R) to run tests with lldb"
+	@echo "Do $(_YELLOW)$(_BLINK)$(_BOLD)make run$(_R)   to run tests"
 
 run: $(NAME)
 	@$(CC) $(CFLAGS) main.c -L. -l asm -o debug
