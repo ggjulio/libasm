@@ -10,10 +10,6 @@
 ;                                                                              ;
 ;******************************************************************************;
 
-section .data:
-	var dd 14
-
-section .text:
 
 global ft_strcmp
 
@@ -25,9 +21,11 @@ ft_strcmp:
 	; sub   al,  si
 	; mov rax, al
 
-	mov rdi, 20
-	mov [var], byte rdi
-	mov rax, [var]
+	; mov rdi, 20
+	; mov [var], byte rdi
+	; mov rax, [var]
+	mov rax, 5
+	
 	ret
 
 
