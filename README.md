@@ -282,7 +282,7 @@ _start:
 
 https://www.nesono.com/sites/default/files/lldb%20cheat%20sheet.pdf
 http://nickdesaulniers.github.io/blog/2016/01/20/debugging-x86-64-assembly-with-lldb-and-dtrace/
-[lldb - switch from at&t to intel syntax](https://stackoverflow.com/questions/9829136/setting-disassembly-flavour-to-intel-in-lldb) :   
+lldb - switch from at&t to [intel syntax](https://stackoverflow.com/questions/9829136/setting-disassembly-flavour-to-intel-in-lldb) :   
 `settings set target.x86-disassembly-flavor intel`
 
 ### debugging reverse engineering
@@ -298,6 +298,9 @@ https://www.thegeekstuff.com/2010/10/linux-error-codes/
 man errno
 man error
 ### Ressources
+
+##### NASM documentation
+https://www.nasm.us/xdoc/2.14.03rc2/nasmdoc.pdf
 
 ##### call convention
 https://www.agner.org/optimize/calling_conventions.pdf

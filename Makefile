@@ -70,7 +70,6 @@ else
 	SFLAGS += -f elf64
 endif
 
-
 all: $(NAME)
 
 $(OBJ_DIR)/%.o: %.s
@@ -107,6 +106,8 @@ re_echo:
 re: re_echo fclean all
 
 show:
+	@printf "$(_MAGENTA)UNAME  :$(_GREEN)  $(UNAME)$(_END)\n"
+	@printf "$(_MAGENTA)ARCH   :$(_GREEN)  $(shell uname -p)$(_END)\n\n"
 	@printf "$(_CYAN)CC     :$(_RED)  $(CC)$(_END)\n"
 	@printf "$(_CYAN)CFLAGS :$(_RED)  $(CFLAGS)$(_END)\n\n"
 	@printf "$(_CYAN)AS     :$(_RED)  $(AS)$(_END)\n"
