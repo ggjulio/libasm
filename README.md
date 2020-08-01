@@ -302,9 +302,18 @@ man error
 
 ##### undefined reference to ... (linux and macos ):
 When making a label global, Macos want leading underscore (_ft_strlen), and linux don't want it...
+
+https://stackoverflow.com/questions/19101815/how-can-c-code-call-an-external-function-without-a-leading-underscore
+
 https://en.wikipedia.org/wiki/Name_mangling
 
 https://clang.llvm.org/docs/UsersManual.html#differences-between-various-standard-modes
+
+https://stackoverflow.com/questions/5313536/whats-the-difference-between-gnu99-and-c99-clang
+
+https://stackoverflow.com/questions/1034852/adding-leading-underscores-to-assembly-symbols-with-gcc-on-win32/1035937#1035937
+
+https://stackoverflow.com/questions/1703670/is-there-anything-to-change-the-exports-name-mangling-scheme-in-gcc
 
 https://stackoverflow.com/questions/50763624/cant-link-an-assembly-file-s-with-gcc-on-macos-sierra
 

@@ -26,7 +26,7 @@ _ft_strcmp:
 	; mov rax, al
 
 	mov rdi, 23
-	mov [var], byte rdi
+	mov [var], rdi
 	mov rax, [var]
 	ret
 
