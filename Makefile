@@ -45,13 +45,17 @@ _IWHITE   =\e[107m
 #                                                                              #
 # **************************************************************************** #
 
+
+UNAME := $(shell uname)
+
+
 NAME       = libasm.a
 DEBUG_EXEC = debug
 
 OBJ_DIR = obj
 
 SRC = ft_strlen.s ft_strcpy.s
-SRC+= ft_strcmp.s
+# SRC+= ft_strcmp.s
 
 OBJ     = $(addprefix  $(OBJ_DIR)/,$(SRC:%.s=%.o))
 
@@ -59,7 +63,12 @@ CC      = clang
 CFLAGS  = -Wall -Wextra -Werror -g # -fsanitize=address  -fsanitize=undefined -fstack-protector  
 
 AS      = nasm
-SFLAGS = -f elf64
+SFLAGS	= ""
+ifeq ($(UNAME), Darwin)
+	SFLAGS += -f macho64
+else
+	SFLAGS += -f elf64
+endif
 
 
 all: $(NAME)
@@ -70,40 +79,39 @@ $(OBJ_DIR)/%.o: %.s
 
 $(NAME): $(OBJ)
 	@ar rcs $(NAME) $^
-	@echo "$(_GREEN)Compiled : $(_MAGENTA)$(NAME)$(_R)"
-	@echo "\nDo $(_YELLOW)$(_BOLD)make debug$(_R) to run tests with lldb"
-	@echo "Do $(_YELLOW)$(_BLINK)$(_BOLD)make run$(_R)   to run tests"
+	@printf "$(_GREEN)Compiled : $(_MAGENTA)$(NAME)$(_R)\n"
+	@printf "\nDo $(_YELLOW)$(_BOLD)make debug$(_R) to run tests with lldb\n"
+	@printf "Do $(_YELLOW)$(_BLINK)$(_BOLD)make run$(_R)   to run tests\n\n"
 
 run: $(NAME)
 	@$(CC) $(CFLAGS) main.c -L. -l asm -o debug
-	@echo "$(_BOLD)$(_RED)########################## $(_GREEN)Let's go !$(_RED) ##########################$(_R)"
+	@printf "$(_BOLD)$(_RED)########################## $(_GREEN)Let's go !$(_RED) ##########################$(_R)\n"
 	@./debug
 
 debug: $(NAME)
 	@$(CC) $(CFLAGS) main.c -L. -l asm -o debug
-	@echo "$(_BOLD)$(_RED)########################## $(_GREEN)Let's go !$(_RED) ##########################$(_R)"
+	@printf "$(_BOLD)$(_RED)########################## $(_GREEN)Let's go !$(_RED) ##########################$(_R)\n"
 	@lldb ./debug
 
 clean:
 	@rm -rf $(OBJ_DIR)
-	@echo "$(_RED)Removed :$(_MAGENTA) $(OBJ_DIR)/$(_MAGENTA)"
+	@printf "$(_RED)Removed :$(_MAGENTA) $(OBJ_DIR)/$(_MAGENTA)\n"
 
 fclean: clean
 	@rm -f $(NAME) $(DEBUG_EXEC)
-	@echo "$(_RED)Removed : $(_MAGENTA)$(NAME), $(DEBUG_EXEC)$(_R)"
+	@printf "$(_RED)Removed : $(_MAGENTA)$(NAME), $(DEBUG_EXEC)$(_R)\n"
 
 re_echo:
-	@echo "$(_CYAN)Redoing $(_BOLD)ALLL $(_R)$(_CYAN)$(_DIM)the things $(_R)$(_BLINK)$(_BOLD)$(_YELLOW)...$(_R)\n"
+	@printf "$(_CYAN)Redoing $(_BOLD)ALLL $(_R)$(_CYAN)$(_DIM)the things $(_R)$(_BLINK)$(_BOLD)$(_YELLOW)...$(_R)\n\n"
 
 re: re_echo fclean all
 
 show:
-	@echo "$(_CYAN)CC     :$(_RED)  $(CC)$(_END)"
-	@echo "$(_CYAN)CFLAGS :$(_RED)  $(CFLAGS)$(_END)\n"
-	@echo "$(_CYAN)AS     :$(_RED)  $(AS)$(_END)"
-	@echo "$(_CYAN)SFLAGS :$(_RED)  $(SFLAGS)$(_END)\n"
-	@echo "$(_CYAN)SRC    :$(_RED)  $(SRC)$(_END)"
-	@echo "$(_CYAN)OBJ    :$(_RED)  $(OBJ)$(_END)"
-
+	@printf "$(_CYAN)CC     :$(_RED)  $(CC)$(_END)\n"
+	@printf "$(_CYAN)CFLAGS :$(_RED)  $(CFLAGS)$(_END)\n\n"
+	@printf "$(_CYAN)AS     :$(_RED)  $(AS)$(_END)\n"
+	@printf "$(_CYAN)SFLAGS :$(_RED)  $(SFLAGS)$(_END)\b\n"
+	@printf "$(_CYAN)SRC    :$(_RED)  $(SRC)$(_END)\n"
+	@printf "$(_CYAN)OBJ    :$(_RED)  $(OBJ)$(_END)\n"
 
 .PHONY: clean fclean re all bonus debug re_echo show
