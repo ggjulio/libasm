@@ -14,6 +14,7 @@ section .data:
 	var dd 14
 
 section .text:
+
 global ft_strcmp
 
 ft_strcmp:
