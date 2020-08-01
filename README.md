@@ -193,7 +193,7 @@ Such as, instead of "pop reg", you can use "pop [label]" to pop a value off the 
 | jmp label     | Goto the instruction label:.  Skips anything else in the way.                                            |
 | cmp a,b       | Compare two values.  Sets flags that are used by the conditional jumps (below).                          |
 | jl label      | Goto label if previous comparison came out as less-than.  Other conditionals available are: jle (<=), je (==), jge (>=), jg (>), jne (!=), and many others. Also available in unsigned comparisons: jb (<), jbe (<=), ja (>), jae (>=).  |
-| loop target   | The execution of the Loop instruction involves two steps: 1. First, it subtracts 1 from ECX. 2. Next, it compares ECX to zero. If ECX is not equal to zero; a jump is taken to the label identified by destination. Otherwise, if ECX equals zero, no jump takes place and control passes to the instruction following the loop.|
+| [loop target](http://site.iugaza.edu.ps/ahaniya/files/Assembly-Language-Lab5.pdf)   | The execution of the Loop instruction involves two steps: 1. First, it subtracts 1 from ECX. 2. Next, it compares ECX to zero. If ECX is not equal to zero; a jump is taken to the label identified by destination. Otherwise, if ECX equals zero, no jump takes place and control passes to the instruction following the loop.|
 
 ### String instructions ([more here](https://software.intel.com/sites/default/files/managed/39/c5/325462-sdm-vol-1-2abcd-3abcd.pdf))
 
