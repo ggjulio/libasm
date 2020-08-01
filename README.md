@@ -304,7 +304,11 @@ man error
 When making a label global, Macos want leading underscore (_ft_strlen), and linux don't want it...
 https://en.wikipedia.org/wiki/Name_mangling
 
+https://clang.llvm.org/docs/UsersManual.html#differences-between-various-standard-modes
+
 https://stackoverflow.com/questions/50763624/cant-link-an-assembly-file-s-with-gcc-on-macos-sierra
+
+https://stackoverflow.com/questions/44358292/how-to-override-prefix-option-in-nasm-per-symbol
 
 ##### Mach-O 64-bit format does not support 32-bit absolute addresses :
 Using macho64 format produce this error.
