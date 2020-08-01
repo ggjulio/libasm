@@ -14,7 +14,7 @@ DEFAULT REL
 	global _ft_strcmp
 
 	section .data
-var: dd 14
+var: dd -14
 
 	section .text
 _ft_strcmp:
@@ -25,8 +25,8 @@ _ft_strcmp:
 	; sub   al,  si
 	; mov rax, al
 
-	mov rdi, 20
-	; mov [var], byte rdi
+	mov rdi, 23
+	mov [var], byte rdi
 	mov rax, [var]
 	ret
 
