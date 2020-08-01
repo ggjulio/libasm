@@ -300,10 +300,15 @@ man error
 
 ### errors
 
-##### Mach-O 64-bit format does not support 32-bit absolute addresses :
-Using macho64 produce this error. 
+##### undefined reference to ... (linux and macos ):
+When making a label global, Macos want leading underscore (_ft_strlen), and linux don't want it...
+https://en.wikipedia.org/wiki/Name_mangling
 
-instead of `mov rax, [var]`, do `mov rax, [rel var]`
+https://stackoverflow.com/questions/50763624/cant-link-an-assembly-file-s-with-gcc-on-macos-sierra
+
+##### Mach-O 64-bit format does not support 32-bit absolute addresses :
+Using macho64 format produce this error.
+Instead of `mov rax, [var]`, do `mov rax, [rel var]`
 OR 
 use `DEFAULT REL` at the top of your souce code...
 
