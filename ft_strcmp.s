@@ -9,10 +9,14 @@
 ;    Updated: 2020/06/03 20:49:00 by juligonz         ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
+DEFAULT REL
 
+	global _ft_strcmp
 
-global _ft_strcmp
+	section .data
+var: dd 14
 
+	section .text
 _ft_strcmp:
 	; cld
 	; mov rcx, -1
@@ -21,13 +25,10 @@ _ft_strcmp:
 	; sub   al,  si
 	; mov rax, al
 
-	; mov rdi, 20
+	mov rdi, 20
 	; mov [var], byte rdi
-	; mov rax, [var]
-	mov rax, 5
-	
+	mov rax, [var]
 	ret
-
 
 	; cld
 	

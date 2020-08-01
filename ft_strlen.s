@@ -10,8 +10,9 @@
 ;                                                                              ;
 ;******************************************************************************;
 
-global _ft_strlen
+	global _ft_strlen
 
+	section .text
 _ft_strlen:
 	cld				; clear direction flag before use of repne instruction. Not really usefull, but safer. (if the caller has set the flag)
 	mov rcx, -1	 	; to set all the bits to true. (same as 0xffffffff)

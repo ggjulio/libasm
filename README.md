@@ -297,6 +297,22 @@ https://stackoverflow.com/questions/44319762/how-to-use-errno-from-asm
 https://www.thegeekstuff.com/2010/10/linux-error-codes/
 man errno
 man error
+
+### errors
+
+##### Mach-O 64-bit format does not support 32-bit absolute addresses :
+Using macho64 produce this error. 
+
+instead of `mov rax, [var]`, do `mov rax, [rel var]`
+OR 
+use `DEFAULT REL` at the top of your souce code...
+
+https://nasm.us/doc/nasmdoc7.html#section-7.2.1  
+https://nasm.us/doc/nasmdoc3.html#section-3.3
+https://stackoverflow.com/questions/26394359/mach-o-64-bit-format-does-not-support-32-bit-absolute-addresses-nasm   
+https://forum.nasm.us/index.php?topic=1970.0   
+
+
 ### Ressources
 
 ##### NASM documentation
