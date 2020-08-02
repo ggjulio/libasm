@@ -1,5 +1,7 @@
 ## Reminder
 
+#### RTFM : https://nasm.us/doc/nasmdoc0.html
+
 ### [Data size](https://www.nasm.us/doc/nasmdoc3.html)
 
 | Size in bytes |  Size in bits |  prefixe   | Initialized ([.data](#data)) | Uninitialized ([.bss](#bss))|
@@ -13,13 +15,17 @@
 | 32            | 256           | yword      | dy                           | resy                        |
 | 64            | 512           | zword      | dz                           | resz                        |
 
-### NASM code-sections 
-| Segment       |    Meaning         |  c equivalent example  |
-|   ----        |        -----       |       ---------        |
-| .text         | Code               |  printf("%d", i);      |
-| [.data](#data) | Initialized Data   |  int i = 1;            |
-| [.bss](#bss)  | Uninitialized Data |  int i;                |
+### NASM sections 
+| Segment / Section       |            Meaning            |  c equivalent example  |
+|   ----        |             -----             |       ---------        |
+| .text         | Code                          |  printf("%d", i);      |
+| [.data](#data)| Initialized Data              |  int i = 1;            |
+| [.bss](#bss)  | Uninitialized Data            |  int i;                |
 
+More about section directive:
+[elf](https://nasm.us/doc/nasmdoc8.html#section-8.9.2)
+[macho](https://nasm.us/doc/nasmdoc8.html#section-8.8.1)
+[win](https://nasm.us/doc/nasmdoc8.html#section-8.5.1)
 
 #### <a name="data">.data</a> (`Initialized Data`) :
 
@@ -164,7 +170,6 @@ mov rax, [rbx]    # loads the value the rbx register is pointing to, into rax. L
 
 %rdx hold the remainder of division. Also, if %rdx is not zero, %rax and %rdx will act as a 128bits registers. To avoid unexpected results. Set %rdx to 0.
 
-
 ### Stack operations
 
 |   Operation    |                   Description                   |
@@ -221,9 +226,11 @@ Such as, instead of "pop reg", you can use "pop [label]" to pop a value off the 
 
 [more](https://medium.com/@ophirharpaz/a-summary-of-x86-string-instructions-87566a28c20c)
 
+### loops in nasm
+https://nasm.us/doc/nasmdoc3.html#section-3.9
+https://nasm.us/doc/nasmdoc3.html
+
 ### Defining macro
-
-
 
 - name : Name of macro.
 - argc : NUmber of arguments the macro will take. Within the macro body, these inputs are referenced using "%n". "%1" == first input, "%2" == the second...
