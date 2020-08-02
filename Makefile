@@ -64,9 +64,13 @@ CFLAGS  = -Wall -Wextra -Werror -g # -fsanitize=address  -fsanitize=undefined -f
 
 AS      = nasm
 SFLAGS	= ""
+
+#OS specific
 ifeq ($(UNAME), Darwin)
+	# mac
 	SFLAGS += -f macho64
 else
+	#Linus and others...
 	SFLAGS += -f elf64
 endif
 
