@@ -10,10 +10,10 @@
 ;                                                                              ;
 ;******************************************************************************;
 
+	section .text
 	extern _ft_strlen
 	global _ft_strcpy
 
-	section .text
 _ft_strcpy:
 	push rdi		; save dest ptr to the stack
 	mov rdi, rsi	; to call strlen on src, we put the src pointer in rdi 

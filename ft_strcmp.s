@@ -10,26 +10,22 @@
 ;                                                                              ;
 ;******************************************************************************;
 
-DEFAULT REL
-
+	section .text
 	global _ft_strcmp
 
-	section .text
 _ft_strcmp:
-	; cld
-	; mov rcx, -1
-	; mov rax, [rdi]
-	; repe cmpsb
-	; sub   al,  si
-	; mov rax, al
-	;ret
+	xor rcx, rcx
+	.loop:
+		; cmp rsi, 0
+		; jz .end
+		cmp dil, [sil]
+		jne .end
 
-	
-	ret
+		add rcx, 1
+	jmp .loop
 
-	; cld
-	
-	; repe cmpsb 
-	; sub , [rsi -rcx]
-	; mov rax, BYTE rdi
-	; ret
+	.end:
+		sub rsi, rdi
+		mov rax, rsi
+		mov rax, rcx
+		ret

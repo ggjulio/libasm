@@ -1,6 +1,7 @@
 ## Reminder
 
 #### RTFM : https://nasm.us/doc/nasmdoc0.html
+ https://www.nekosecurity.com/x86-64-assembly/part-2-cpu-process-register-eflags-section-and-segment
 
 ### [Data size](https://www.nasm.us/doc/nasmdoc3.html)
 
@@ -227,6 +228,7 @@ Such as, instead of "pop reg", you can use "pop [label]" to pop a value off the 
 [more](https://medium.com/@ophirharpaz/a-summary-of-x86-string-instructions-87566a28c20c)
 
 ### loops in nasm
+search for local labels ;)
 https://nasm.us/doc/nasmdoc3.html#section-3.9
 https://nasm.us/doc/nasmdoc3.html
 
