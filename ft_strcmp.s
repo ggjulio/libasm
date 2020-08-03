@@ -16,16 +16,14 @@
 _ft_strcmp:
 	xor rcx, rcx
 	.loop:
-		; cmp rsi, 0
-		; jz .end
-		cmp dil, [sil]
-		jne .end
+		xor rax, rax
+		mov byte rax, rdi
+		sub al, sil
+		inc rdi
+		inc rsi
+		jz .loop
 
 		add rcx, 1
 	jmp .loop
 
-	.end:
-		sub rsi, rdi
-		mov rax, rsi
-		mov rax, rcx
 		ret
