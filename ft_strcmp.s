@@ -10,14 +10,14 @@
 ;                                                                              ;
 ;******************************************************************************;
 
-	section .text
+section .text
 	global _ft_strcmp
 
 _ft_strcmp:
 	xor rcx, rcx
 	.loop:
 		xor rax, rax
-		mov byte rax, rdi
+		mov al, dil
 		sub al, sil
 		inc rdi
 		inc rsi
@@ -26,4 +26,5 @@ _ft_strcmp:
 		add rcx, 1
 	jmp .loop
 
-		ret
+
+	ret
