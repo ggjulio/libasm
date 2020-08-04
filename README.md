@@ -104,6 +104,7 @@ More about section directive:
 Also, the return value goes into %rax.
 
 [See full table](https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/)
+[caller-saved and callee-saved registers](https://stackoverflow.com/questions/9268586/what-are-callee-and-caller-saved-registers)
 
 ### Flags 
 
@@ -410,7 +411,7 @@ https://beta.hackndo.com/conventions-d-appel
 https://h-deb.clg.qc.ca/Sujets/AuSecours/Conventions-appel.html
 https://docs.microsoft.com/fr-fr/cpp/build/x64-calling-convention?view=vs-2019
 https://www.raywenderlich.com/615-assembly-register-calling-convention-tutorial
-
+https://stackoverflow.com/questions/9268586/what-are-callee-and-caller-saved-registers
 #### call tables
 https://filippo.io/linux-syscall-table/
 https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/

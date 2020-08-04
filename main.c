@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/08/04 19:20:36 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/08/04 19:55:13 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ void test_ft_strcmp()
 	char s3[5] = "aba";
 	char s4[5] = "dab";
 
-	char s6[5] = "";
-	char s7[5] = "";
+	char s6[5] = "a";
+	char s7[5] = "z";
 
 	printf("%d == %d\n", ft_strcmp(s1,s1), strcmp(s1,s1));
 	
@@ -95,7 +95,11 @@ void test_ft_strcmp()
 void test_ft_strdup()
 {
 	print_title("ft_strdup"); printf("%s", _GREEN);
+	
+	char *str;
 
+	str = ft_strdup("abcdefgh");
+	// free(str);
 }
 
 void test_ft_write()

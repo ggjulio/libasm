@@ -55,7 +55,7 @@ DEBUG_EXEC = debug
 OBJ_DIR = obj
 
 SRC = ft_strlen.s ft_strcpy.s
-SRC+= ft_strcmp.s
+SRC+= ft_strcmp.s ft_strdup.s
 
 OBJ     = $(addprefix  $(OBJ_DIR)/,$(SRC:%.s=%.o))
 
