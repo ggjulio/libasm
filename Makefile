@@ -115,7 +115,7 @@ show:
 	@printf "$(_CYAN)CC     :$(_RED)  $(CC)$(_END)\n"
 	@printf "$(_CYAN)CFLAGS :$(_RED)  $(CFLAGS)$(_END)\n\n"
 	@printf "$(_CYAN)AS     :$(_RED)  $(AS)$(_END)\n"
-	@printf "$(_CYAN)SFLAGS :$(_RED)  $(SFLAGS)$(_END)\b\n"
+	@printf "$(_CYAN)SFLAGS :$(_RED)  $(SFLAGS)$(_END)\n\n"
 	@printf "$(_CYAN)SRC    :$(_RED)  $(SRC)$(_END)\n"
 	@printf "$(_CYAN)OBJ    :$(_RED)  $(OBJ)$(_END)\n"
 
