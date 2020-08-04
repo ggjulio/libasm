@@ -305,10 +305,10 @@ help thread step-inst-over
 
 ```lldb
 // Show expression based on registers
-print \$rax
-p \$rax
-p/s \$rax
-p/s \$rax
+print $rax
+p $rax
+p/s $rax
+p/s $rax
 p  (int)$rax + 1
 p  $rdi + $rsi
 ```
@@ -325,9 +325,9 @@ re r rax rdi sil
 
 ```lldb
 // Show memory values
-memory read \$rax
-mem rea \$rax
-mem rea/s \$rax
+memory read $rax
+mem rea $rax
+mem rea/s $rax
 
 x $rsi
 x -c5 $rsi // -c : the number of total items to display (here 5 octets / bytes)
