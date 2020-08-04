@@ -295,6 +295,7 @@ _start:
 // Flow
 thread step-inst
 thread step-inst-over
+n
 
 // man 
 help thread
@@ -304,6 +305,7 @@ help thread step-inst-over
 
 ```lldb
 // Show expression based on registers
+print \$rax
 p \$rax
 p/s \$rax
 p/s \$rax
