@@ -21,5 +21,6 @@ _ft_strlen:
 	repne scasb 	; REpeat While Not Equal to %al-> SCAn String Byte (1 octet) 
 	sub rdi, rsi	; calculate the len (sub result is stored in the first register (rdi))
 	sub rdi, 1     	; decrement one to not count '\0'
-	mov rax, rdi	; return len using %rax (%rax is used as return register, like rdx, xmm0, etc))
+	mov rax, rdi
+	mov rdi, rsi
 	ret
