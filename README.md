@@ -289,9 +289,50 @@ _start:
 
 ### Debugging using lldb
 
+###### Examples :
+
+```lldb
+// SHow expression based on registers
+p \$rax
+p/s \$rax
+p/s \$rax
+p  (int)$rax + 1
+p  $rdi + $rsi
+```
+```nasm
+// SHow register values
+register read
+reg read
+reg r
+re r
+re r/s
+re r rax
+```
+
+```lldb
+//Show memory values
+memory read \$rax
+mem rea \$rax
+mem rea/s \$rax
+```
+
+```lldb
+//man
+help x
+help memory
+help memory read
+help register
+help register read
+//etc....
+//help about format
+register read -f 42
+
+```
+
 https://www.nesono.com/sites/default/files/lldb%20cheat%20sheet.pdf
 http://nickdesaulniers.github.io/blog/2016/01/20/debugging-x86-64-assembly-with-lldb-and-dtrace/
-lldb - switch from at&t to [intel syntax](https://stackoverflow.com/questions/9829136/setting-disassembly-flavour-to-intel-in-lldb) :   
+https://stackoverflow.com/questions/30512452/lldb-read-memory-pointer
+lldb - switch from at&t to [intel syntax](https://stackoverflow.com/questions/9829136/setting-disassembly-flavour-to-intel-in-lldb) (you can put this line in ~/.lldbinit to make it permanent):   
 `settings set target.x86-disassembly-flavor intel`
 
 ### debugging reverse engineering
