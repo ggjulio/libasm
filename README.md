@@ -314,6 +314,9 @@ re r rax
 memory read \$rax
 mem rea \$rax
 mem rea/s \$rax
+
+x $rsi
+x -c5 $rsi // -c : the number of total items to display (here 5 octets / bytes)
 ```
 
 ```lldb
