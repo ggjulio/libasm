@@ -318,6 +318,7 @@ reg r
 re r
 re r/s
 re r rax
+re r rax rdi sil
 ```
 
 ```lldb
