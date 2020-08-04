@@ -292,6 +292,16 @@ _start:
 ###### Examples :
 
 ```lldb
+// Flow
+thread step-inst
+thread step-inst-over
+
+// man 
+help thread
+help thread step-inst-over
+```
+
+```lldb
 // SHow expression based on registers
 p \$rax
 p/s \$rax
@@ -310,7 +320,7 @@ re r rax
 ```
 
 ```lldb
-//Show memory values
+// Show memory values
 memory read \$rax
 mem rea \$rax
 mem rea/s \$rax
@@ -320,14 +330,15 @@ x -c5 $rsi // -c : the number of total items to display (here 5 octets / bytes)
 ```
 
 ```lldb
-//man
+// man
 help x
 help memory
 help memory read
 help register
 help register read
-//etc....
-//help about format
+// etc....
+
+// help about format
 register read -f 42
 
 ```
