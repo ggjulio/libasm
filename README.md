@@ -298,11 +298,12 @@ thread step-inst-over
 
 // man 
 help thread
+help thread step-inst
 help thread step-inst-over
 ```
 
 ```lldb
-// SHow expression based on registers
+// Show expression based on registers
 p \$rax
 p/s \$rax
 p/s \$rax
