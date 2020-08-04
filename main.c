@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/08/04 19:55:13 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/08/04 20:32:34 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,12 @@ void test_ft_strdup()
 {
 	print_title("ft_strdup"); printf("%s", _GREEN);
 	
-	char *str;
+	char *str = NULL;
 
-	str = ft_strdup("abcdefgh");
+	printf("\"(null)\" == \"%s\"\n", str);
+	str = ft_strdup("abcd");
+	printf("\"abcd\" == \"%s\"\n", str);
+	
 	// free(str);
 }
 

@@ -22,5 +22,5 @@ _ft_strlen:
 	sub rdi, rsi	; calculate the len (sub result is stored in the first register (rdi))
 	sub rdi, 1     	; decrement one to not count '\0'
 	mov rax, rdi
-	mov rdi, rsi
 	ret
+	
