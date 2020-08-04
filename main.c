@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/08/04 18:01:24 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/08/04 19:20:36 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,16 +71,23 @@ void test_ft_strcmp()
 {
 	print_title("ft_strcmp"); printf("%s", _GREEN);
 	char s1[5] = "abc";
-	char s2[5] = "abc";
 	
-	char s3[5] = "abe";
-	char s4[5] = "aba";
-	char s5[5] = "cab";
+	char s2[5] = "abe";
+	char s3[5] = "aba";
+	char s4[5] = "dab";
 
-	printf("%d == %d\n", ft_strcmp(s1,s4), strcmp(s1,s4));
-	printf("%d == %d\n", ft_strcmp(s1,s5), strcmp(s1,s5));
-	printf("%d == %d\n", ft_strcmp(s1,s3), strcmp(s1,s3));
+	char s6[5] = "";
+	char s7[5] = "";
+
+	printf("%d == %d\n", ft_strcmp(s1,s1), strcmp(s1,s1));
+	
 	printf("%d == %d\n", ft_strcmp(s1,s2), strcmp(s1,s2));
+	printf("%d == %d\n", ft_strcmp(s1,s3), strcmp(s1,s3));
+	printf("%d == %d\n", ft_strcmp(s1,s4), strcmp(s1,s4));
+	
+	printf("%d == %d\n", ft_strcmp(s6,s6), strcmp(s6,s6));
+
+	printf("%d == %d\n", ft_strcmp(s6,s7), strcmp(s6,s7));
 
 		
 }

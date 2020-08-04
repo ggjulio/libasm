@@ -18,12 +18,11 @@ _ft_strcmp:
 		movzx rax, byte [rdi]		; same as -> xor rax, rax | mov al, [rdi]
 		movzx rcx, byte [rsi]
 		sub rax, rcx
-		jnz end
+		jnz .end
 		cmp byte [rdi], 0
-		je end
+		je .end
 		inc rdi
 		inc rsi
 		jmp .loop
-end:
-
-	ret
+	.end:
+		ret
