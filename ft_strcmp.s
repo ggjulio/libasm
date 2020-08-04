@@ -14,17 +14,16 @@ section .text
 	global _ft_strcmp
 
 _ft_strcmp:
-	xor rcx, rcx
 	.loop:
-		xor rax, rax
-		mov al, dil
-		sub al, sil
+		movzx rax, byte [rdi]		; same as -> xor rax, rax | mov al, [rdi]
+		movzx rcx, byte [rsi]
+		sub rax, rcx
+		jnz end
+		cmp byte [rdi], 0
+		je end
 		inc rdi
 		inc rsi
-		jz .loop
-
-		add rcx, 1
-	jmp .loop
-
+		jmp .loop
+end:
 
 	ret

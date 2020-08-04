@@ -101,8 +101,8 @@ clean:
 	@printf "$(_RED)Removed :$(_MAGENTA) $(OBJ_DIR)/$(_MAGENTA)\n"
 
 fclean: clean
-	@rm -f $(NAME) $(DEBUG_EXEC)
-	@printf "$(_RED)Removed : $(_MAGENTA)$(NAME), $(DEBUG_EXEC)$(_R)\n"
+	@rm -fr $(NAME) $(DEBUG_EXEC) debug.dSYM/
+	@printf "$(_RED)Removed : $(_MAGENTA)$(NAME), $(DEBUG_EXEC), debug.dSYM/$(_R)\n"
 
 re_echo:
 	@printf "$(_CYAN)Redoing $(_BOLD)ALLL $(_R)$(_CYAN)$(_DIM)the things $(_R)$(_BLINK)$(_BOLD)$(_YELLOW)...$(_R)\n\n"

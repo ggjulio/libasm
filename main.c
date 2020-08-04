@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/06/06 21:26:24 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/08/04 18:01:24 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,10 @@ void test_ft_strcmp()
 	char s4[5] = "aba";
 	char s5[5] = "cab";
 
-	printf("%d == %d\n", ft_strcmp(s1,s5), strcmp(s1,s5));
-	printf("%d == %d\n", ft_strcmp(s1,s2), strcmp(s1,s2));
-	printf("%d == %d\n", ft_strcmp(s1,s3), strcmp(s1,s3));
 	printf("%d == %d\n", ft_strcmp(s1,s4), strcmp(s1,s4));
+	printf("%d == %d\n", ft_strcmp(s1,s5), strcmp(s1,s5));
+	printf("%d == %d\n", ft_strcmp(s1,s3), strcmp(s1,s3));
+	printf("%d == %d\n", ft_strcmp(s1,s2), strcmp(s1,s2));
 
 		
 }
