@@ -27,10 +27,10 @@ ft_strdup:
 
     call malloc
     test rax, rax
-    jz .end         ;   malloc failed, returning NULL
+    pop rsi         ; pop the src as arg2 of ft_strcpy
+    jz .end         ; malloc failed, returning NULL
 
-    mov rdi, rax
-    pop rsi
+    mov rdi, rax    ; mov dest ptr as arg1
     call ft_strcpy
 .end:
     ret
