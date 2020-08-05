@@ -52,12 +52,14 @@ UNAME := $(shell uname)
 NAME       = libasm.a
 DEBUG_EXEC = debug
 
+SRC_DIR = srcs
 OBJ_DIR = obj
 
 SRC = ft_strlen.s ft_strcpy.s
 SRC+= ft_strcmp.s ft_strdup.s
 
 OBJ     = $(addprefix  $(OBJ_DIR)/,$(SRC:%.s=%.o))
+vpath %.s $(SRC_DIR)
 
 CC      = clang
 CFLAGS  = -Wall -Wextra -Werror -g # -fsanitize=address  -fsanitize=undefined -fstack-protector  
