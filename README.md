@@ -387,6 +387,12 @@ For example `int ft_strlen(char *s) asm('_ft_strlen');`
 https://clang.llvm.org/docs/AttributeReference.html#asm  
 https://gcc.gnu.org/onlinedocs/gcc/Asm-Labels.html
 
+Another solution is to use pragma gprefix to add _ when is osx :
+`%pragma macho gprefix _` (will add '_' prefix if format is macho32|macho64)
+To check if the prefix is added to global and extern symbols, use the nm command :
+`nm libasm.a`
+
+
 ##### Mach-O 64-bit format does not support 32-bit absolute addresses :
 Using macho64 format produce this error.
 Instead of `mov rax, [var]`, do `mov rax, [rel var]`
@@ -425,7 +431,7 @@ https://sites.google.com/site/microprocessorsbits/string-instructions/cmps-cmpsb
 https://blog.packagecloud.io/eng/2016/04/05/the-definitive-guide-to-linux-system-calls/  
 https://stackoverflow.com/tags/x86/info   
 
-### Instructions 
+### Instructions
 https://fr.wikipedia.org/wiki/Jeu_d%27instructions_x86
 
 #### other
