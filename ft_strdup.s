@@ -25,7 +25,7 @@ ft_strdup:
     add rax, 1    
     mov rdi, rax
 
-    call ft_malloc
+    call malloc
     test rax, rax
     jz .end         ;   malloc failed, returning NULL
 
