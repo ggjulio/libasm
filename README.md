@@ -392,7 +392,6 @@ Another solution is to use pragma gprefix to add _ when is osx :
 To check if the prefix is added to global and extern symbols, use the nm command :
 `nm libasm.a`
 
-
 ##### Mach-O 64-bit format does not support 32-bit absolute addresses :
 Using macho64 format produce this error.
 Instead of `mov rax, [var]`, do `mov rax, [rel var]`

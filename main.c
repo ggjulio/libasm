@@ -6,13 +6,14 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/08/04 20:32:34 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/08/05 17:42:00 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libasm.h"
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 // https://misc.flogisoft.com/bash/tip_colors_and_formatting
 #define _BOLD      "\e[1m"
@@ -62,9 +63,12 @@ void test_ft_strcpy()
 	char s1[10] = "salut";
 	char s2[10] = "012345678";
 
-	ft_strcpy(s2, s1);
+	void *p = ft_strcpy(s2, s1);
 	printf("\"%s\" == \"%s\"\n", s1, s2);	
 	
+	if (p != s2)
+		printf("%s", _RED);
+	printf("%p == %p\n", p, s2);
 }
 
 void test_ft_strcmp()
@@ -100,9 +104,11 @@ void test_ft_strdup()
 
 	printf("\"(null)\" == \"%s\"\n", str);
 	str = ft_strdup("abcd");
+	if (str == NULL || strcmp(str, "abcd"))
+		printf("%s", _RED);
 	printf("\"abcd\" == \"%s\"\n", str);
-	
-	// free(str);
+	if (str)
+		free(str);
 }
 
 void test_ft_write()

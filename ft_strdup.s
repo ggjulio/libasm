@@ -25,14 +25,12 @@ ft_strdup:
     add rax, 1    
     mov rdi, rax
 
-    call malloc
+    call ft_malloc
     test rax, rax
+    jz .end         ;   malloc failed, returning NULL
 
-
-    pop rdi
-
-    jz .fail
-
-    .fail:
-        mov rax, 0
+    mov rdi, rax
+    pop rsi
+    call ft_strcpy
+.end:
     ret
