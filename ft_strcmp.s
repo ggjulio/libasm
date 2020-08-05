@@ -10,10 +10,12 @@
 ;                                                                              ;
 ;******************************************************************************;
 
-section .text
-	global _ft_strcmp
+%pragma macho gprefix _
 
-_ft_strcmp:
+section .text
+	global ft_strcmp
+
+ft_strcmp:
 	.loop:
 		movzx rax, byte [rdi]		; same as -> xor rax, rax | mov al, [rdi]
 		movzx rcx, byte [rsi]

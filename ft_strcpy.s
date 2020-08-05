@@ -10,14 +10,16 @@
 ;                                                                              ;
 ;******************************************************************************;
 
-	section .text
-	extern _ft_strlen
-	global _ft_strcpy
+%pragma macho gprefix _
 
-_ft_strcpy:
+	section .text
+	extern ft_strlen
+	global ft_strcpy
+
+ft_strcpy:
 	push rdi		; save dest ptr to the stack
 	mov rdi, rsi	; to call strlen on src, we put the src pointer in rdi 
-	call _ft_strlen	; and call ft_strlen to get the len of src
+	call ft_strlen	; and call ft_strlen to get the len of src
 	pop rdi			; restore the dest string pointer into rdi
 	mov rcx, rax 	; mov the len of src into the counter register
 	inc rcx			; increment 1 to copy '\0'

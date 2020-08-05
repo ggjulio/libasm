@@ -68,10 +68,10 @@ SFLAGS	= ""
 #OS specific
 ifeq ($(UNAME), Darwin)
 	# mac
-	SFLAGS += -f macho64
+	SFLAGS += -f macho64 -d macho64
 else
 	#Linus and others...
-	SFLAGS += -f elf64
+	SFLAGS += -f elf64 -d macho64
 endif
 
 all: $(NAME)
