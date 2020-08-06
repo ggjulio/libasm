@@ -57,6 +57,10 @@ OBJ_DIR = obj
 
 SRC = ft_strlen.s ft_strcpy.s
 SRC+= ft_strcmp.s ft_strdup.s
+SRC+= ft_write.s ft_read.s
+
+
+SRC+= ft_isspace.s
 
 OBJ     = $(addprefix  $(OBJ_DIR)/,$(SRC:%.s=%.o))
 vpath %.s $(SRC_DIR)
@@ -73,7 +77,7 @@ ifeq ($(UNAME), Darwin)
 	SFLAGS += -f macho64 -d macho64
 else
 	#Linus and others...
-	SFLAGS += -f elf64 -d macho64
+	SFLAGS += -f elf64 -d elf64
 endif
 
 all: $(NAME)
