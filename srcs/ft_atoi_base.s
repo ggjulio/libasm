@@ -15,7 +15,8 @@
 DEFAULT REL
 
 section .data
-	str:  dq 0 ; save str ptr instead of push to the stack
+	arg1:  dq 0
+	arg2:  dq 0
 	base_size: dq 0
 	sign: db 0
 
@@ -32,14 +33,15 @@ ft_atoi_base:
 	cmp byte [rsi], 0
 	je	.error
 
-	mov rcx, 0
+	; save args to memory before call function
+	mov qword [arg1], rdi
+	mov qword [arg2], rsi
 
-	mov qword[str], rdi
 	mov rdi, rsi
 	call ft_strlen
 	mov qword [base_size], rax
 	mov r10, [base_size]
-	lea rax, [str]
+	lea rax, arg1
 
 	mov r10, [base_size]
 	ret

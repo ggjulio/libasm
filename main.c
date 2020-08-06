@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/08/06 15:24:40 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/08/06 17:31:24 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,14 +163,14 @@ void test_ft_atoi_base()
 	int ret;
 	print_title("ft_atoi_base"); printf("%s", _GREEN);
 	
-	ret = ft_atoi_base("","0123456789abcdef");
-	printf("-1 == %d\n", ret);
+	// ret = ft_atoi_base("","0123456789abcdef");
+	// printf("-1 == %d\n", ret);
 
-	ret = ft_atoi_base("a","");
-	printf("-1 == %d\n", ret);
+	// ret = ft_atoi_base("a","");
+	// printf("-1 == %d\n", ret);
 
 	ret = ft_atoi_base("a","0123456789abcdef");
-	printf("-1 == %d\n", ret);
+	printf("10 == %d\n", ret);
 }
 
 
