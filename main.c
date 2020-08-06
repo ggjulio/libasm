@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/08/06 02:58:11 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/08/06 15:24:40 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,15 +143,6 @@ void test_ft_read()
 	close(fd);
 }
 
-
-void test_ft_atoi_base()
-{
-	print_title("ft_atoi_base"); printf("%s", _GREEN);
-	
-	int res = ft_atoi_base("a","0123456789abcdef");
-	printf("10 == %d", res);
-}
-
 void test_ft_isspace()
 {
 	print_title("ft_isspace"); printf("%s", _GREEN);
@@ -166,6 +157,22 @@ void test_ft_isspace()
 	printf(" %d == %d\n", isspace('a'), ft_isspace('a'));
 	printf(" %d == %d\n", isspace('1'), ft_isspace('1'));
 }
+
+void test_ft_atoi_base()
+{
+	int ret;
+	print_title("ft_atoi_base"); printf("%s", _GREEN);
+	
+	ret = ft_atoi_base("","0123456789abcdef");
+	printf("-1 == %d\n", ret);
+
+	ret = ft_atoi_base("a","");
+	printf("-1 == %d\n", ret);
+
+	ret = ft_atoi_base("a","0123456789abcdef");
+	printf("-1 == %d\n", ret);
+}
+
 
 int main()
 {
