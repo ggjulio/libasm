@@ -60,6 +60,8 @@ SRC+= ft_strcmp.s ft_strdup.s
 SRC+= ft_write.s ft_read.s
 
 
+SRC+= ft_atoi_base.s
+
 SRC+= ft_isspace.s
 
 OBJ     = $(addprefix  $(OBJ_DIR)/,$(SRC:%.s=%.o))

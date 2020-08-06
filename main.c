@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/08/06 02:27:44 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/08/06 02:58:11 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,8 @@ void test_ft_atoi_base()
 {
 	print_title("ft_atoi_base"); printf("%s", _GREEN);
 	
+	int res = ft_atoi_base("a","0123456789abcdef");
+	printf("10 == %d", res);
 }
 
 void test_ft_isspace()
@@ -179,15 +181,15 @@ int main()
 	
 	test_ft_atoi_base();
 
-	print_title("ft_list_push_front"); printf("%s", _GREEN);
-	print_title("ft_list_size"); printf("%s", _GREEN);
-	print_title("ft_list_sort"); printf("%s", _GREEN);
-	print_title("ft_list_remove_if"); printf("%s", _GREEN);
+	// print_title("ft_list_push_front"); printf("%s", _GREEN);
+	// print_title("ft_list_size"); printf("%s", _GREEN);
+	// print_title("ft_list_sort"); printf("%s", _GREEN);
+	// print_title("ft_list_remove_if"); printf("%s", _GREEN);
 
-	//Optional
-	printf("\n\n%s%s######################## %sAdditional functions %s########################\n", _BOLD, _GREEN, _RED , _GREEN);
+	// //Optional
+	// printf("\n\n%s%s######################## %sAdditional functions %s########################\n", _BOLD, _GREEN, _RED , _GREEN);
 
-	test_ft_isspace();
+	// test_ft_isspace();
 	
 	return (0);
 }

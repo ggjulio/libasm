@@ -12,23 +12,21 @@
 
 %pragma macho gprefix _
 
+section .data
+	str:  dq 0
+	base: dq 0
+
 section .text
 	global ft_atoi_base
 
-
+	extern ft_isspace
+	extern ft_strlen
 
 ft_atoi_base:
-	ret
+	mov qword [str], rdi
+	mov rdi, rsi
+	call ft_strlen
+	mov qword [base], rax
+	lea rax, [str]
 
-
-ft_isspace:
-	mov rax, rdi
-	mov rdi, " \f\n\r\t\v"
-	mov rcx, 6
-	repne scasb
-	jz .false
-	mov rax, 1
 	ret
-	.false:
-		mov rax, 0
-		ret
