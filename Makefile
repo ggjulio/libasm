@@ -76,10 +76,10 @@ SFLAGS	= ""
 #OS specific
 ifeq ($(UNAME), Darwin)
 	# mac
-	SFLAGS += -f macho64 -d macho64
+	SFLAGS += -f macho64 -d MACHO64
 else
 	#Linus and others...
-	SFLAGS += -f elf64 -d elf64
+	SFLAGS += -f elf64 -d ELF64
 endif
 
 all: $(NAME)
@@ -91,7 +91,8 @@ $(OBJ_DIR)/%.o: %.s
 $(NAME): $(OBJ)
 	@ar rcs $(NAME) $^
 	@printf "$(_GREEN)Compiled : $(_MAGENTA)$(NAME)$(_R)\n"
-	@printf "\nDo $(_YELLOW)$(_BOLD)make debug$(_R) to run tests with lldb\n"
+	@printf "\nDo $(_MAGENTA)$(_BOLD)make show$(_R) to debug the Makefile\n"
+	@printf "Do $(_YELLOW)$(_BOLD)make debug$(_R) to run tests with lldb\n"
 	@printf "Do $(_YELLOW)$(_BLINK)$(_BOLD)make run$(_R)   to run tests\n\n"
 
 run: $(NAME)

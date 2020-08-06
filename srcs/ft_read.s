@@ -12,10 +12,18 @@
 
 %pragma macho gprefix _
 
-	section .text
+%ifdef MACHO64
+	%define SYS_READ  0x2000003
+	%define SYS_WRITE 0x2000004
+%else
+	%define SYS_READ 0
+	%define SYS_WRITE 1
+%endif
+
+section .text
 	global ft_read
 
 ft_read:
-	mov rax, 0x2000003
+	mov rax, SYS_READ
 	syscall
 	ret
