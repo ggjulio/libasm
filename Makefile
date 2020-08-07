@@ -58,6 +58,7 @@ OBJ_DIR = obj
 SRC = ft_strlen.s ft_strcpy.s
 SRC+= ft_strcmp.s ft_strdup.s
 SRC+= ft_write.s ft_read.s
+SRC+= ft_list_push_front.s
 
 
 SRC+= ft_atoi_base.s

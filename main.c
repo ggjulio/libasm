@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/08/06 17:31:24 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/08/07 16:19:25 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,7 +173,31 @@ void test_ft_atoi_base()
 	printf("10 == %d\n", ret);
 }
 
+t_list	*ft_lstnew(void *data)
+{
+	t_list	*new;
 
+	if ((new = (t_list *)malloc(sizeof(t_list))) == NULL)
+		return (NULL);
+	new->data = data;
+	new->next = NULL;
+	return (new);
+}
+
+
+void test_ft_list_push_front()
+{
+	print_title("ft_list_push_front"); printf("%s", _GREEN);
+
+	t_list *lst;
+
+	lst = ft_lstnew("e1");
+	printf("e1_==_%s\n", lst->data);
+	
+	ft_list_push_front(&lst,"e0");
+	printf("e0_-->_%s\n", lst->data);
+
+}
 int main()
 {
 	test_ft_strlen();
@@ -187,8 +211,7 @@ int main()
 	printf("\n\n%s%s######################## %sBonus functions %s########################\n", _BOLD, _GREEN, _RED , _GREEN);
 	
 	test_ft_atoi_base();
-
-	// print_title("ft_list_push_front"); printf("%s", _GREEN);
+	test_ft_list_push_front();
 	// print_title("ft_list_size"); printf("%s", _GREEN);
 	// print_title("ft_list_sort"); printf("%s", _GREEN);
 	// print_title("ft_list_remove_if"); printf("%s", _GREEN);
