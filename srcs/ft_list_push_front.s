@@ -15,13 +15,14 @@
 default rel
 
 struc liste
-    data resq 1
-    next resq 1
+	data resq 1
+	next resq 1
 endstruc
 
 section .text
-    global ft_list_push_front
+	global ft_list_push_front
 
 ft_list_push_front:
-    lea r10, [rdi]
-    ret
+	lea r10, [rdi]
+	lea r10, [r10]
+	ret
