@@ -10,9 +10,9 @@
 ;                                                                              ;
 ;******************************************************************************;
 
-%pragma macho gprefix _
+%include "libasm.inc"
 
-	section .text
+section .text
 	global ft_strlen
 
 ft_strlen:

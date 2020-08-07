@@ -10,7 +10,7 @@
 ;                                                                              ;
 ;******************************************************************************;
 
-%pragma macho gprefix _
+%include "libasm.inc"
 
 section .text
 	global ft_strcmp

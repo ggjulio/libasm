@@ -10,7 +10,7 @@
 ;                                                                              ;
 ;******************************************************************************;
 
-%pragma macho gprefix _
+%include "libasm.inc"
 
 section .data
 	spaces: db ` \f\n\r\t\v`
