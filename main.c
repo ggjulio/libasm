@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/08/08 16:15:41 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/08/08 16:25:35 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,8 @@ void test_ft_write()
 	ret_real = ft_write(-1, str, ft_strlen(str));
 	printf("\n ret : -1 == %d\n", ret_real);
 	printf("%sDescription for error '%d' : %s\n\n%s", _MAGENTA, errno, strerror(errno), _GREEN);
-	
+	errno = 0;
+
 }
 
 void test_ft_read()
@@ -155,17 +156,19 @@ void test_ft_read()
 
 	// test valid	
 	printf("%s 1 - read 50 chars :\n\n%s", _BLUE, _GREEN);
-	fd = open("t", O_RDONLY);
+	fd = open("libasm.a", O_RDONLY);
 	ret = ft_read(fd, &str, 50);
 	printf("ret: %d\n\"%s\"\n\n", ret, str);
 	printf("%sDescription for error '%d' : %s\n\n%s", _MAGENTA, errno, strerror(errno), _GREEN);
 	close(fd);
 
 	// test BAD FG
+	bzero(&str, 100);
 	printf("%s 2 - error Bad File descriptor  :\n\n%s", _BLUE, _GREEN);
 	ret = ft_read(6, &str, 50);
 	printf("ret -1: %d\n\"\" == \"%s\"\n", ret, str);
 	printf("%sDescription for error '%d' : %s\n\n%s", _MAGENTA, errno, strerror(errno), _GREEN);
+	errno = 0;
 
 }
 
@@ -231,7 +234,7 @@ int main()
 	test_ft_strcmp();
 	test_ft_strdup();
 	test_ft_write();
-	// test_ft_read();
+	test_ft_read();
 
 	//Bonus Part
 	// printf("\n\n%s%s######################## %sBonus functions %s########################\n", _BOLD, _GREEN, _RED , _GREEN);
