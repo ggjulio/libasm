@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/08/07 16:19:25 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/08/08 16:15:41 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <ctype.h>
+
+#include <errno.h>
 
 // https://misc.flogisoft.com/bash/tip_colors_and_formatting
 #define _BOLD      "\e[1m"
@@ -119,28 +121,52 @@ void test_ft_strdup()
 void test_ft_write()
 {
 	char str[10] = "|abcd|";
+	int ret_expected;
+	int ret_real;
+
 	print_title("ft_write"); printf("%s", _GREEN);
 
-	printf(" > ");fflush(stdout);
+// test 1 valid write
+	printf("%s 1 - valid write :%s\n\n", _BLUE, _GREEN);
 	
-	write(1, str, strlen(str));
+	ret_expected = write(1, str, strlen(str));
 	printf(" == ");fflush(stdout);
-	ft_write(1, str, ft_strlen(str));
-	printf("\n");
+	ret_real = ft_write(1, str, ft_strlen(str));
+	if (ret_real != ret_expected)
+		printf("%s", _RED);
+	printf("\n ret : %d == %d\n", ret_expected, ret_real);
+	printf("%sDescription for error '%d' : %s\n\n%s", _MAGENTA, errno, strerror(errno), _GREEN);
+	
+// test 2 Bad fd
+	printf("%s 2 - Bad file descriptor :%s\n\n", _BLUE, _GREEN);
+	ret_real = ft_write(-1, str, ft_strlen(str));
+	printf("\n ret : -1 == %d\n", ret_real);
+	printf("%sDescription for error '%d' : %s\n\n%s", _MAGENTA, errno, strerror(errno), _GREEN);
+	
 }
 
 void test_ft_read()
 {
+	int ret;
+	int fd;
+	char str[100];
+
 	print_title("ft_read"); printf("%s", _GREEN);
 
-	int fd = open("libasm.a",O_RDONLY);
-	char str[1000];
-	
-	int ret = ft_read(fd, &str, 50);
-
-	printf("ret: %d chars\n\"%s\"\n", ret, str);
-
+	// test valid	
+	printf("%s 1 - read 50 chars :\n\n%s", _BLUE, _GREEN);
+	fd = open("t", O_RDONLY);
+	ret = ft_read(fd, &str, 50);
+	printf("ret: %d\n\"%s\"\n\n", ret, str);
+	printf("%sDescription for error '%d' : %s\n\n%s", _MAGENTA, errno, strerror(errno), _GREEN);
 	close(fd);
+
+	// test BAD FG
+	printf("%s 2 - error Bad File descriptor  :\n\n%s", _BLUE, _GREEN);
+	ret = ft_read(6, &str, 50);
+	printf("ret -1: %d\n\"\" == \"%s\"\n", ret, str);
+	printf("%sDescription for error '%d' : %s\n\n%s", _MAGENTA, errno, strerror(errno), _GREEN);
+
 }
 
 void test_ft_isspace()
@@ -205,13 +231,13 @@ int main()
 	test_ft_strcmp();
 	test_ft_strdup();
 	test_ft_write();
-	test_ft_read();
+	// test_ft_read();
 
 	//Bonus Part
-	printf("\n\n%s%s######################## %sBonus functions %s########################\n", _BOLD, _GREEN, _RED , _GREEN);
+	// printf("\n\n%s%s######################## %sBonus functions %s########################\n", _BOLD, _GREEN, _RED , _GREEN);
 	
-	test_ft_atoi_base();
-	test_ft_list_push_front();
+	// test_ft_atoi_base();
+	// test_ft_list_push_front();
 	// print_title("ft_list_size"); printf("%s", _GREEN);
 	// print_title("ft_list_sort"); printf("%s", _GREEN);
 	// print_title("ft_list_remove_if"); printf("%s", _GREEN);

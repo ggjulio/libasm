@@ -14,8 +14,15 @@
 
 section .text
 	global ft_write
+	extern SYM_ERRNO
 
 ft_write:
 	mov rax, SYS_WRITE
 	syscall
+	jnc .end
+	push rax
+	call SYM_ERRNO
+	pop qword [rax]
+	mov rax, -1
+.end:
 	ret

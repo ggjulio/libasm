@@ -21,7 +21,7 @@ section .text
 ft_isspace:
 	cld
 	movzx rax, dil
-	mov rdi, spaces
+	lea rdi, [rel spaces]
 	mov rcx, 6
 	repne scasb
 	jz .end

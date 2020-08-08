@@ -14,8 +14,15 @@
 
 section .text
 	global ft_read
+	extern SYM_ERRNO
 
 ft_read:
 	mov rax, SYS_READ
 	syscall
+	jnc .end
+	push rax
+	call SYM_ERRNO
+	pop qword [rax]
+	mov rax, -1
+.end:
 	ret
