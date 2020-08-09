@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/08/09 17:57:45 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/08/09 20:09:04 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,24 +202,13 @@ void test_ft_atoi_base()
 	printf("10 == %d\n", ret);
 }
 
-t_list	*ft_lstnew(void *data)
-{
-	t_list	*new;
-
-	if ((new = (t_list *)malloc(sizeof(t_list))) == NULL)
-		return (NULL);
-	new->data = data;
-	new->next = NULL;
-	return (new);
-}
-
 void	test_ft_create_elem()
 {
 	print_title("ft_create_elem"); printf("%s", _GREEN);
 	t_list	*elem = ft_create_elem("test");
 	printf("elem (%p) :\n", elem);
 	printf("  data : \"%s\"\n", elem ? elem->data : "(NULL), not my fault ! malloc failed !");
-	printf("  next : \"%p\"", elem ? elem->next : 0);
+	printf("  next : \"%p\"\n", elem ? elem->next : 0);
 	if (elem)
 		free(elem);
 }
@@ -230,13 +219,30 @@ void test_ft_list_push_front()
 
 	t_list *lst;
 
-	lst = ft_lstnew("e1");
-	printf("e1_==_%s\n", lst->data);
+	printf("%s 1 - show first element list %s\n", _BLUE, _GREEN);
 	
-	ft_list_push_front(&lst,"e0");
-	printf("e0_-->_%s\n", lst->data);
+	lst = ft_create_elem("old elem");
+	printf(">>> e1 : %p\n", lst);
+	printf("  data : \"%s\"\n", lst ? lst->data : "(NULL)");
+	printf("  next : \"%p\"\n\n", lst ? lst->next : 0);
+	
 
+	printf("%s 1 - show  Updated  list %s\n", _BLUE, _GREEN);
+	ft_list_push_front(&lst,"new elem");
+	
+	printf("element 1 : %p\n", lst);
+	printf("  data : \"%s\"\n", lst ? lst->data : "(NULL)");
+	printf("  next : \"%p\"\n\n", lst ? lst->next : 0);
+	
+	if (!lst)
+		return;
+	printf("Element 2 : %p\n", lst);
+	printf("  data : \"%s\"\n", lst->next ? lst->next->data : "(NULL)");
+	printf("  next : \"%p\"\n\n", lst->next ? lst->next->next : 0);
+
+	free(lst);
 }
+
 int main()
 {
 	test_ft_strlen();
@@ -259,6 +265,6 @@ int main()
 	// printf("\n\n%s%s######################## %sAdditional functions %s########################\n", _BOLD, _GREEN, _RED , _GREEN);
 
 	// test_ft_isspace();
-	test_ft_create_elem();
+	// test_ft_create_elem();
 	return (0);
 }

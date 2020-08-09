@@ -55,16 +55,11 @@ DEBUG_EXEC = debug
 SRC_DIR = srcs
 OBJ_DIR = obj
 
-SRC = ft_strlen.s ft_strcpy.s
-SRC+= ft_strcmp.s ft_strdup.s
-SRC+= ft_write.s ft_read.s
+SRC = ft_strlen.s ft_strcpy.s ft_strcmp.s ft_strdup.s ft_write.s ft_read.s
+SRC+= ft_atoi_base.s
 SRC+= ft_list_push_front.s
 
-
-SRC+= ft_atoi_base.s
-
-SRC+= ft_isspace.s
-SRC+= ft_create_elem.s
+SRC+= ft_isspace.s ft_create_elem.s
 
 OBJ     = $(addprefix  $(OBJ_DIR)/,$(SRC:%.s=%.o))
 vpath %.s $(SRC_DIR)
