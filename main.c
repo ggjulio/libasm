@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/08/08 16:25:35 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/08/09 17:57:45 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,6 +213,16 @@ t_list	*ft_lstnew(void *data)
 	return (new);
 }
 
+void	test_ft_create_elem()
+{
+	print_title("ft_create_elem"); printf("%s", _GREEN);
+	t_list	*elem = ft_create_elem("test");
+	printf("elem (%p) :\n", elem);
+	printf("  data : \"%s\"\n", elem ? elem->data : "(NULL), not my fault ! malloc failed !");
+	printf("  next : \"%p\"", elem ? elem->next : 0);
+	if (elem)
+		free(elem);
+}
 
 void test_ft_list_push_front()
 {
@@ -239,8 +249,8 @@ int main()
 	//Bonus Part
 	// printf("\n\n%s%s######################## %sBonus functions %s########################\n", _BOLD, _GREEN, _RED , _GREEN);
 	
-	// test_ft_atoi_base();
-	// test_ft_list_push_front();
+	test_ft_atoi_base();
+	test_ft_list_push_front();
 	// print_title("ft_list_size"); printf("%s", _GREEN);
 	// print_title("ft_list_sort"); printf("%s", _GREEN);
 	// print_title("ft_list_remove_if"); printf("%s", _GREEN);
@@ -249,6 +259,6 @@ int main()
 	// printf("\n\n%s%s######################## %sAdditional functions %s########################\n", _BOLD, _GREEN, _RED , _GREEN);
 
 	// test_ft_isspace();
-	
+	test_ft_create_elem();
 	return (0);
 }

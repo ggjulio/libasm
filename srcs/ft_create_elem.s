@@ -1,36 +1,28 @@
 ;******************************************************************************;
 ;                                                                              ;
 ;                                                         :::      ::::::::    ;
-;    ft_strdup.s                                        :+:      :+:    :+:    ;
+;    ft_create_elem.s                                   :+:      :+:    :+:    ;
 ;                                                     +:+ +:+         +:+      ;
 ;    By: juligonz <marvin@42.fr>                    +#+  +:+       +#+         ;
 ;                                                 +#+#+#+#+#+   +#+            ;
-;    Created: 2020/08/04 19:28:39 by juligonz          #+#    #+#              ;
-;    Updated: 2020/08/04 19:28:40 by juligonz         ###   ########.fr        ;
+;    Created: 2020/08/09 16:07:45 by juligonz          #+#    #+#              ;
+;    Updated: 2020/08/09 16:08:15 by juligonz         ###   ########.fr        ;
 ;                                                                              ;
 ;******************************************************************************;
 
 %include "libasm.inc"
 
 section .text
-    global ft_strdup
-    extern ft_strlen
-    extern ft_strcpy
-    extern malloc
+	global ft_create_elem
+	extern malloc
 
-ft_strdup:
-    push rdi
-
-    call ft_strlen
-    add rax, 1    
-    mov rdi, rax
-
-    call malloc
-    test rax, rax
-    pop rsi         ; pop the src as arg2 of ft_strcpy
-    jz .end         ; if malloc failed, return NULL
-
-    mov rdi, rax    ; mov dest ptr as arg1
-    call ft_strcpy
+ft_create_elem:
+	push rdi
+	mov rdi, 16
+	call malloc
+	test rax, rax
+	pop qword [rax]
+	jz .end			; malloc failed -> jump end
+	mov qword [rax + 8], 0
 .end:
-    ret
+	ret

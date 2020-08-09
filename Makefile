@@ -64,6 +64,7 @@ SRC+= ft_list_push_front.s
 SRC+= ft_atoi_base.s
 
 SRC+= ft_isspace.s
+SRC+= ft_create_elem.s
 
 OBJ     = $(addprefix  $(OBJ_DIR)/,$(SRC:%.s=%.o))
 vpath %.s $(SRC_DIR)
