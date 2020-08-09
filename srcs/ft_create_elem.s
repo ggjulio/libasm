@@ -17,12 +17,12 @@ section .text
 	extern malloc
 
 ft_create_elem:
-	push rdi
+	mov rbx, rdi
 	mov rdi, 16
 	call malloc
 	test rax, rax
-	pop qword [rax]
 	jz .end			; malloc failed -> jump end
+	mov qword [rax], rbx
 	mov qword [rax + 8], 0
 .end:
 	ret
