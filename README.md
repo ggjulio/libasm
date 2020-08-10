@@ -92,7 +92,7 @@ More about section directive:
 
 ### syscall input by register ([Fastcall convention](https://beta.hackndo.com/conventions-d-appel/#fastcall-fast-calling-convention)):
 
-| syscall   | MacOS Id (%rax) | Linux ID (%rax) | ARG_1 (%rdi)| ARG_2 (%rsi) | ARG_3 (%rdx) | ARG_4 (%rcx) | ARG_5 (%r8) | ARG_6 (%r9) |
+| syscall   | MacOS Id (%rax) | Linux ID (%rax) | ARG_1 (%rdi)| ARG_2 (%rsi) | ARG_3 (%rdx) | ARG_4 (if syscall `%r10` else `%rcx` ) | ARG_5 (%r8) | ARG_6 (%r9) |
 |-----------|-----------------|-----------------|     :---:   |     :---:    |     :---:    |--------------|--------------|--------------|
 | sys_read  |   0x2000003     |        0        |      fd     | **&** buffer |    count     |              |              |              |
 | sys_write |   0x2000004     |        1        |      fd     | **&** buffer |    count     |              |              |              |
