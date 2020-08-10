@@ -92,7 +92,7 @@ More about section directive:
 
 ### syscall input by register ([Fastcall convention](https://beta.hackndo.com/conventions-d-appel/#fastcall-fast-calling-convention)):
 
-| syscall   | MacOS Id (%rax) | Linux ID (%rax) | ARG_1 (%rdi)| ARG_2 (%rsi) | ARG_3 (%rdx) | ARG_4 (%r10) | ARG_5 (%r8) | ARG_6 (%r9) |
+| syscall   | MacOS Id (%rax) | Linux ID (%rax) | ARG_1 (%rdi)| ARG_2 (%rsi) | ARG_3 (%rdx) | ARG_4 (%rcx) | ARG_5 (%r8) | ARG_6 (%r9) |
 |-----------|-----------------|-----------------|     :---:   |     :---:    |     :---:    |--------------|--------------|--------------|
 | sys_read  |   0x2000003     |        0        |      fd     | **&** buffer |    count     |              |              |              |
 | sys_write |   0x2000004     |        1        |      fd     | **&** buffer |    count     |              |              |              |
@@ -107,7 +107,9 @@ Also, the return value goes into %rax.
 [See linux full table](https://blog.rchapman.org/posts/Linux_System_Call_Table_for_x86_64/)
 [See macOS full table ( the id at the beginning of each prototype, and add 0x2000000 to the id )](https://github.com/opensource-apple/xnu/blob/master/bsd/kern/syscalls.master)  
 [caller-saved and callee-saved registers](https://stackoverflow.com/questions/9268586/what-are-callee-and-caller-saved-registers)
-
+[linux and osx ](https://stackoverflow.com/questions/2535989/what-are-the-calling-conventions-for-unix-linux-system-calls-on-i386-and-x86-6)
+[info++](https://wiki.osdev.org/Calling_Conventions)
+[About caller and callee rules, scratch and preserved registers](https://aaronbloomfield.github.io/pdr/book/x86-64bit-ccc-chapter.pdf)
 ### Flags 
 
 | Flag symbol |        Type Flag       |        Description                    |

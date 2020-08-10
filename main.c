@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/08/10 15:08:35 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/08/10 16:34:12 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,9 +214,11 @@ void	test_ft_create_elem()
 void print_list(t_list *lst)
 {
 	int i = 0;
+	if (lst == NULL)
+		printf("	Empty list !\n");
 	while (lst)
 	{
-		printf("element %d : %p\n", i, lst);
+		printf(" %d : %p\n", i, lst);
 		printf("     data : \"%s\"\n", lst ? lst->data : "(NULL)");
 		printf("     next : \"%p\"\n\n", lst ? lst->next : 0);
 		i++;
@@ -282,6 +284,29 @@ void free_fct(void *nothing)
 	return;
 }
 
+void ft_list_remove_if(t_list **begin_list, void *data_ref, \
+	int (*cmp)(), void (*free_fct)(void *))	
+{
+	t_list *previous = NULL;
+	t_list *actual = *begin_list;
+
+	while (actual)
+	{
+		if (cmp(data_ref, actual->data) == 0)
+		{
+			free_fct(actual->data);
+			if (previous != NULL)
+				previous->next = actual->next;
+			else
+				*begin_list = actual->next;
+			free(actual);
+		}
+		else
+			previous = actual;
+		actual = actual->next;
+	}
+}
+
 void test_ft_list_remove_if()
 {
 	t_list *lst = NULL;
@@ -290,13 +315,35 @@ void test_ft_list_remove_if()
 	ft_list_push_front(&lst, "elem 1");
 	ft_list_push_front(&lst, "elem 2");
 	ft_list_push_front(&lst, "elem 2");
+	ft_list_push_front(&lst, "elem 2");
 	ft_list_push_front(&lst, "elem 0");
 	ft_list_push_front(&lst, "elem 1");
 	ft_list_push_front(&lst, "elem 3");
 	ft_list_push_front(&lst, "elem 3");
+	ft_list_push_front(&lst, "elem 3");
 	
+	printf("%s 1 - Before remove elements %s\n", _BLUE, _GREEN);
 	print_list(lst);
+	
+	printf("%s 2 - Remove elem 2 %s\n", _BLUE, _GREEN);
+	ft_list_remove_if(&lst, "elem 2", cmp,  free_fct);
+	print_list(lst);
+
+	printf("%s 3 - Remove elem 3 %s\n", _BLUE, _GREEN);
+	ft_list_remove_if(&lst, "elem 3", cmp,  free_fct);
+	print_list(lst);
+
+	printf("%s 4 - Remove elem 1 %s\n", _BLUE, _GREEN);
+	ft_list_remove_if(&lst, "elem 1", cmp,  free_fct);
+	print_list(lst);
+
+	printf("%s 4 - Remove elem 0 %s\n", _BLUE, _GREEN);
+	ft_list_remove_if(&lst, "elem 0", cmp,  free_fct);
+	print_list(lst);
+	
+	// printf("%s 2 - elem 2 removed %s\n", _BLUE, _GREEN);
 	// ft_list_remove_if(&lst, "elem 2", cmp,  free_fct);
+	// print_list(lst);
 }
 
 int main()

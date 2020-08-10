@@ -34,14 +34,3 @@ ft_list_push_front:			 ; rdi: **begin_list, rsi: *data
 .list_null:
 	mov [rdi], rax
 	ret
-
-
-
-
-	global ft_list_sort
-ft_list_sort:
-	xor rcx,rcx
-	xor rax,rax
-	xor rdi,rdi
-	xor rsi,rsi
-ret
