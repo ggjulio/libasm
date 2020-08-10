@@ -18,7 +18,7 @@ section .text
 ;void ft_list_remove_if(t_list **begin_list, void *data_ref, \
 ;	int (*cmp)(), void (*free_fct)(void *));
 ft_list_remove_if:
-	xor r10, rbx ;		rbx == previous == NULL
+	xor r10, r10 ;		rbx == previous == NULL
 	mov rax, [rdi];		rax == actual (and first elem now)
 	.loop:
 

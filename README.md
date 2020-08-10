@@ -70,25 +70,24 @@ More about section directive:
 </table>
 
 
-| 8-bit | 16-bit | 32-bit | 64-bit |           Purpose              |
-|-------|--------|--------|--------|               ----             |
-| al    | ax     | eax    | **rax**| accumulaor                     |
-| bl    | bx     | ebx    | **rbx**| base, addressing               |
-| cl    | cx     | ecx    | **rcx**| counter, iterations            |
-| dl    | dx     | edx    | **rdx**| data                           |
-| sil   | si     | esi    | **rsi**|             -                  |
-| dil   | di     | edi    | **rdi**|             -                  |
-| bpl   | bp     | ebp    | **rbp**| frame pointer                  |
-| spl   | sp     | esp    | **rsp**| Stack pointer                  |
-| r8b   | r8w    | r8d    | **r8** |              -                 |
-| r9b   | r9w    | r9d    | **r9** |              -                 |
-| r10b  | r10w   | r10d   | **r10**|              -                 |
-| r11b  | r11w   | r11d   | **r11**|              -                 |
-| r12b  | r12w   | r12d   | **r12**|              -                 |
-| r13b  | r13w   | r13d   | **r13**|              -                 |
-| r14b  | r14w   | r14d   | **r14**|              -                 |
-| r15b  | r15w   | r15d   | **r15**|              -                 |
-
+| 8-bit | 16-bit | 32-bit | 64-bit |           Purpose              | Preserved|
+|-------|--------|--------|--------|               ----             |    ---   |
+| al    | ax     | eax    | **rax**| accumulator                    | No       |
+| bl    | bx     | ebx    | **rbx**| base, addressing               | Yes      |
+| cl    | cx     | ecx    | **rcx**| counter, iterations            | No       |
+| dl    | dx     | edx    | **rdx**| data                           | No       |
+| sil   | si     | esi    | **rsi**|             -                  | No       |
+| dil   | di     | edi    | **rdi**|             -                  | No       |
+| bpl   | bp     | ebp    | **rbp**| frame pointer                  | Yes      |
+| spl   | sp     | esp    | **rsp**| Stack pointer                  | Yes      |
+| r8b   | r8w    | r8d    | **r8** |              -                 | No       |
+| r9b   | r9w    | r9d    | **r9** |              -                 | No       |
+| r10b  | r10w   | r10d   | **r10**|              -                 | No       |
+| r11b  | r11w   | r11d   | **r11**|              -                 | No       |
+| r12b  | r12w   | r12d   | **r12**|              -                 | Yes      |
+| r13b  | r13w   | r13d   | **r13**|              -                 | Yes      |
+| r14b  | r14w   | r14d   | **r14**|              -                 | Yes      |
+| r15b  | r15w   | r15d   | **r15**|              -                 | Yes      |
 
 ### syscall input by register ([Fastcall convention](https://beta.hackndo.com/conventions-d-appel/#fastcall-fast-calling-convention)):
 
