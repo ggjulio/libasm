@@ -6,20 +6,19 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/08/09 20:09:04 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/08/10 15:08:35 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libasm.h"
+
 #include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
 #include <stdlib.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <ctype.h>
-
 #include <errno.h>
 
 // https://misc.flogisoft.com/bash/tip_colors_and_formatting
@@ -212,35 +211,92 @@ void	test_ft_create_elem()
 	if (elem)
 		free(elem);
 }
+void print_list(t_list *lst)
+{
+	int i = 0;
+	while (lst)
+	{
+		printf("element %d : %p\n", i, lst);
+		printf("     data : \"%s\"\n", lst ? lst->data : "(NULL)");
+		printf("     next : \"%p\"\n\n", lst ? lst->next : 0);
+		i++;
+		lst = lst->next;
+	}
+}
+void free_list(t_list *to_free)
+{
+	t_list *tmp = to_free; 
+	
+	while(to_free)
+	{
+		tmp = to_free->next ? to_free->next : NULL;
+		free(to_free);
+		to_free = NULL;
+		to_free = tmp;
+	}
+}
 
 void test_ft_list_push_front()
 {
+	t_list *lst = NULL;
 	print_title("ft_list_push_front"); printf("%s", _GREEN);
 
-	t_list *lst;
-
-	printf("%s 1 - show first element list %s\n", _BLUE, _GREEN);
-	
-	lst = ft_create_elem("old elem");
-	printf(">>> e1 : %p\n", lst);
-	printf("  data : \"%s\"\n", lst ? lst->data : "(NULL)");
-	printf("  next : \"%p\"\n\n", lst ? lst->next : 0);
-	
+	printf("%s 1 - show list before push front %s\n", _BLUE, _GREEN);
+	ft_list_push_front(&lst, "old elem");
+	print_list(lst);
 
 	printf("%s 1 - show  Updated  list %s\n", _BLUE, _GREEN);
-	ft_list_push_front(&lst,"new elem");
-	
-	printf("element 1 : %p\n", lst);
-	printf("  data : \"%s\"\n", lst ? lst->data : "(NULL)");
-	printf("  next : \"%p\"\n\n", lst ? lst->next : 0);
-	
-	if (!lst)
-		return;
-	printf("Element 2 : %p\n", lst);
-	printf("  data : \"%s\"\n", lst->next ? lst->next->data : "(NULL)");
-	printf("  next : \"%p\"\n\n", lst->next ? lst->next->next : 0);
+	ft_list_push_front(&lst, "new elem");
+	print_list(lst);
 
-	free(lst);
+	free_list(lst);
+}
+
+void test_ft_list_size()
+{
+	t_list *lst = NULL;
+	print_title("ft_list_size"); printf("%s", _GREEN);
+
+	ft_list_push_front(&lst, "elem 1");
+	ft_list_push_front(&lst, "elem 2");
+	ft_list_push_front(&lst, "elem 3");
+	ft_list_push_front(&lst, "elem 4");
+
+
+	int expected = 4;
+	int real = ft_list_size(lst);
+	if (real == expected)
+		printf("%d == %d\n", expected, real);
+	else
+		printf("%s%d != %d\n", _RED, expected, real);
+}
+
+int	cmp(char *s1, char *s2)
+{
+	return (strcmp(s1,s2));
+}
+
+void free_fct(void *nothing)
+{
+	(void)nothing;
+	return;
+}
+
+void test_ft_list_remove_if()
+{
+	t_list *lst = NULL;
+	print_title("ft_list_remove_if"); printf("%s", _GREEN);
+	
+	ft_list_push_front(&lst, "elem 1");
+	ft_list_push_front(&lst, "elem 2");
+	ft_list_push_front(&lst, "elem 2");
+	ft_list_push_front(&lst, "elem 0");
+	ft_list_push_front(&lst, "elem 1");
+	ft_list_push_front(&lst, "elem 3");
+	ft_list_push_front(&lst, "elem 3");
+	
+	print_list(lst);
+	// ft_list_remove_if(&lst, "elem 2", cmp,  free_fct);
 }
 
 int main()
@@ -257,9 +313,9 @@ int main()
 	
 	test_ft_atoi_base();
 	test_ft_list_push_front();
-	// print_title("ft_list_size"); printf("%s", _GREEN);
+	test_ft_list_size();
+	test_ft_list_remove_if();
 	// print_title("ft_list_sort"); printf("%s", _GREEN);
-	// print_title("ft_list_remove_if"); printf("%s", _GREEN);
 
 	// //Optional
 	// printf("\n\n%s%s######################## %sAdditional functions %s########################\n", _BOLD, _GREEN, _RED , _GREEN);

@@ -12,30 +12,33 @@
 
 %include "libasm.inc"
 
-default rel 
-
 section .text
 	global ft_list_push_front
 	extern ft_create_elem
 
-ft_list_push_front: ; rdi: **begin_list, rsi: *data 
+ft_list_push_front:			 ; rdi: **begin_list, rsi: *data 
 	push rdi
-	mov rdi, rsi ;  *data 
+	mov rdi, rsi
 	call ft_create_elem
 	pop rdi
-	; test rax, ra
+	test rax, rax
+	jz .end					 ; malloc failed-> return;
 	mov rbx, [rdi]
-	mov qword [rax + 8], rbx
-	mov [rdi], rax
-.end
+	test rbx, rbx
+	jz .list_null 			 ; list null -> jump to .list_null
+	mov qword [rax + 8], rbx ; otherwise -> new->next = *begin_list 
+	mov [rdi], rax			 ; begin_list = new;
+.end:
 	ret
 
-	global ft_list_remove_if
-	global ft_list_size
-	global ft_list_sort
+.list_null:
+	mov [rdi], rax
+	ret
 
-ft_list_remove_if:
-ft_list_size:
+
+
+
+	global ft_list_sort
 ft_list_sort:
 	xor rcx,rcx
 	xor rax,rax
