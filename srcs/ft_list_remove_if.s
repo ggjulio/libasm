@@ -13,16 +13,40 @@
 %include "libasm.inc"
 
 section .text
-	; global ft_list_remove_if
+	global ft_list_remove_if
+	extern free
+;t_list **begin_list, void *data_ref, int (*cmp)()	, void (*free_fct)(void *))	;
+;		rdi			,		rsi		,		rdx		,			rcx				;
 
-;void ft_list_remove_if(t_list **begin_list, void *data_ref, \
-;	int (*cmp)(), void (*free_fct)(void *));
 ft_list_remove_if:
-	xor r10, r10 ;		rbx == previous == NULL
-	mov rax, [rdi];		rax == actual (and first elem now)
+	xor r12, r12 	;		r12 == previous == NULL
+	mov r13, [rdi]	;		r13 == actual (and first elem now)
+	mov r14, rdi	;		r14 == **begin_list
 	.loop:
-
-		jmp .loop
+	test r13, r13
+	jz .end
+		mov rdi, qword [r13]	; arg1 == actual data elem, arg2 (rsi) data_ref 
+		call rdx				; call int cmp()
+		test rax, rax
+		jz .delete
+			mov r12, r13				; previous = actual
+			mov r13, qword [r13 + 8] 	; actual = actual->next
+			jmp .loop
+		.delete:
+			test r12, r12
+			jz .previous_null
+				mov r15, [r12 + 8]
+				mov r15, [r13 + 8]		; previous->next = actual->next;
+			jmp free
+			.previous_null:
+				mov r14, [r13 + 8]
+			.free:
+				mov rdi, [r13 + 8]
+				call rcx			; free actual->data
+				mov rdi, [r13]
+				call free
+		mov r13, qword [r13 + 8] 	; actual = actual->next
+	jmp .loop
 
 .end:
 	ret
