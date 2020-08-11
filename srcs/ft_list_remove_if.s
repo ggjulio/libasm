@@ -12,6 +12,12 @@
 
 %include "libasm.inc"
 
+section .data
+	begin_list dq 0
+	data_ref dq 0
+	func_cmp dq 0
+	func_free_fct dq 0
+
 section .text
 	global ft_list_remove_if
 	extern free
@@ -19,32 +25,40 @@ section .text
 ;		rdi			,		rsi		,		rdx		,			rcx				;
 
 ft_list_remove_if:
+	mov qword [rel begin_list]		, rdi
+	mov qword [rel data_ref]		, rsi	
+	mov qword [rel func_cmp]		, rdx	
+	mov qword [rel func_free_fct]	, rcx	
 	xor r12, r12 	;		r12 == previous == NULL
 	mov r13, [rdi]	;		r13 == actual (and first elem now)
-	mov r14, rdi	;		r14 == **begin_list
+	;14
 	.loop:
 	test r13, r13
 	jz .end
-		mov rdi, qword [r13]	; arg1 == actual data elem, arg2 (rsi) data_ref 
-		call rdx				; call int cmp()
+		mov rdi, qword [r13]	; arg1 == actual data elem 
+		mov rsi, qword [rel data_ref] 
+		call qword [rel func_cmp]
 		test rax, rax
 		jz .delete
+			; not equal, so increment and jmp loop
 			mov r12, r13				; previous = actual
 			mov r13, qword [r13 + 8] 	; actual = actual->next
-			jmp .loop
+	jmp .loop
 		.delete:
 			test r12, r12
 			jz .previous_null
-				mov r15, [r12 + 8]
-				mov r15, [r13 + 8]		; previous->next = actual->next;
-			jmp free
+				mov r15, [rel r12 + 8]
+				mov rax, [rel r13 + 8]
+				mov r15, rax		; previous->next = actual->next;
+			jmp .do_free
 			.previous_null:
-				mov r14, [r13 + 8]
-			.free:
-				mov rdi, [r13 + 8]
-				call rcx			; free actual->data
-				mov rdi, [r13]
-				call free
+				lea rax, [rel begin_list]
+				mov rax, [r13 + 8]
+			.do_free:
+				; mov rdi, [r13 + 8]
+				; call rcx			; free actual->data
+				; mov rdi, [r13]
+				; call free
 		mov r13, qword [r13 + 8] 	; actual = actual->next
 	jmp .loop
 

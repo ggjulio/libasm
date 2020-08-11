@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/08/10 18:20:57 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/08/11 16:09:04 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -275,7 +275,8 @@ void test_ft_list_size()
 
 int	cmp(char *s1, char *s2)
 {
-	return (strcmp(s1,s2));
+	int i = strcmp(s1,s2);
+	return (i);
 }
 
 void free_fct(void *nothing)
@@ -290,7 +291,7 @@ void free_fct(void *nothing)
 // 	t_list *previous = NULL;
 // 	t_list *actual = *begin_list;
 
-// 	while (actual)
+//  	while (actual)
 // 	{
 // 		if (cmp(data_ref, actual->data) == 0)
 // 		{
@@ -305,7 +306,8 @@ void free_fct(void *nothing)
 // 			previous = actual;
 // 		actual = actual->next;
 // 	}
-// 	return;
+//  	return;
+
 // 	while (actual)
 // 	{
 // 		if (cmp(data_ref, actual->data) != 0)
@@ -345,17 +347,17 @@ void test_ft_list_remove_if()
 	ft_list_remove_if(&lst, "elem 2", cmp,  free_fct);
 	print_list(lst);
 
-	printf("%s 3 - Remove elem 3 %s\n", _BLUE, _GREEN);
-	ft_list_remove_if(&lst, "elem 3", cmp,  free_fct);
-	print_list(lst);
+	// printf("%s 3 - Remove elem 3 %s\n", _BLUE, _GREEN);
+	// ft_list_remove_if(&lst, "elem 3", cmp,  free_fct);
+	// print_list(lst);
 
-	printf("%s 4 - Remove elem 1 %s\n", _BLUE, _GREEN);
-	ft_list_remove_if(&lst, "elem 1", cmp,  free_fct);
-	print_list(lst);
+	// printf("%s 4 - Remove elem 1 %s\n", _BLUE, _GREEN);
+	// ft_list_remove_if(&lst, "elem 1", cmp,  free_fct);
+	// print_list(lst);
 
-	printf("%s 4 - Remove elem 0 %s\n", _BLUE, _GREEN);
-	ft_list_remove_if(&lst, "elem 0", cmp,  free_fct);
-	print_list(lst);
+	// printf("%s 4 - Remove elem 0 %s\n", _BLUE, _GREEN);
+	// ft_list_remove_if(&lst, "elem 0", cmp,  free_fct);
+	// print_list(lst);
 	
 	// printf("%s 2 - elem 2 removed %s\n", _BLUE, _GREEN);
 	// ft_list_remove_if(&lst, "elem 2", cmp,  free_fct);
