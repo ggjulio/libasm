@@ -31,7 +31,7 @@ ft_list_remove_if:
 	mov qword [rel func_free_fct]	, rcx	
 	xor r12, r12 	;		r12 == previous == NULL
 	mov r13, [rdi]	;		r13 == actual (and first elem now)
-	;14
+
 	.loop:
 	test r13, r13
 	jz .end
@@ -39,21 +39,23 @@ ft_list_remove_if:
 		mov rsi, qword [rel data_ref] 
 		call qword [rel func_cmp]
 		test rax, rax
-		jz .delete
+		jz .delete_element
 			; not equal, so increment and jmp loop
 			mov r12, r13				; previous = actual
 			mov r13, qword [r13 + 8] 	; actual = actual->next
 	jmp .loop
-		.delete:
+
+		.delete_element:
 			test r12, r12
 			jz .previous_null
-				mov r15, [rel r12 + 8]
-				mov rax, [rel r13 + 8]
+				mov r15, qword [rel r12 + 8]
+				mov rax, qword [rel r13 + 8]
 				mov r15, rax		; previous->next = actual->next;
 			jmp .do_free
 			.previous_null:
-				lea rax, [rel begin_list]
-				mov rax, [r13 + 8]
+				mov rax, [rel begin_list]
+				mov rax, [rax]
+				mov rax, [rel r13 + 8]
 			.do_free:
 				; mov rdi, [r13 + 8]
 				; call rcx			; free actual->data

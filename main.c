@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/08/11 16:09:04 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/08/11 16:43:41 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -330,15 +330,15 @@ void test_ft_list_remove_if()
 	t_list *lst = NULL;
 	print_title("ft_list_remove_if"); printf("%s", _GREEN);
 	
-	ft_list_push_front(&lst, "elem 1");
-	ft_list_push_front(&lst, "elem 2");
-	ft_list_push_front(&lst, "elem 2");
-	ft_list_push_front(&lst, "elem 2");
-	ft_list_push_front(&lst, "elem 0");
-	ft_list_push_front(&lst, "elem 1");
+	// ft_list_push_front(&lst, "elem 1");
+	// ft_list_push_front(&lst, "elem 2");
+	// ft_list_push_front(&lst, "elem 2");
+	// ft_list_push_front(&lst, "elem 0");
+	// ft_list_push_front(&lst, "elem 1");
+	// ft_list_push_front(&lst, "elem 3");
 	ft_list_push_front(&lst, "elem 3");
 	ft_list_push_front(&lst, "elem 3");
-	ft_list_push_front(&lst, "elem 3");
+	ft_list_push_front(&lst, "elem 2");
 	
 	printf("%s 1 - Before remove elements %s\n", _BLUE, _GREEN);
 	print_list(lst);
