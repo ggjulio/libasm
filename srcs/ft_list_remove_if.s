@@ -25,6 +25,10 @@ section .text
 ;		rdi			,		rsi		,		rdx		,			rcx				;
 
 ft_list_remove_if:
+	push r12
+	push r13
+	push r15
+	
 	mov qword [rel begin_list]		, rdi
 	mov qword [rel data_ref]		, rsi	
 	mov qword [rel func_cmp]		, rdx	
@@ -65,4 +69,7 @@ ft_list_remove_if:
 	jmp .loop
 
 .end:
+	pop r15
+	pop r14
+	pop r13
 	ret
