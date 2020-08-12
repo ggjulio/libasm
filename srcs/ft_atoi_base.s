@@ -45,7 +45,7 @@ ft_atoi_base:
 
 	.test:
 	mov r10, [base_size]
-	lea rax, arg1
+	; lea rax, arg1 ; invalid combination of opcode and operands, under linux
 
 	mov r10, [base_size]
 	ret

@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/08/12 18:44:24 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/08/13 01:46:29 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -373,19 +373,19 @@ void test_ft_list_sort()
 
 int main()
 {
-	// test_ft_strlen();
-	// test_ft_strcpy();
-	// test_ft_strcmp();
-	// test_ft_strdup();
-	// test_ft_write();
-	// test_ft_read();
+	test_ft_strlen();
+	test_ft_strcpy();
+	test_ft_strcmp();
+	test_ft_strdup();
+	test_ft_write();
+	test_ft_read();
 
 	//Bonus Part
 	// printf("\n\n%s%s######################## %sBonus functions %s########################\n", _BOLD, _GREEN, _RED , _GREEN);
 	
-	// test_ft_list_push_front();
-	// test_ft_list_size();
-	// test_ft_list_remove_if();
+	test_ft_list_push_front();
+	test_ft_list_size();
+	test_ft_list_remove_if();
 	test_ft_list_sort();
 
 	// test_ft_atoi_base();
