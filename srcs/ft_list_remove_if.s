@@ -28,7 +28,6 @@ ft_list_remove_if:
 	push r12
 	push r13
 	push r15
-	
 	mov qword [rel begin_list]		, rdi
 	mov qword [rel data_ref]		, rsi	
 	mov qword [rel func_cmp]		, rdx	
@@ -44,22 +43,20 @@ ft_list_remove_if:
 		call qword [rel func_cmp]
 		test rax, rax
 		jz .delete_element
-			; not equal, so increment and jmp loop
 			mov r12, r13				; previous = actual
 			mov r13, qword [r13 + 8] 	; actual = actual->next
 	jmp .loop
-
 		.delete_element:
 			test r12, r12
 			jz .previous_null
-				mov r15, [rel r12 + 8]
-				mov rax, [rel r13 + 8]
-				mov r15, rax		; previous->next = actual->next;
+				lea rax, qword [rel r12 + 8]
+				mov r15, qword [rel r13 + 8]
+				mov qword [rax], r15		; previous->next = actual->next;
 			jmp .do_free
-			.previous_null:			; *begin_list = actual->next
+			.previous_null:			
 				mov rax, qword [rel begin_list]
 				mov r15, [rel r13 + 8]
-				mov qword [rax] ,  r15
+				mov qword [rax] ,  r15		; *begin_list = actual->next
 			.do_free:
 				; mov rdi, [r13 + 8]
 				; call rcx			; free actual->data
@@ -70,6 +67,6 @@ ft_list_remove_if:
 
 .end:
 	pop r15
-	pop r14
 	pop r13
+	pop r12
 	ret
