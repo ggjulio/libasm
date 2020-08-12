@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/08/12 13:49:04 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/08/12 14:09:07 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -330,15 +330,15 @@ void test_ft_list_remove_if()
 	t_list *lst = NULL;
 	print_title("ft_list_remove_if"); printf("%s", _GREEN);
 	
-	ft_list_push_front(&lst, "elem 1");
-	ft_list_push_front(&lst, "elem 2");
-	ft_list_push_front(&lst, "elem 2");
-	ft_list_push_front(&lst, "elem 0");
-	ft_list_push_front(&lst, "elem 1");
-	ft_list_push_front(&lst, "elem 3");
-	ft_list_push_front(&lst, "elem 3");
-	ft_list_push_front(&lst, "elem 2");
-	ft_list_push_front(&lst, "elem 3");
+	// ft_list_push_front(&lst, "elem 1");
+	// ft_list_push_front(&lst, "elem 2");
+	// ft_list_push_front(&lst, "elem 2");
+	// ft_list_push_front(&lst, "elem 0");
+	// ft_list_push_front(&lst, "elem 1");
+	// ft_list_push_front(&lst, "elem 3");
+	// ft_list_push_front(&lst, "elem 3");
+	// ft_list_push_front(&lst, "elem 3");
+	// ft_list_push_front(&lst, "elem 2");
 	
 	printf("%s 1 - Before remove elements %s\n", _BLUE, _GREEN);
 	print_list(lst);
@@ -366,20 +366,20 @@ void test_ft_list_remove_if()
 
 int main()
 {
-	test_ft_strlen();
-	test_ft_strcpy();
-	test_ft_strcmp();
+// 	test_ft_strlen();
+// 	test_ft_strcpy();
+// 	test_ft_strcmp();
 	test_ft_strdup();
-	test_ft_write();
-	test_ft_read();
+	// test_ft_write();
+	// test_ft_read();
 
 	//Bonus Part
 	// printf("\n\n%s%s######################## %sBonus functions %s########################\n", _BOLD, _GREEN, _RED , _GREEN);
 	
-	test_ft_atoi_base();
-	test_ft_list_push_front();
-	test_ft_list_size();
-	test_ft_list_remove_if();
+	// test_ft_atoi_base();
+	// test_ft_list_push_front();
+	// test_ft_list_size();
+	// test_ft_list_remove_if();
 	// print_title("ft_list_sort"); printf("%s", _GREEN);
 
 	// //Optional
@@ -387,5 +387,6 @@ int main()
 
 	// test_ft_isspace();
 	// test_ft_create_elem();
+	system("leaks debug");
 	return (0);
 }
