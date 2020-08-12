@@ -58,10 +58,10 @@ ft_list_remove_if:
 				mov r15, [rel r13 + 8]
 				mov qword [rax] ,  r15		; *begin_list = actual->next
 			.do_free:
-				lea rdi, [r13]
-				call qword [rel func_free_fct]			; free actual->data
+				mov rdi, [r13]
+				call qword [rel func_free_fct]	; free the data
 				mov rdi, r13
-				call free
+				call free						; free actual element
 		mov r13, qword [r13 + 8] 	; actual = actual->next
 	jmp .loop
 
