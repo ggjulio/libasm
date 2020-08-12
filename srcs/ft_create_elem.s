@@ -17,6 +17,7 @@ section .text
 	extern malloc
 
 ft_create_elem:
+	push rbx
 	mov rbx, rdi
 	mov rdi, 16
 	call malloc
@@ -25,4 +26,5 @@ ft_create_elem:
 	mov qword [rax], rbx
 	mov qword [rax + 8], 0
 .end:
+	pop rbx
 	ret

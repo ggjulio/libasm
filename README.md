@@ -406,6 +406,8 @@ https://nasm.us/doc/nasmdoc3.html#section-3.3
 https://stackoverflow.com/questions/26394359/mach-o-64-bit-format-does-not-support-32-bit-absolute-addresses-nasm   
 https://forum.nasm.us/index.php?topic=1970.0   
 
+##### Segfault (stack_not_16_byte_aligned_error) :
+http://sevanspowell.net/posts/learning-nasm-on-macos.html
 
 ### Ressources
 

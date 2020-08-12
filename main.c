@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/08/12 14:09:07 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/08/12 14:22:01 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -278,13 +278,11 @@ int	cmp(char *s1, char *s2)
 	int i = strcmp(s1,s2);
 	return (i);
 }
-
 void free_fct(void *nothing)
 {
 	(void)nothing;
 	return;
 }
-
 // void ft_list_remove_if(t_list **begin_list, void *data_ref, \
 // 	int (*cmp)(), void (*free_fct)(void *))	
 // {
@@ -307,22 +305,6 @@ void free_fct(void *nothing)
 // 		actual = actual->next;
 // 	}
 //  	return;
-
-// 	while (actual)
-// 	{
-// 		if (cmp(data_ref, actual->data) != 0)
-// 			previous = actual;
-// 		else 
-// 		{
-// 			if (previous != NULL)
-// 				previous->next = actual->next;
-// 			else
-// 				*begin_list = actual->next;
-// 			free_fct(actual->data);
-// 			free(actual);
-// 		}
-// 		actual = actual->next;
-// 	}
 // }
 
 void test_ft_list_remove_if()
@@ -366,10 +348,10 @@ void test_ft_list_remove_if()
 
 int main()
 {
-// 	test_ft_strlen();
-// 	test_ft_strcpy();
-// 	test_ft_strcmp();
-	test_ft_strdup();
+	// test_ft_strlen();
+	// test_ft_strcpy();
+	// test_ft_strcmp();
+	// test_ft_strdup();
 	// test_ft_write();
 	// test_ft_read();
 
@@ -377,9 +359,9 @@ int main()
 	// printf("\n\n%s%s######################## %sBonus functions %s########################\n", _BOLD, _GREEN, _RED , _GREEN);
 	
 	// test_ft_atoi_base();
-	// test_ft_list_push_front();
-	// test_ft_list_size();
-	// test_ft_list_remove_if();
+	test_ft_list_push_front();
+	test_ft_list_size();
+	test_ft_list_remove_if();
 	// print_title("ft_list_sort"); printf("%s", _GREEN);
 
 	// //Optional
