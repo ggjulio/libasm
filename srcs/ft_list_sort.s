@@ -44,7 +44,7 @@ ft_list_sort:
 		.do_swap:
 		test r12, r12
 		jz .previous_null
-			lea rax, qword [rel r12 + 8]
+			lea rax, [rel r12 + 8]
 			mov r15, qword [rel r13 + 8]
 			mov qword [rax], r15		; previous->next = actual->next;
 		jmp .end_swap
@@ -53,11 +53,11 @@ ft_list_sort:
 			mov r15, [rel r13 + 8]
 			mov qword [rax] ,  r15		; *begin_list = actual->next
 		.end_swap:
-			lea rax, qword [rel r13 + 8]
+			lea rax, [rel r13 + 8]
 			mov r15, qword [rel r14 + 8]
 			mov qword [rax], r15		; actual->next = next->next;
 			
-			lea rax, qword [rel r14 + 8]
+			lea rax, [rel r14 + 8]
 			mov r15, qword [rel r13]
 			mov qword [rax], r15		; next->next = actual;
 		.reset_actual_to_begin_list:
