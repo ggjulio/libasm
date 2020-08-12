@@ -21,9 +21,9 @@ section .data
 section .text
 	global ft_list_remove_if
 	extern free
+
 ;t_list **begin_list, void *data_ref, int (*cmp)()	, void (*free_fct)(void *))	;
 ;		rdi			,		rsi		,		rdx		,			rcx				;
-
 ft_list_remove_if:
 	push r12
 	push r13
@@ -34,7 +34,6 @@ ft_list_remove_if:
 	mov qword [rel func_free_fct]	, rcx	
 	xor r12, r12 	;		r12 == previous == NULL
 	mov r13, [rdi]	;		r13 == actual (and first elem now)
-
 	.loop:
 	test r13, r13
 	jz .end
@@ -64,7 +63,6 @@ ft_list_remove_if:
 				call free						; free actual element
 		mov r13, qword [r13 + 8] 	; actual = actual->next
 	jmp .loop
-
 .end:
 	pop r15
 	pop r13

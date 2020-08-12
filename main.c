@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/08/12 15:32:03 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/08/12 15:35:33 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,7 +201,7 @@ void test_ft_atoi_base()
 	printf("10 == %d\n", ret);
 }
 
-void	test_ft_create_elem()
+void test_ft_create_elem()
 {
 	print_title("ft_create_elem"); printf("%s", _GREEN);
 	t_list	*elem = ft_create_elem("test");
@@ -283,29 +283,6 @@ void free_fct(void *nothing)
 	(void)nothing;
 	return;
 }
-// void ft_list_remove_if(t_list **begin_list, void *data_ref, \
-// 	int (*cmp)(), void (*free_fct)(void *))	
-// {
-// 	t_list *previous = NULL;
-// 	t_list *actual = *begin_list;
-//
-//  	while (actual)
-// 	{
-// 		if (cmp(data_ref, actual->data) == 0)
-// 		{
-// 			if (previous != NULL)
-// 				previous->next = actual->next;
-// 			else
-// 				*begin_list = actual->next;
-// 			free_fct(actual->data);
-// 			free(actual);
-// 		}
-// 		else
-// 			previous = actual;
-// 		actual = actual->next;
-// 	}
-//  	return;
-// }
 
 void test_ft_list_remove_if()
 {
