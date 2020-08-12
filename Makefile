@@ -76,7 +76,7 @@ ifeq ($(UNAME), Darwin)
 	SFLAGS += -f macho64 -d MACHO64
 else
 	#Linus and others...
-	SFLAGS += -f elf64 -d ELF64
+	SFLAGS += -f elf64 -d ELF64 -g -w+all -F dwarf
 endif
 
 all: $(NAME)
