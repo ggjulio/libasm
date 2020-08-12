@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/08/12 15:49:18 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/08/12 18:44:24 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -308,34 +308,86 @@ void test_ft_list_remove_if()
 	printf("%s 4 - Remove elem 0 %s\n", _BLUE, _GREEN);
 	ft_list_remove_if(&lst, "elem 0", cmp_remove,  free_fct);
 	print_list(lst);
-	
 
 	free_list(lst);
-
 }
+
+int cmp_sort(char *s1, char *s2)
+{
+	return (strcmp(s1,s2));
+}
+
+// void			ft_list_sort(t_list **begin_list, int (*cmp)())
+// {
+// 	t_list *previous = NULL;
+// 	t_list *actual = *begin_list;
+// 	t_list *next = (*begin_list)->next;
+	
+// 	while (actual->next)
+	// {
+	// 	if (cmp(actual->data, next->data) > 0)
+	// 	{
+	// 		if (previous != NULL)
+	// 			previous->next = actual->next;
+	// 		else
+	// 			*begin_list =actual->next;	
+
+	// 		actual->next= next->next;
+	// 		next->next = actual;
+
+	// 		previous = NULL;
+	// 		actual = *begin_list;
+	// 		next = actual->next;
+	// 		continue;
+	// 	}	
+	// 	previous = actual;
+	// 	actual = actual->next;
+	// 	next = actual->next;
+	// }
+// }
 
 
 void test_ft_list_sort()
 {
-	
+	t_list *lst = NULL;
+
+	print_title("ft_list_sort"); printf("%s", _GREEN);
+	// ft_list_push_front(&lst, "elem 5");
+	// ft_list_push_front(&lst, "elem 7");
+	// ft_list_push_front(&lst, "ah !");
+	// ft_list_push_front(&lst, "elem3");
+	// ft_list_push_front(&lst, "elem 1");
+	// ft_list_push_front(&lst, "ahh !");
+	ft_list_push_front(&lst, "elem 7");
+	ft_list_push_front(&lst, "elem 5");
+	ft_list_push_front(&lst, "elem 7");
+
+	printf("%s 1 - Before sort %s\n", _BLUE, _GREEN);
+	print_list(lst);
+	ft_list_sort(&lst, cmp_sort);
+	printf("%s 2 - After sort %s\n", _BLUE, _GREEN);
+	print_list(lst);
+
+	free(lst);
 }
 
 int main()
 {
-	test_ft_strlen();
-	test_ft_strcpy();
-	test_ft_strcmp();
-	test_ft_strdup();
-	test_ft_write();
-	test_ft_read();
+	// test_ft_strlen();
+	// test_ft_strcpy();
+	// test_ft_strcmp();
+	// test_ft_strdup();
+	// test_ft_write();
+	// test_ft_read();
 
 	//Bonus Part
 	// printf("\n\n%s%s######################## %sBonus functions %s########################\n", _BOLD, _GREEN, _RED , _GREEN);
 	
-	test_ft_list_push_front();
-	test_ft_list_size();
-	test_ft_list_remove_if();
-	// print_title("ft_list_sort"); printf("%s", _GREEN);
+	// test_ft_list_push_front();
+	// test_ft_list_size();
+	// test_ft_list_remove_if();
+	test_ft_list_sort();
+
 	// test_ft_atoi_base();
 
 	// //Optional
