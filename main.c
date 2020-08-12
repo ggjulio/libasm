@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/08/11 16:43:41 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/08/12 13:05:39 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -290,7 +290,7 @@ void free_fct(void *nothing)
 // {
 // 	t_list *previous = NULL;
 // 	t_list *actual = *begin_list;
-
+//
 //  	while (actual)
 // 	{
 // 		if (cmp(data_ref, actual->data) == 0)

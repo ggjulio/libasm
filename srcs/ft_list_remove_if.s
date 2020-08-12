@@ -52,14 +52,14 @@ ft_list_remove_if:
 		.delete_element:
 			test r12, r12
 			jz .previous_null
-				mov r15, qword [rel r12 + 8]
-				mov rax, qword [rel r13 + 8]
+				mov r15, [rel r12 + 8]
+				mov rax, [rel r13 + 8]
 				mov r15, rax		; previous->next = actual->next;
 			jmp .do_free
-			.previous_null:
-				mov rax, [rel begin_list]
-				mov rax, [rax]
-				mov rax, [rel r13 + 8]
+			.previous_null:			; *begin_list = actual->next
+				mov rax, qword [rel begin_list]
+				mov r15, [rel r13 + 8]
+				mov qword [rax] ,  r15
 			.do_free:
 				; mov rdi, [r13 + 8]
 				; call rcx			; free actual->data
