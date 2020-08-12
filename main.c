@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/08/12 15:35:33 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/08/12 15:49:18 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,16 +90,12 @@ void test_ft_strcmp()
 	char s7[5] = "z";
 
 	printf("%d == %d\n", ft_strcmp(s1,s1), strcmp(s1,s1));
-	
 	printf("%d == %d\n", ft_strcmp(s1,s2), strcmp(s1,s2));
 	printf("%d == %d\n", ft_strcmp(s1,s3), strcmp(s1,s3));
 	printf("%d == %d\n", ft_strcmp(s1,s4), strcmp(s1,s4));
-	
+
 	printf("%d == %d\n", ft_strcmp(s6,s6), strcmp(s6,s6));
-
 	printf("%d == %d\n", ft_strcmp(s6,s7), strcmp(s6,s7));
-
-		
 }
 
 void test_ft_strdup()
@@ -273,7 +269,7 @@ void test_ft_list_size()
 	free_list(lst);
 }
 
-int	cmp(char *s1, char *s2)
+int	cmp_remove(char *s1, char *s2)
 {
 	int i = strcmp(s1,s2);
 	return (i);
@@ -301,16 +297,16 @@ void test_ft_list_remove_if()
 	printf("%s 1 - Before remove elements %s\n", _BLUE, _GREEN);
 	print_list(lst);
 	printf("%s 2 - Remove elem 2 %s\n", _BLUE, _GREEN);
-	ft_list_remove_if(&lst, "elem 2", cmp,  free_fct);
+	ft_list_remove_if(&lst, "elem 2", cmp_remove,  free_fct);
 	print_list(lst);
 	printf("%s 3 - Remove elem 3 %s\n", _BLUE, _GREEN);
-	ft_list_remove_if(&lst, "elem 3", cmp,  free_fct);
+	ft_list_remove_if(&lst, "elem 3", cmp_remove,  free_fct);
 	print_list(lst);
 	printf("%s 4 - Remove elem 1 %s\n", _BLUE, _GREEN);
-	ft_list_remove_if(&lst, "elem 1", cmp,  free_fct);
+	ft_list_remove_if(&lst, "elem 1", cmp_remove,  free_fct);
 	print_list(lst);
 	printf("%s 4 - Remove elem 0 %s\n", _BLUE, _GREEN);
-	ft_list_remove_if(&lst, "elem 0", cmp,  free_fct);
+	ft_list_remove_if(&lst, "elem 0", cmp_remove,  free_fct);
 	print_list(lst);
 	
 
@@ -318,30 +314,35 @@ void test_ft_list_remove_if()
 
 }
 
+
+void test_ft_list_sort()
+{
+	
+}
+
 int main()
 {
-	// test_ft_strlen();
-	// test_ft_strcpy();
-	// test_ft_strcmp();
-	// test_ft_strdup();
-	// test_ft_write();
-	// test_ft_read();
+	test_ft_strlen();
+	test_ft_strcpy();
+	test_ft_strcmp();
+	test_ft_strdup();
+	test_ft_write();
+	test_ft_read();
 
 	//Bonus Part
 	// printf("\n\n%s%s######################## %sBonus functions %s########################\n", _BOLD, _GREEN, _RED , _GREEN);
 	
-	// test_ft_atoi_base();
-	// test_ft_list_push_front();
-	// test_ft_list_size();
+	test_ft_list_push_front();
+	test_ft_list_size();
 	test_ft_list_remove_if();
 	// print_title("ft_list_sort"); printf("%s", _GREEN);
+	// test_ft_atoi_base();
 
 	// //Optional
 	// printf("\n\n%s%s######################## %sAdditional functions %s########################\n", _BOLD, _GREEN, _RED , _GREEN);
 
 	// test_ft_isspace();
 	// test_ft_create_elem();
-	system("leaks debug");
 
 	return (0);
 }
