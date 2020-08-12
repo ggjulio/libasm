@@ -23,10 +23,10 @@ ft_list_push_front:			 ; rdi: **begin_list, rsi: *data
 	pop rdi
 	test rax, rax
 	jz .end					 ; malloc failed-> return;
-	mov rbx, [rdi]
-	test rbx, rbx
+	mov r8, [rdi]
+	test r8, r8
 	jz .list_null 			 ; list null -> jump to .list_null
-	mov qword [rax + 8], rbx ; otherwise -> new->next = *begin_list 
+	mov qword [rax + 8], r8 ; otherwise -> new->next = *begin_list 
 	mov [rdi], rax			 ; begin_list = new;
 .end:
 	ret
