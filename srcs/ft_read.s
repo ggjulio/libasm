@@ -19,10 +19,20 @@ section .text
 ft_read:
 	mov rax, SYS_READ
 	syscall
+	
+%ifdef MACHO64
 	jnc .end
 	push rax
 	call SYM_ERRNO
 	pop qword [rax]
+%else
+	cmp rax, 0
+	jge .end
+	push rax
+	call SYM_ERRNO
+	pop qword [rax]
+	neg qword [rax]		
+%endif
 	mov rax, -1
 .end:
 	ret
