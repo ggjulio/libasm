@@ -68,7 +68,7 @@ CC      = clang
 CFLAGS  = -Wall -Wextra -Werror -g # -fsanitize=address  -fsanitize=undefined -fstack-protector  
 
 AS      = nasm
-SFLAGS	= ""
+SFLAGS	= 
 
 #OS specific
 ifeq ($(UNAME), Darwin)
