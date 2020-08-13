@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/08/13 15:58:00 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/08/13 16:25:36 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -314,15 +314,17 @@ void test_ft_list_remove_if()
 
 int cmp_sort(char *s1, char *s2)
 {
-	return (strcmp(s1,s2));
+	return (ft_strcmp(s1,s2));
 }
 
 void			ft_list_sort_c(t_list **begin_list, int (*cmp)())
 {
 	t_list *previous = NULL;
 	t_list *actual = *begin_list;
-	t_list *next = (*begin_list)->next;
 	
+	if (actual == NULL)
+		return;
+	t_list *next = (*begin_list)->next;
 	while (actual->next)
 	{
 		if (cmp(actual->data, next->data) > 0)
@@ -352,15 +354,18 @@ void test_ft_list_sort()
 	t_list *lst = NULL;
 
 	print_title("ft_list_sort"); printf("%s", _GREEN);
-	// ft_list_push_front(&lst, "elem 5");
-	// ft_list_push_front(&lst, "elem 7");
-	// ft_list_push_front(&lst, "ah !");
-	// ft_list_push_front(&lst, "elem3");
-	// ft_list_push_front(&lst, "elem 1");
-	// ft_list_push_front(&lst, "ahh !");
-	ft_list_push_front(&lst, "elem 7");
 	ft_list_push_front(&lst, "elem 5");
 	ft_list_push_front(&lst, "elem 7");
+	ft_list_push_front(&lst, "ah !");
+	ft_list_push_front(&lst, "elem3");
+	ft_list_push_front(&lst, "elem 1");
+	ft_list_push_front(&lst, "ahh !");
+	ft_list_push_front(&lst, "elem 7");
+	ft_list_push_front(&lst, "elem 2");
+	ft_list_push_front(&lst, "elem 4");
+	ft_list_push_front(&lst, "elem 5");
+	ft_list_push_front(&lst, "elem 7");
+
 
 	printf("%s 1 - Before sort %s\n", _BLUE, _GREEN);
 	print_list(lst);
@@ -368,7 +373,7 @@ void test_ft_list_sort()
 	printf("%s 2 - After sort %s\n", _BLUE, _GREEN);
 	print_list(lst);
 
-	free(lst);
+	free_list(lst);
 }
 
 int main()
@@ -395,6 +400,6 @@ int main()
 
 	// test_ft_isspace();
 	// test_ft_create_elem();
-
+	// system("leaks debug");
 	return (0);
 }
