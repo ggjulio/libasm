@@ -50,9 +50,8 @@ jne .list_not_null
 		.do_swap:
 		test r12, r12
 		jz .previous_null
-			lea rax, [rel r12 + 8]
 			mov r15, qword [rel r13 + 8]
-			mov qword [rax], r15		; previous->next = actual->next;
+			mov qword[rel r12 + 8], r15		; previous->next = actual->next;
 		jmp .end_swap
 		.previous_null:
 			mov rax, qword [rel begin_list]
