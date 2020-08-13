@@ -48,7 +48,6 @@ ft_list_remove_if:
 		.delete_element:
 			test r12, r12
 			jz .previous_null
-				; lea rax, [rel r12 + 8]
 				mov r15, qword [rel r13 + 8]
 				mov qword [rel r12 + 8], r15		; previous->next = actual->next;
 			jmp .do_free
@@ -57,11 +56,12 @@ ft_list_remove_if:
 				mov r15, [rel r13 + 8]
 				mov qword [rax] ,  r15		; *begin_list = actual->next
 			.do_free:
+				mov r15, qword [r13 + 8]
 				mov rdi, [r13]
 				call qword [rel func_free_fct]	; free the data
 				mov rdi, r13
 				call free						; free actual element
-		mov r13, qword [r13 + 8] 	; actual = actual->next
+		mov r13, r15	; actual = actual->next
 	jmp .loop
 .end:
 	pop r15
