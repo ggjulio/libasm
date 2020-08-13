@@ -13,44 +13,46 @@
 %include "libasm.inc"
 
 section .data
-	arg1:  dq 0
-	arg2:  dq 0
+	base_string:  dq 0
 	base_size: dq 0
 	sign: db 0
 
 section .text
 	global ft_atoi_base
-
 	extern ft_isspace
 	extern ft_strlen
-	default rel
 
+; int		ft_atoi_base(char *str, char *base)
 ft_atoi_base:
 	; check if both of string are not empty
 	cmp byte [rdi], 0
 	je	.error
 	cmp byte [rsi], 0
 	je	.error
+	push r12
+	push r13
+	push r14
 
-	; save args to memory before call function
-	; lea rdx, [arg1]
-	; mov  [rdx], rdi
-	; lea rdx,  arg2
-	; mov [rdx], rsi
-	
-	mov rdi, rsi
-	call ft_strlen
-	mov qword [base_size], rax
+	lea r12, [rdi]	; str string
+	xor r13, r13	; index of str
+	xor r14, r14	; result
+	.skip_spaces:
+		mov rdi, [rel r12 + r13]
+		call ft_isspace
+		test rax, rax
+		jz .skip_sign
+		add r13,1
+	jmp .skip_spaces
+	.skip_sign:
+	; mov rdi, rsi
+	; call ft_strlen
+	; mov qword [base_size], rax
 
-
-	.test:
-	mov r10, [base_size]
-	; lea rax, arg1 ; invalid combination of opcode and operands, under linux
-
-	mov r10, [base_size]
+.end:
+	pop r14
+	pop r13
+	pop r12
 	ret
-
-
-	.error:
-		mov rax, -1
-		ret
+.error:
+	mov rax, 0
+	ret
