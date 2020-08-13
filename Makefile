@@ -76,7 +76,7 @@ ifeq ($(UNAME), Darwin)
 	SFLAGS += -f macho64 -d MACHO64
 else
 	#Linus and others...
-	SFLAGS += -f elf64 -d ELF64 -g -w+all -F dwarf
+	SFLAGS += -f elf64 -d ELF64
 endif
 
 all: $(NAME)
@@ -97,6 +97,7 @@ run: $(NAME)
 	@printf "$(_BOLD)$(_RED)########################## $(_GREEN)Let's go !$(_RED) ##########################$(_R)\n"
 	@./debug
 
+debug:	SFLAGS += -g -w+all -F dwarf
 debug: $(NAME)
 	@$(CC) $(CFLAGS) main.c -L. -l asm -o debug
 	@printf "$(_BOLD)$(_RED)########################## $(_GREEN)Let's go !$(_RED) ##########################$(_R)\n"
