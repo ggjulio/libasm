@@ -20,19 +20,19 @@ ft_write:
 	mov rax, SYS_WRITE
 	syscall
 
-%ifdef MACHO64
-	jnc .end
-	push rax
-	call SYM_ERRNO
-	pop qword [rax]
-%else
-	cmp rax, 0
-	jge .end
-	push rax
-	call SYM_ERRNO
-	pop qword [rax]
-	neg qword [rax]		
-%endif
+	%ifdef MACHO64
+		jnc .end
+		push rax
+		call SYM_ERRNO
+		pop qword [rax]
+	%else
+		cmp rax, 0
+		jge .end
+		push rax
+		call SYM_ERRNO
+		pop qword [rax]
+		neg qword [rax]		
+	%endif
 
 	mov rax, -1
 .end:
