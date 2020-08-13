@@ -29,18 +29,20 @@ ft_list_sort:
 	xor r12, r12		; r12 == previous element
 	mov r13, [rdi]		; r13 == actual element
 	mov r14, [r13 + 8]	; r14 == next element
+
 	.loop:
 	test r14, r14		; if no next element, go to end
 	jz .end
 		mov rdi, qword [r13]
 		mov rsi, qword [r14]
 		call qword [rel func_cmp]
-		test rax, rax
-		jl .do_swap
+		cmp rax, 0
+		jg .do_swap
 			mov r12, r13				; previous = actual
 			mov r13, qword [r13 + 8]	; actual = actual->next
 			mov r14, qword [r13 + 8]	; next = actual->next
 	jmp .loop
+
 		.do_swap:
 		test r12, r12
 		jz .previous_null
@@ -53,18 +55,14 @@ ft_list_sort:
 			mov r15, [rel r13 + 8]
 			mov qword [rax] ,  r15		; *begin_list = actual->next
 		.end_swap:
-			lea rax, [rel r13 + 8]
 			mov r15, qword [rel r14 + 8]
-			mov qword [rax], r15		; actual->next = next->next;
-			
-			lea rax, [rel r14 + 8]
-			mov r15, qword [rel r13]
-			mov qword [rax], r15		; next->next = actual;
+			mov qword [rel r13 + 8], r15		; actual->next = next->next;
+			mov qword [rel r14 + 8], r13		; next->next = actual;
 		.reset_actual_to_begin_list:
 			xor r12, r12
 			mov r13, qword [rel begin_list]
-			mov r13, r13
-			mov r14, [r13 + 8]
+			mov r13, [r13]
+			mov r14, [rel r13 + 8]
 	jmp .loop
 
 .end:

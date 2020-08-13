@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/08/13 01:46:29 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/08/13 15:58:00 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -317,34 +317,34 @@ int cmp_sort(char *s1, char *s2)
 	return (strcmp(s1,s2));
 }
 
-// void			ft_list_sort(t_list **begin_list, int (*cmp)())
-// {
-// 	t_list *previous = NULL;
-// 	t_list *actual = *begin_list;
-// 	t_list *next = (*begin_list)->next;
+void			ft_list_sort_c(t_list **begin_list, int (*cmp)())
+{
+	t_list *previous = NULL;
+	t_list *actual = *begin_list;
+	t_list *next = (*begin_list)->next;
 	
-// 	while (actual->next)
-	// {
-	// 	if (cmp(actual->data, next->data) > 0)
-	// 	{
-	// 		if (previous != NULL)
-	// 			previous->next = actual->next;
-	// 		else
-	// 			*begin_list =actual->next;	
+	while (actual->next)
+	{
+		if (cmp(actual->data, next->data) > 0)
+		{
+			if (previous != NULL)
+				previous->next = actual->next;
+			else
+				*begin_list = actual->next;	
 
-	// 		actual->next= next->next;
-	// 		next->next = actual;
+			actual->next= next->next;
+			next->next = actual;
 
-	// 		previous = NULL;
-	// 		actual = *begin_list;
-	// 		next = actual->next;
-	// 		continue;
-	// 	}	
-	// 	previous = actual;
-	// 	actual = actual->next;
-	// 	next = actual->next;
-	// }
-// }
+			previous = NULL;
+			actual = *begin_list;
+			next = actual->next;
+			continue;
+		}	
+		previous = actual;
+		actual = actual->next;
+		next = actual->next;
+	}
+}
 
 
 void test_ft_list_sort()
