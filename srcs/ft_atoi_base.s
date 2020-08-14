@@ -28,27 +28,22 @@ ft_atoi_base:
 	je    .error
 	cmp rsi, 0
 	je    .error
-	
-	call check_base
-	cmp rax, -1
-	je .error
-
 	push r12
 	push r13
 	push r14
 	push r15
-
-	lea r12, [rdi]						; r12 = str
 	mov qword [rel base_string], rsi 	; save base string
+	lea r12, [rdi]						; r12 = str
 	xor r13, r13						; r13 = index of str
 	xor r14, r14						; r14 = result
 	xor r15, r15						; r15 = sign
 
 	mov rdi, rsi
-	call ft_strlen
+	call check_base
+	test rax, rax
+	je .end
+	
 	mov qword [rel base_size], rax 	; save base len
-
-
 	.skip_spaces:
 		mov dil, [rel r12 + r13]
 		call ft_isspace
@@ -70,7 +65,7 @@ ft_atoi_base:
 		mov dil, [rel r12 + r13]
 		cmp dil, 0		; check null byte
 		jz .do_sign
-		mov rsi, [rel base_string] ; ???????????????????????????????????
+		mov rsi, [rel base_string]
 		call get_index
 		cmp rax, -1		; check if get_index has found the character
 		je .do_sign
@@ -83,19 +78,19 @@ ft_atoi_base:
 		add r13, 1 ; increment string
 	jmp .do_op
 	.do_sign:
+		mov rax, r14 ; mov result in rax
 		test r15, 1
 		jz .end
-		neg r14
+		neg rax
 	.end:
-		mov rax, r14 ; mov result in rax
 		pop r15
 		pop r14
 		pop r13
 		pop r12
-		ret
+	ret
 	.error:
 		mov rax, 0
-		ret
+	ret
 
 ; ---------------------- ;
 ;         Helpers        ;
@@ -134,27 +129,36 @@ get_index:
 ;int		check_base(char *str_base)
 check_base:
 	push r12
-
+	push r13
 	mov r12, rdi
-	xor rcx, rcx
+	xor r13, r13
 	.loop:
-		mov dil, [r12 + rcx]
-		cmp dil, 0
-		jz .end
+		mov dil, [r12 + r13]
+		test dil, dil
+		jz .done			; end loop at '\0'
 		cmp dil, '+'
-
-		inc rcx
+		je .error
+		cmp dil, '-'
+		je .error		; error if + or - 
+		call ft_isspace
+		cmp rax, 0
+		jg .error		; error if character is space
+		lea rdi, [r12 + r13 + 1]
+		mov rsi, [r12 + r13]
+		call ft_strchr
+		test rax, rax
+		jnz .error		; error if dupplicate character
+	inc r13
 	jmp .loop
-
-.end:
-	mov rax, 0
-	pop r12
-ret
-
-.error:
-	pop r12
-	mov rax, -1
-ret
+	.error:
+		mov rax, 0
+		jmp .end
+	.done:
+		mov rax, r13		
+	.end:
+		pop r13
+		pop r12
+	ret
 
 
 

@@ -41,7 +41,7 @@ _IWHITE   =\e[107m
 #    By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/18 10:11:39 by juligonz          #+#    #+#              #
-#    Updated: 2020/05/26 13:33:23 by juligonz         ###   ########.fr        #
+#    Updated: 2020/08/15 01:24:09 by juligonz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,23 +88,29 @@ $(OBJ_DIR)/%.o: %.s
 $(NAME): $(OBJ)
 	@ar rcs $(NAME) $^
 	@printf "$(_GREEN)Compiled : $(_MAGENTA)$(NAME)$(_R)\n"
-	@printf "\nDo $(_MAGENTA)$(_BOLD)make show$(_R) to debug the Makefile\n"
-	@printf "Do $(_YELLOW)$(_BOLD)make debug$(_R) to run tests with lldb\n"
-	@printf "Do $(_YELLOW)$(_BLINK)$(_BOLD)make run$(_R)   to run tests\n\n"
+	@printf "\nDo $(_CYAN)$(_BOLD)make show$(_R) to debug the Makefile\n"
+	@printf "Do $(_RED)$(_BOLD)make debug$(_R) to run tests with lldb\n"
+	@printf "Do $(_YELLOW)$(_BOLD)make valgrind$(_R) to run valgrind\n"
+	@printf "Do $(_GREEN)$(_BLINK)$(_BOLD)make run$(_R)   to run tests\n\n"
 
 run: $(NAME)
 	@$(CC) $(CFLAGS) main.c -L. -l asm -o debug
-	@printf "$(_BOLD)$(_RED)########################## $(_GREEN)Let's go !$(_RED) ##########################$(_R)\n"
-	@./debug
+	@./$(DEBUG_EXEC)
+
+valgrind: run
+	@valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --trace-children=yes --track-origins=yes -s --log-file=output_valgrind ./$(DEBUG_EXEC) 2>&1
+	@printf "$(_BOLD)$(_RED)################################################################$(_R)\n"
+	@printf "$(_BOLD)$(_RED)##########################  $(_GREEN)Valgrind$(_RED)  ##########################$(_R)\n"
+	@printf "$(_BOLD)$(_RED)################################################################$(_R)\n\n"
+	@cat output_valgrind
 
 debug:	SFLAGS += -g -w+all -F dwarf
 debug: $(NAME)
 	@$(CC) $(CFLAGS) main.c -L. -l asm -o debug
-	@printf "$(_BOLD)$(_RED)########################## $(_GREEN)Let's go !$(_RED) ##########################$(_R)\n"
 	@lldb ./debug
 
 clean:
-	@rm -rf $(OBJ_DIR)
+	@rm -rf $(OBJ_DIR) output_valgrind
 	@printf "$(_RED)Removed :$(_MAGENTA) $(OBJ_DIR)/$(_MAGENTA)\n"
 
 fclean: clean
@@ -112,7 +118,7 @@ fclean: clean
 	@printf "$(_RED)Removed : $(_MAGENTA)$(NAME), $(DEBUG_EXEC), debug.dSYM/$(_R)\n"
 
 re_echo:
-	@printf "$(_CYAN)Redoing $(_BOLD)ALLL $(_R)$(_CYAN)$(_DIM)the things $(_R)$(_BLINK)$(_BOLD)$(_YELLOW)...$(_R)\n\n"
+	@printf "$(_CYAN)Redoing $(_BOLD)ALLL $(_R)$(_CYAN)$(_DIM)the things$(_R)$(_BOLD)$(_YELLOW)...$(_R)\n\n"
 
 re: re_echo fclean all
 

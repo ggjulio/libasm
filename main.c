@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/08/15 00:03:03 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/08/15 01:35:09 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,8 +167,8 @@ void test_ft_read()
 	int ret_real;
 	int fd;
 	int len;
-	char str_expected[100];
-	char str_real[100];
+	char str_expected[100] = "";
+	char str_real[100] = "";
 
 	print_title("ft_read"); printf("%s", _GREEN);
 
@@ -282,16 +282,16 @@ void test_ft_create_elem()
 	if (elem)
 		free(elem);
 }
-void print_list(t_list *lst)
+void print_list(t_list *lst, char *color)
 {
 	int i = 1;
 	if (lst == NULL)
-		printf("	Empty list !\n");
+		printf("%s	Empty list !\n", color);
 	while (lst)
 	{
-		printf("   %d : %p\n", i, lst);
-		printf("       data : \"%s\"\n", lst ? lst->data : "(NULL)");
-		printf("       next : \"%p\"\n\n", lst ? lst->next : 0);
+		printf("%s   %d : %p\n", color, i, lst);
+		printf("%s       data : \"%s\"\n", color, lst ? lst->data : "(NULL)");
+		printf("%s       next : \"%p\"\n\n", color, lst ? lst->next : 0);
 		i++;
 		lst = lst->next;
 	}
@@ -313,13 +313,13 @@ void test_ft_list_push_front()
 	t_list *lst = NULL;
 	print_title("ft_list_push_front");
 
-	printf("%s 1 - show list before push front %s\n", _BLUE, _YELLOW);
+	printf("%s 1 - show list before push front \n", _BLUE);
 	ft_list_push_front(&lst, "old elem");
-	print_list(lst);
+	print_list(lst, _WHITE);
 
-	printf("%s 1 - show  Updated  list %s\n", _BLUE, _YELLOW);
+	printf("%s 1 - show  Updated  list \n", _BLUE);
 	ft_list_push_front(&lst, "new elem");
-	print_list(lst);
+	print_list(lst, _YELLOW);
 
 	free_list(lst);
 }
@@ -334,7 +334,7 @@ void test_ft_list_size()
 	ft_list_push_front(&lst, "elem 3");
 	ft_list_push_front(&lst, "elem 4");
 
-	print_list(lst);
+	print_list(lst, _WHITE);
 
 	int expected = 4;
 	int real = ft_list_size(lst);
@@ -370,19 +370,19 @@ void test_ft_list_remove_if()
 	ft_list_push_front(&lst, "elem 3");
 	
 	printf("%s 1 - Before remove elements %s\n", _BLUE, _WHITE);
-	print_list(lst);
+	print_list(lst, _WHITE);
 	printf("%s 2 - Remove elem 2 %s\n", _BLUE, _YELLOW);
 	ft_list_remove_if(&lst, "elem 2", cmp_remove,  free_fct);
-	print_list(lst);
+	print_list(lst, _YELLOW);
 	printf("%s 3 - Remove elem 3 %s\n", _BLUE, _YELLOW);
 	ft_list_remove_if(&lst, "elem 3", cmp_remove,  free_fct);
-	print_list(lst);
+	print_list(lst, _YELLOW);
 	printf("%s 4 - Remove elem 1 %s\n", _BLUE, _YELLOW);
 	ft_list_remove_if(&lst, "elem 1", cmp_remove,  free_fct);
-	print_list(lst);
+	print_list(lst, _YELLOW);
 	printf("%s 4 - Remove elem 0 %s\n", _BLUE, _YELLOW);
 	ft_list_remove_if(&lst, "elem 0", cmp_remove,  free_fct);
-	print_list(lst);
+	print_list(lst, _YELLOW);
 
 	free_list(lst);
 }
@@ -442,16 +442,18 @@ void test_ft_list_sort()
 
 
 	printf("%s 1 - Before sort %s\n", _BLUE, _WHITE);
-	print_list(lst);
+	print_list(lst, _WHITE);
 	ft_list_sort(&lst, cmp_sort);
 	printf("%s 2 - After sort %s\n", _BLUE, _YELLOW);
-	print_list(lst);
+	print_list(lst, _YELLOW);
 
 	free_list(lst);
 }
 
 int main()
 {
+	printf("%s%s########################## %sLet's go !%s ##########################%s\n",_BOLD, _RED,_GREEN, _RED,_R);
+
 	test_ft_strlen();
 	test_ft_strcpy();
 	test_ft_strcmp();
@@ -462,19 +464,21 @@ int main()
 	//Bonus Part
 	printf("\n\n%s%s######################## %sBonus functions %s########################\n", _BOLD, _GREEN, _RED , _GREEN);
 	
+	test_ft_atoi_base();
 	test_ft_list_push_front();
 	test_ft_list_size();
 	test_ft_list_remove_if();
 	test_ft_list_sort();
 
-	test_ft_atoi_base();
 
 	// printf("\n\n%s%s######################## %sAdditional functions %s########################\n", _BOLD, _GREEN, _RED , _GREEN);
 
 	// test_ft_isspace();
 	// test_ft_create_elem();
-	test_ft_strchr();
+	// test_ft_strchr();
 
+	printf("%s", _R);
+	
 	// system("leaks debug");
 	return (0);
 }
