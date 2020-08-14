@@ -23,12 +23,6 @@ section .text
 
 ; int		ft_atoi_base(char *str, char *base)
 ft_atoi_base:
-	; check if both of string are not empty
-	; cmp byte [rdi], 0
-	; je	.error
-	; cmp byte [rsi], 0
-	; je	.error
-
 	push r12
 	push r13
 	push r14
@@ -42,7 +36,7 @@ ft_atoi_base:
 
 	mov rdi, rsi
 	call ft_strlen
-	mov qword [rel base_size], rax 	;;;; get len base
+	mov qword [rel base_size], rax 	; save base len
 
 	.skip_spaces:
 		mov dil, [rel r12 + r13]
@@ -64,14 +58,14 @@ ft_atoi_base:
 	jmp .skip_sign
 
 
-.do_op:
+	.do_op:
 		mov dil, [rel r12 + r13]
 		cmp dil, 0		; check null byte
-	jz .end
+	jz .do_sign
 		mov rsi, [rel base_string] ; ???????????????????????????????????
-		call get_index	; int	get_index(char c, char *base)
-		cmp rax, -1		; check get_index has found the character
-	je .end
+		call get_index
+		cmp rax, -1		; check if get_index has found the character
+	je .do_sign
 		push rax
 			mov rax, qword [rel base_size]
 			mul r14
@@ -81,18 +75,21 @@ ft_atoi_base:
 		mov dil, byte [rel r12 + r13]
 
 		add r13, 1 ; increment string
-jmp .do_op
+	jmp .do_op
+
+	.do_sign:
+		test byte r15, 1
+	jz .end
+		neg r14
 
 .end:
 	mov rax, r14 ; return result
+
 	pop r15
 	pop r14
 	pop r13
 	pop r12
 ret
-; .error:
-; 	mov rax, 0
-; ret
 
 ; ---------------------- ;
 ;         Helpers        ;
