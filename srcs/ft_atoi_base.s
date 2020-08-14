@@ -126,3 +126,6 @@ error:
 	mov rax, 0
 	ret
 
+check_base:
+	
+

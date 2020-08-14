@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/08/14 16:51:40 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/08/14 21:40:53 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,26 @@ void print_title(char *s)
 	printf("\n%s%s%d/ %s :%s\n\n", _BLUE, _BOLD, n++, s, _R);
 }
 
+void print_equal_size_t(size_t expected, size_t real)
+{
+	printf("%s   %zu == %zu\n", expected == real ? _GREEN : _RED, expected, real);	
+}
+void print_equal_int(int expected, int real)
+{
+	printf("%s   %d == %d\n", expected == real ? _GREEN : _RED , expected, real);
+}
+void print_equal_str(char *expected, char *real)
+{
+	printf("%s   \"%s\" == \"%s\"\n", strcmp(expected, real) == 0 ? _GREEN : _RED , expected, real);
+}
+
 void test_ft_strlen()
 {
 	print_title("ft_strlen"); printf("%s", _YELLOW);
 
-	printf("%zu == %zu\n", ft_strlen(""), 	strlen(""));
-	printf("%zu == %zu\n", ft_strlen("34"), strlen("34"));
-	printf("%zu == %zu\n", ft_strlen("123"),strlen("123"));	
+	print_equal_size_t(strlen(""),    ft_strlen(""));
+	print_equal_size_t(strlen("34"),  ft_strlen("34"));
+	print_equal_size_t(strlen("123"), ft_strlen("123"));
 }
 
 void test_ft_strcpy()
@@ -69,101 +82,121 @@ void test_ft_strcpy()
 	char s1[10] = "salut";
 	char s2[10] = "012345678";
 
-	void *p = ft_strcpy(s2, s1);
-	printf("\"%s\" == \"%s\"\n", s1, s2);	
-	
-	if (p != s2)
-		printf("%s", _RED);
-	printf("%p == %p\n", p, s2);
+	char *ret = ft_strcpy(s2, s1);
+	print_equal_str(s1, s2);
+	printf("%s   %p == %p\n", ret == s2 ? _GREEN : _RED, s2, ret);
+	if (ret != s2)
+		printf("\n   %s%sstrcpy should return a pointer to the destination string %s\n", _RED, _BOLD, _R);
 }
 
 void test_ft_strcmp()
 {
 	print_title("ft_strcmp"); printf("%s", _GREEN);
+
 	char s1[5] = "abc";
+	char s2[2] = "A";
+	char s3[2] = "";
 	
-	char s2[5] = "abe";
-	char s3[5] = "aba";
-	char s4[5] = "dab";
+	print_equal_int(strcmp(s1, "abc"), ft_strcmp(s1, "abc"));
+	print_equal_int(strcmp(s1, "abe"), ft_strcmp(s1, "abe"));
+	print_equal_int(strcmp(s1, "aba"), ft_strcmp(s1, "aba"));
+	print_equal_int(strcmp(s1, "dab"), ft_strcmp(s1, "dab"));
 
-	char s6[5] = "a";
-	char s7[5] = "z";
+	print_equal_int(strcmp(s2, "a"), ft_strcmp(s2, "a"));
+	print_equal_int(strcmp(s2, "z"), ft_strcmp(s2, "z"));
 
-	printf("%d == %d\n", ft_strcmp(s1,s1), strcmp(s1,s1));
-	printf("%d == %d\n", ft_strcmp(s1,s2), strcmp(s1,s2));
-	printf("%d == %d\n", ft_strcmp(s1,s3), strcmp(s1,s3));
-	printf("%d == %d\n", ft_strcmp(s1,s4), strcmp(s1,s4));
-
-	printf("%d == %d\n", ft_strcmp(s6,s6), strcmp(s6,s6));
-	printf("%d == %d\n", ft_strcmp(s6,s7), strcmp(s6,s7));
+	print_equal_int(strcmp("", s3), ft_strcmp("", s3));
+	print_equal_int(strcmp(s3, ""), ft_strcmp(s3, ""));
+	
+	print_equal_int(strcmp(s3, "!"), ft_strcmp(s3, "!"));
 }
 
 void test_ft_strdup()
 {
 	print_title("ft_strdup"); printf("%s", _GREEN);
 	
-	char *str = NULL;
+	char str[20] = "AHhhhh shit !";
+	char *str_expected;
+	char *str_real;
 
-	printf("\"(null)\" == \"%s\"\n", str);
-	str = ft_strdup("abcd");
-	if (str == NULL || strcmp(str, "abcd"))
-		printf("%s", _RED);
-	printf("\"abcd\" == \"%s\"\n", str);
-	if (str)
-		free(str);
+	str_expected = strdup(str);
+	str_real = ft_strdup(str);
+	
+	print_equal_str(str_expected, str_real);
+	
+	free(str_expected);
+	free(str_real);
 }
 
 void test_ft_write()
 {
-	char str[10] = "|abcd|";
+	char str[10] = "|abcde|";
 	int ret_expected;
 	int ret_real;
 
 	print_title("ft_write"); printf("%s", _GREEN);
 
 // test 1 valid write
-	printf("%s 1 - valid write :%s\n\n", _BLUE, _GREEN);
-	
+	printf("%s 1 - Valid write :\n\n%s", _BLUE, _YELLOW);
+	fflush(stdout);
 	ret_expected = write(1, str, strlen(str));
 	printf(" == ");fflush(stdout);
-	ret_real = ft_write(1, str, ft_strlen(str));
-	if (ret_real != ret_expected)
-		printf("%s", _RED);
-	printf("\n ret : %d == %d\n", ret_expected, ret_real);
-	printf("%sDescription for error '%d' : %s\n\n%s", _MAGENTA, errno, strerror(errno), _GREEN);
+	ret_real = ft_write(1, str, strlen(str));
+	printf("\n\n%s", ret_real == ret_expected ? _GREEN : _RED);
+	printf("   return : %d == %d\n", ret_expected, ret_real);
+	printf("%s", errno == 0 ? _GREEN : _RED);
+	printf("   errno  : 0 == %d ('%s' == '%s')\n\n%s", errno, strerror(0), strerror(errno), _GREEN);
 	
 // test 2 Bad fd
 	printf("%s 2 - Bad file descriptor :%s\n\n", _BLUE, _GREEN);
+	ret_expected = -1;
 	ret_real = ft_write(-1, str, ft_strlen(str));
-	printf("\n ret : -1 == %d\n", ret_real);
-	printf("%sDescription for error '%d' : %s\n\n%s", _MAGENTA, errno, strerror(errno), _GREEN);
+	printf("%s", ret_real == ret_expected ? _GREEN : _RED);
+	printf("   return : %d == %d\n", ret_expected, ret_real);
+	printf("%s", errno == 9 ? _GREEN : _RED);
+	printf("   errno  : 9 == %d ('%s' == '%s')\n%s", errno, strerror(9), strerror(errno), _GREEN);
 	errno = 0;
-
 }
 
 void test_ft_read()
 {
-	int ret;
+	int ret_expected;
+	int ret_real;
 	int fd;
-	char str[100];
+	int len;
+	char str_expected[100];
+	char str_real[100];
 
 	print_title("ft_read"); printf("%s", _GREEN);
 
-	// test valid	
+// test valid
+	len = 7;	
 	printf("%s 1 - read 50 chars :\n\n%s", _BLUE, _GREEN);
+	
 	fd = open("libasm.a", O_RDONLY);
-	ret = ft_read(fd, &str, 50);
-	printf("ret: %d\n\"%s\"\n\n", ret, str);
-	printf("%sDescription for error '%d' : %s\n\n%s", _MAGENTA, errno, strerror(errno), _GREEN);
+	ret_expected = ft_read(fd, &str_expected, len);
 	close(fd);
 
-	// test BAD FG
-	bzero(&str, 100);
+	fd = open("libasm.a", O_RDONLY);
+	ret_real = ft_read(fd, &str_real, len);
+	close(fd);
+
+	print_equal_str(str_expected, str_real);
+	printf("%s", ret_real == ret_expected ? _GREEN : _RED);
+	printf("   return : %d == %d\n", ret_expected, ret_real);
+	printf("%s", errno == 0 ? _GREEN : _RED);
+	printf("   errno  : 0 == %d ('%s' == '%s')\n\n%s", errno, strerror(0), strerror(errno), _GREEN);
+	
+// test BAD FG
+	bzero(&str_real, 100);
 	printf("%s 2 - error Bad File descriptor  :\n\n%s", _BLUE, _GREEN);
-	ret = ft_read(6, &str, 50);
-	printf("ret -1: %d\n\"\" == \"%s\"\n", ret, str);
-	printf("%sDescription for error '%d' : %s\n\n%s", _MAGENTA, errno, strerror(errno), _GREEN);
-	errno = 0;
+	ret_real = ft_read(-42, &str_real, 50);
+	ret_expected = -1;
+	printf("%s", ret_real == ret_expected ? _GREEN : _RED);
+	printf("   return : %d == %d\n", ret_expected, ret_real);	
+	printf("%s", errno == 9 ? _GREEN : _RED);
+	printf("   errno  : 9 == %d ('%s' == '%s')\n\n%s", errno, strerror(9), strerror(errno), _GREEN);
+		errno = 0;
 
 }
 
@@ -231,9 +264,9 @@ void print_list(t_list *lst)
 		printf("	Empty list !\n");
 	while (lst)
 	{
-		printf(" %d : %p\n", i, lst);
-		printf("     data : \"%s\"\n", lst ? lst->data : "(NULL)");
-		printf("     next : \"%p\"\n\n", lst ? lst->next : 0);
+		printf("   %d : %p\n", i, lst);
+		printf("       data : \"%s\"\n", lst ? lst->data : "(NULL)");
+		printf("       next : \"%p\"\n\n", lst ? lst->next : 0);
 		i++;
 		lst = lst->next;
 	}
@@ -253,13 +286,13 @@ void free_list(t_list *to_free)
 void test_ft_list_push_front()
 {
 	t_list *lst = NULL;
-	print_title("ft_list_push_front"); printf("%s", _GREEN);
+	print_title("ft_list_push_front");
 
-	printf("%s 1 - show list before push front %s\n", _BLUE, _GREEN);
+	printf("%s 1 - show list before push front %s\n", _BLUE, _YELLOW);
 	ft_list_push_front(&lst, "old elem");
 	print_list(lst);
 
-	printf("%s 1 - show  Updated  list %s\n", _BLUE, _GREEN);
+	printf("%s 1 - show  Updated  list %s\n", _BLUE, _YELLOW);
 	ft_list_push_front(&lst, "new elem");
 	print_list(lst);
 
@@ -276,13 +309,12 @@ void test_ft_list_size()
 	ft_list_push_front(&lst, "elem 3");
 	ft_list_push_front(&lst, "elem 4");
 
+	print_list(lst);
 
-	int expected = 4;
+	int expected = 5;
 	int real = ft_list_size(lst);
-	if (real == expected)
-		printf("%d == %d\n", expected, real);
-	else
-		printf("%s%d != %d\n", _RED, expected, real);
+
+	print_equal_int(expected, real);
 	free_list(lst);
 }
 
@@ -395,22 +427,22 @@ void test_ft_list_sort()
 
 int main()
 {
-	// test_ft_strlen();
-	// test_ft_strcpy();
-	// test_ft_strcmp();
-	// test_ft_strdup();
-	// test_ft_write();
-	// test_ft_read();
+	test_ft_strlen();
+	test_ft_strcpy();
+	test_ft_strcmp();
+	test_ft_write();
+	test_ft_read();
+	test_ft_strdup();
 
 	//Bonus Part
 	printf("\n\n%s%s######################## %sBonus functions %s########################\n", _BOLD, _GREEN, _RED , _GREEN);
 	
-	// test_ft_list_push_front();
-	// test_ft_list_size();
-	// test_ft_list_remove_if();
+	test_ft_list_push_front();
+	test_ft_list_size();
+	test_ft_list_remove_if();
 	// test_ft_list_sort();
 
-	test_ft_atoi_base();
+	// test_ft_atoi_base();
 
 	// //Optional
 	// printf("\n\n%s%s######################## %sAdditional functions %s########################\n", _BOLD, _GREEN, _RED , _GREEN);
