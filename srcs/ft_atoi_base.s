@@ -20,13 +20,19 @@ section .text
 	global ft_atoi_base
 	extern ft_isspace
 	extern ft_strlen
+	extern ft_strchr
 
 ; int		ft_atoi_base(char *str, char *base)
 ft_atoi_base:
 	cmp rdi, 0
-	je    error
+	je    .error
 	cmp rsi, 0
-	je    error
+	je    .error
+	
+	call check_base
+	cmp rax, -1
+	je .error
+
 	push r12
 	push r13
 	push r14
@@ -41,6 +47,7 @@ ft_atoi_base:
 	mov rdi, rsi
 	call ft_strlen
 	mov qword [rel base_size], rax 	; save base len
+
 
 	.skip_spaces:
 		mov dil, [rel r12 + r13]
@@ -76,7 +83,7 @@ ft_atoi_base:
 		add r13, 1 ; increment string
 	jmp .do_op
 	.do_sign:
-		test byte r15, 1
+		test r15, 1
 		jz .end
 		neg r14
 	.end:
@@ -86,7 +93,9 @@ ft_atoi_base:
 		pop r13
 		pop r12
 		ret
-
+	.error:
+		mov rax, 0
+		ret
 
 ; ---------------------- ;
 ;         Helpers        ;
@@ -121,11 +130,38 @@ get_index:
 		mov rax, rcx
 		ret
 
-
-error:
-	mov rax, 0
-	ret
-
+;
+;int		check_base(char *str_base)
 check_base:
-	
+	push r12
+
+	mov r12, rdi
+	xor rcx, rcx
+	.loop:
+		mov dil, [r12 + rcx]
+		cmp dil, 0
+		jz .end
+		cmp dil, '+'
+
+		inc rcx
+	jmp .loop
+
+.end:
+	mov rax, 0
+	pop r12
+ret
+
+.error:
+	pop r12
+	mov rax, -1
+ret
+
+
+
+
+
+
+
+
+
 

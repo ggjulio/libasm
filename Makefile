@@ -59,7 +59,7 @@ SRC = ft_strlen.s ft_strcpy.s ft_strcmp.s ft_strdup.s ft_write.s ft_read.s
 SRC+= ft_atoi_base.s
 SRC+= ft_list_push_front.s ft_list_size.s ft_list_remove_if.s ft_list_sort.s
 
-SRC+= ft_isspace.s ft_create_elem.s
+SRC+= ft_isspace.s ft_create_elem.s ft_strchr.s
 
 OBJ     = $(addprefix  $(OBJ_DIR)/,$(SRC:%.s=%.o))
 vpath %.s $(SRC_DIR)

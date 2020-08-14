@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:10:24 by juligonz          #+#    #+#             */
-/*   Updated: 2020/08/14 21:52:50 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/08/14 22:59:37 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,6 @@ void			ft_list_remove_if(t_list **begin_list, void *data_ref, \
 
 int				ft_isspace(int c);
 t_list			*ft_create_elem(void *data);
+char			*ft_strchr(const char *s, int c);
 
 #endif

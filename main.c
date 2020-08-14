@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/08/14 21:53:27 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/08/15 00:03:03 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,13 @@ void print_equal_size_t(size_t expected, size_t real)
 {
 	printf("%s   %zu == %zu\n", expected == real ? _GREEN : _RED, expected, real);	
 }
+void print_equal_ptr(void *expected, void *real)
+{
+	printf("%s   %p == %p\n", expected == real ? _GREEN : _RED, expected, real);	
+}
 void print_equal_int(int expected, int real)
 {
-	printf("%s   %d == %d\n", expected == real ? _GREEN : _RED , expected, real);
+	printf("%s   %3d   == %3d\n", expected == real ? _GREEN : _RED , expected, real);
 }
 void print_equal_str(char *expected, char *real)
 {
@@ -214,36 +218,58 @@ void test_ft_isspace()
 	printf(" %d == %d\n", isspace('1'), ft_isspace('1'));
 }
 
+void test_ft_strchr()
+{
+	print_title("ft_strchr"); printf("%s", _GREEN);
+
+	char str[10] = "hola";
+	print_equal_str(strchr(str, 'o'), ft_strchr(str, 'o'));
+	print_equal_ptr(strchr(str, 'p'), ft_strchr(str, 'p'));
+	print_equal_str(strchr(str, 'a'), ft_strchr(str, 'a'));
+	print_equal_str(strchr(str, 'h'), ft_strchr(str, 'h'));
+	print_equal_ptr(strchr(str, 0), ft_strchr(str, 0));
+}
 void test_ft_atoi_base()
 {
-	int ret;
 	print_title("ft_atoi_base"); printf("%s", _GREEN);
-	
-	// ret = ft_atoi_base("","0123456789abcdef");
-	// printf("-1 == %d\n", ret);
-
-	// ret = ft_atoi_base("a","");
-	// printf("-1 == %d\n", ret);
 
 	printf("%s 1 - test empty and NULL strings %s\n", _BLUE, _GREEN);
-	ret = ft_atoi_base("","");
-	printf("0 == %d\n", ret);
-	ret = ft_atoi_base("-12","");
-	printf("0 == %d\n", ret);
-	ret = ft_atoi_base("","12");
-	printf("0 == %d\n", ret);
-	ret = ft_atoi_base(NULL, "");
-	printf("0 == %d\n", ret);
-	ret = ft_atoi_base("", NULL);
-	printf("0 == %d\n", ret);
 	
-	printf("%s 2 - test various things %s\n", _BLUE, _GREEN);
-	ret = ft_atoi_base("110","01");
-	printf("6 == %d\n", ret);
-	ret = ft_atoi_base("++--20gg4","0123456789abcdef");
-	printf("32 == %d\n", ret);
-	ret = ft_atoi_base("++---20gg4","0123456789abcdef");
-	printf("-32 == %d\n", ret);
+	print_equal_int(0, ft_atoi_base("",""));
+	print_equal_int(0, ft_atoi_base("12",""));
+	print_equal_int(0, ft_atoi_base("","12"));
+	print_equal_int(0, ft_atoi_base(NULL, ""));
+	print_equal_int(0, ft_atoi_base("", NULL));
+	
+	printf("%s 2 - testing various things %s\n", _BLUE, _GREEN);
+	
+	print_equal_int(  6, ft_atoi_base("\n\t\r\f\v  110", "01"));
+	print_equal_int(  0, ft_atoi_base(  "\1  110      ", "01"));
+	print_equal_int( 32, ft_atoi_base("  ++--20g4      ", "0123456789abcdef"));
+	print_equal_int(-32, ft_atoi_base(" ++---20g4", "0123456789abcdef"));
+	print_equal_int(-20, ft_atoi_base(" ---20a4", "0123456789"));
+	print_equal_int( 20, ft_atoi_base(" 20a4", "0123456789"));
+	print_equal_int( 20, ft_atoi_base("20  4", "0123456789"));
+	print_equal_int( 42, ft_atoi_base("52 ", "01234567"));
+	print_equal_int( 42, ft_atoi_base("52.44 ", "01234567"));
+	print_equal_int( 42, ft_atoi_base("52-44 ", "01234567"));
+	print_equal_int( 42, ft_atoi_base("52+44 ", "01234567"));
+	print_equal_int( 42, ft_atoi_base("00101010", "01"));	
+	print_equal_int( 32, ft_atoi_base(" ----00100000", "01"));
+	print_equal_int(-34, ft_atoi_base("-00100010", "01"));
+	print_equal_int(  7, ft_atoi_base("11142111", "01"));
+	print_equal_int(  0, ft_atoi_base("42111", "01"));
+
+	printf("%s 2 - testing bad base string %s\n", _BLUE, _GREEN);
+	
+	print_equal_int(0, ft_atoi_base("290","20123456789"));
+	print_equal_int(0, ft_atoi_base("425","01222245"));
+	print_equal_int(0, ft_atoi_base("8888888","88"));
+	print_equal_int(0, ft_atoi_base("8888888","8"));
+	print_equal_int(0, ft_atoi_base("42","0123456 789"));
+	print_equal_int(0, ft_atoi_base("42","0123456+789"));
+	print_equal_int(0, ft_atoi_base("42","0123456-789"));
+	print_equal_int(0, ft_atoi_base("42",""));
 }
 
 void test_ft_create_elem()
@@ -397,7 +423,6 @@ void			ft_list_sort_c(t_list **begin_list, int (*cmp)())
 	}
 }
 
-
 void test_ft_list_sort()
 {
 	t_list *lst = NULL;
@@ -440,15 +465,16 @@ int main()
 	test_ft_list_push_front();
 	test_ft_list_size();
 	test_ft_list_remove_if();
-	// test_ft_list_sort();
+	test_ft_list_sort();
 
-	// test_ft_atoi_base();
+	test_ft_atoi_base();
 
-	// //Optional
 	// printf("\n\n%s%s######################## %sAdditional functions %s########################\n", _BOLD, _GREEN, _RED , _GREEN);
 
 	// test_ft_isspace();
 	// test_ft_create_elem();
+	test_ft_strchr();
+
 	// system("leaks debug");
 	return (0);
 }
