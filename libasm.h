@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:10:24 by juligonz          #+#    #+#             */
-/*   Updated: 2020/08/14 20:20:39 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/08/14 21:52:50 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ typedef struct	s_list
 
 size_t			ft_strlen(const char *s) __attribute__((nonnull(1)));
 char			*ft_strcpy(
-				char *dest, const char *src)  __attribute__((nonnull));
-int				ft_strcmp(const char *s1, const char *s2)  __attribute__((nonnull));
-char			*ft_strdup(const char *s);
+		char *dest, const char *src) __attribute__((nonnull));
+int				ft_strcmp(
+		const char *s1, const char *s2) __attribute__((nonnull));
+char			*ft_strdup(const char *s) __attribute__((nonnull));
 ssize_t			ft_write(int fd, const void *buf, size_t count);
 ssize_t			ft_read(int fd, void *buf, size_t count);
 
