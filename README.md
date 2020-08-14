@@ -437,7 +437,7 @@ https://stackoverflow.com/tags/x86/info
 
 ### Instructions
 https://fr.wikipedia.org/wiki/Jeu_d%27instructions_x86
-
+https://fr.wikipedia.org/wiki/Jeu_d%27instructions#%C2%AB_%C3%A0_accumulateur_%C2%BB  
 #### other
 
 ##### string instructions
