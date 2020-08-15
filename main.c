@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/08/15 13:22:19 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/08/15 15:40:04 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -456,7 +456,14 @@ void test_ft_list_sort()
 
 int main()
 {
+	printf("%s%s################################################################%s\n", _BOLD, _RED, _R);
 	printf("%s%s########################## %sLet's go !%s ##########################%s\n",_BOLD, _RED,_GREEN, _RED,_R);
+	printf("%s%s################################################################%s\n\n\n", _BOLD, _RED, _R);
+	
+	printf("%s    GREEN  = Test Passed%s\n", _GREEN, _R);
+	printf("%s    RED    = Test Failed%s\n", _RED, _R);
+	printf("%s    YELLOW = Manual check%s\n\n", _YELLOW, _R);
+
 
 	test_ft_strlen();
 	test_ft_strcpy();
