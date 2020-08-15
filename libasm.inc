@@ -14,12 +14,12 @@
 
 
 %ifdef MACHO64
+	DEFAULT REL
+
 	%define SYS_READ  0x2000003
 	%define SYS_WRITE 0x2000004
 	
 	%define SYM_ERRNO __error
-	
-
 %else
 	%define SYS_READ 0
 	%define SYS_WRITE 1
