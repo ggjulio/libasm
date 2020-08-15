@@ -32,7 +32,7 @@ ft_atoi_base:
 	push r13
 	push r14
 	push r15
-	mov qword [rel base_string], rsi 	; save base string
+	mov qword [base_string], rsi 	; save base string
 	lea r12, [rdi]						; r12 = str
 	xor r13, r13						; r13 = index of str
 	xor r14, r14						; r14 = result
@@ -43,16 +43,16 @@ ft_atoi_base:
 	test rax, rax
 	je .end
 	
-	mov qword [rel base_size], rax 	; save base len
+	mov qword [base_size], rax 	; save base len
 	.skip_spaces:
-		mov dil, [rel r12 + r13]
+		mov dil, [r12 + r13]
 		call ft_isspace
 		test rax, rax
 		jz .skip_sign
 		add r13, 1 		; increment string index
 	jmp .skip_spaces
 	.skip_sign:
-		mov dil, byte [rel r12 + r13]
+		mov dil, byte [r12 + r13]
 		call is_sign
 		test rax, rax 
 		jz .do_op
@@ -62,15 +62,15 @@ ft_atoi_base:
 		add r15, 1 		; increment sign count
 	jmp .skip_sign
 	.do_op:
-		mov dil, [rel r12 + r13]
+		mov dil, [r12 + r13]
 		cmp dil, 0		; check null byte
 		jz .do_sign
-		mov rsi, [rel base_string]
+		mov rsi, [base_string]
 		call get_index
 		cmp rax, -1		; check if get_index has found the character
 		je .do_sign
 		push rax	; push the index
-		mov rax, qword [rel base_size]
+		mov rax, qword [base_size]
 		mul r14
 		mov r14, rax	; multiply the result by the base
 		pop rax

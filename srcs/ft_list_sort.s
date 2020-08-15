@@ -28,8 +28,8 @@ jne .list_not_null
 	push r12	; previous element
 	push r13	; actual
 	push r14	; next
-	mov qword [rel begin_list]		, rdi
-	mov qword [rel func_cmp]		, rsi
+	mov qword [begin_list]		, rdi
+	mov qword [func_cmp]		, rsi
 	xor r12, r12		; r12 == previous element
 	mov r13, [rdi]		; r13 == actual element
 	mov r14, [r13 + 8]	; r14 == next element
@@ -39,7 +39,7 @@ jne .list_not_null
 	jz .end
 		mov rdi, qword [r13]
 		mov rsi, qword [r14]
-		call qword [rel func_cmp]
+		call qword [func_cmp]
 		cmp rax, 0
 		jg .do_swap
 			mov r12, r13				; previous = actual
@@ -50,22 +50,22 @@ jne .list_not_null
 		.do_swap:
 		test r12, r12
 		jz .previous_null
-			mov r15, qword [rel r13 + 8]
-			mov qword[rel r12 + 8], r15		; previous->next = actual->next;
+			mov r15, qword [r13 + 8]
+			mov qword[r12 + 8], r15		; previous->next = actual->next;
 		jmp .end_swap
 		.previous_null:
-			mov rax, qword [rel begin_list]
-			mov r15, [rel r13 + 8]
+			mov rax, qword [begin_list]
+			mov r15, [r13 + 8]
 			mov qword [rax] ,  r15		; *begin_list = actual->next
 		.end_swap:
-			mov r15, qword [rel r14 + 8]
-			mov qword [rel r13 + 8], r15		; actual->next = next->next;
-			mov qword [rel r14 + 8], r13		; next->next = actual;
+			mov r15, qword [r14 + 8]
+			mov qword [r13 + 8], r15		; actual->next = next->next;
+			mov qword [r14 + 8], r13		; next->next = actual;
 		.reset_actual_to_begin_list:
 			xor r12, r12
-			mov r13, qword [rel begin_list]
+			mov r13, qword [begin_list]
 			mov r13, [r13]
-			mov r14, [rel r13 + 8]
+			mov r14, [r13 + 8]
 	jmp .loop
 
 .end:

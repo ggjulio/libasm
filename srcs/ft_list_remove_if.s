@@ -28,18 +28,18 @@ ft_list_remove_if:
 	push r12
 	push r13
 	push r15	; to hold temporary values
-	mov qword [rel begin_list]		, rdi
-	mov qword [rel data_ref]		, rsi	
-	mov qword [rel func_cmp]		, rdx	
-	mov qword [rel func_free_fct]	, rcx	
+	mov qword [begin_list]		, rdi
+	mov qword [data_ref]		, rsi	
+	mov qword [func_cmp]		, rdx	
+	mov qword [func_free_fct]	, rcx	
 	xor r12, r12 	;		r12 == previous == NULL
 	mov r13, [rdi]	;		r13 == actual (and first elem now)
 	.loop:
 	test r13, r13
 	jz .end
 		mov rdi, qword [r13]	; arg1 == actual data elem 
-		mov rsi, qword [rel data_ref] 
-		call qword [rel func_cmp]
+		mov rsi, qword [data_ref] 
+		call qword [func_cmp]
 		test rax, rax
 		jz .delete_element
 			mov r12, r13				; previous = actual
@@ -48,17 +48,17 @@ ft_list_remove_if:
 		.delete_element:
 			test r12, r12
 			jz .previous_null
-				mov r15, qword [rel r13 + 8]
-				mov qword [rel r12 + 8], r15		; previous->next = actual->next;
+				mov r15, qword [r13 + 8]
+				mov qword [r12 + 8], r15		; previous->next = actual->next;
 			jmp .do_free
 			.previous_null:			
-				mov rax, qword [rel begin_list]
-				mov r15, [rel r13 + 8]
+				mov rax, qword [begin_list]
+				mov r15, [r13 + 8]
 				mov qword [rax] ,  r15		; *begin_list = actual->next
 			.do_free:
 				mov r15, qword [r13 + 8]
 				mov rdi, [r13]
-				call qword [rel func_free_fct]	; free the data
+				call qword [func_free_fct]	; free the data
 				mov rdi, r13
 				call free						; free actual element
 		mov r13, r15	; actual = actual->next

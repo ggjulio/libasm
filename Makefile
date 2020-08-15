@@ -90,7 +90,7 @@ $(NAME): $(OBJ)
 	@printf "$(_GREEN)Compiled : $(_MAGENTA)$(NAME)$(_R)\n"
 	@printf "\nDo $(_CYAN)$(_BOLD)make show$(_R) to debug the Makefile\n"
 	@printf "Do $(_RED)$(_BOLD)make debug$(_R) to run tests with lldb\n"
-	@printf "Do $(_YELLOW)$(_BOLD)make valgrind$(_R) to run valgrind\n"
+	@printf "Do $(_YELLOW)$(_BOLD)make valgrind$(_R) to run valgrind $(_MAGENTA)(May have falses positives under OSX)$(_R)\n"
 	@printf "Do $(_GREEN)$(_BLINK)$(_BOLD)make run$(_R)   to run tests\n\n"
 
 run: $(NAME)
@@ -98,7 +98,7 @@ run: $(NAME)
 	@./$(DEBUG_EXEC)
 
 valgrind: run
-	@valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --trace-children=yes --track-origins=yes -s --log-file=output_valgrind ./$(DEBUG_EXEC) 2>&1
+	@valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --trace-children=yes --track-origins=yes --log-file=output_valgrind ./$(DEBUG_EXEC)
 	@printf "$(_BOLD)$(_RED)################################################################$(_R)\n"
 	@printf "$(_BOLD)$(_RED)##########################  $(_GREEN)Valgrind$(_RED)  ##########################$(_R)\n"
 	@printf "$(_BOLD)$(_RED)################################################################$(_R)\n\n"
