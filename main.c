@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/08/15 16:14:24 by juligonz         ###   ########.fr       */
+/*   Updated: 2020/08/15 16:16:45 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void test_ft_strcmp()
 	print_title("ft_strcmp");
 	printf("%sWARNING : \n%s   Values may differ if clang/gcc do Constant folding \
 			\n%s   But as long as values are same sign (-1 == -42),\n%s   1 == 43, or 0 == 0, it's okay.\n\n",
-			_YELLOW, _MAGENTA, _MAGENTA, _MAGENTA);
+			_MAGENTA, _CYAN, _CYAN, _CYAN);
 
 
 	char s1[5] = "abc";
