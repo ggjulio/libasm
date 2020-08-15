@@ -97,7 +97,8 @@ run: $(NAME)
 	@$(CC) $(CFLAGS) main.c -L. -l asm -o debug
 	@./$(DEBUG_EXEC)
 
-valgrind:
+valgrind: $(NAME)
+	@$(CC) $(CFLAGS) main.c -L. -l asm -o debug
 	@valgrind --leak-check=full --show-leak-kinds=all --show-reachable=yes --trace-children=yes --track-origins=yes --log-file=output_valgrind ./$(DEBUG_EXEC)
 	@printf "$(_BOLD)$(_RED)################################################################$(_R)\n"
 	@printf "$(_BOLD)$(_RED)##########################  $(_GREEN)Valgrind$(_RED)  ##########################$(_R)\n"
