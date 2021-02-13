@@ -25,7 +25,7 @@ ft_strdup:
     add rax, 1    
     mov rdi, rax
 
-    call malloc
+    call malloc wrt ..plt
     test rax, rax
     pop rsi         ; pop the src as arg2 of ft_strcpy
     jz .end         ; if malloc failed, return NULL

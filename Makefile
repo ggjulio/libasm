@@ -64,8 +64,8 @@ SRC+= ft_isspace.s ft_create_elem.s ft_strchr.s
 OBJ     = $(addprefix  $(OBJ_DIR)/,$(SRC:%.s=%.o))
 vpath %.s $(SRC_DIR)
 
-CC      = clang
-CFLAGS  = -Wall -Wextra -Werror -g # -fsanitize=address  -fsanitize=undefined -fstack-protector  
+CC      = gcc
+CFLAGS  = -Wall -Wextra -Werror -g -fsanitize=address -fsanitize=undefined -fstack-protector  
 
 AS      = nasm
 SFLAGS	= 

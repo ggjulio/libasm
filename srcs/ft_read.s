@@ -29,7 +29,7 @@ ft_read:
 		cmp rax, 0
 		jge .end
 		push rax
-		call SYM_ERRNO
+		call SYM_ERRNO wrt ..plt
 		pop qword [rax]
 		neg qword [rax]		
 	%endif

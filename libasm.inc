@@ -12,9 +12,9 @@
 
 %pragma macho gprefix _
 
+DEFAULT REL
 
 %ifdef MACHO64
-	DEFAULT REL
 
 	%define SYS_READ  0x2000003
 	%define SYS_WRITE 0x2000004

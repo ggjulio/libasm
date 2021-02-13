@@ -20,7 +20,7 @@ ft_create_elem:
 	push rbx
 	mov rbx, rdi
 	mov rdi, 16
-	call malloc
+	call malloc wrt ..plt
 	test rax, rax
 	jz .end			; malloc failed -> jump end
 	mov qword [rax], rbx

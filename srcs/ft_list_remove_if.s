@@ -60,7 +60,7 @@ ft_list_remove_if:
 				mov rdi, [r13]
 				call qword [func_free_fct]	; free the data
 				mov rdi, r13
-				call free						; free actual element
+				call free wrt ..plt					; free actual element
 		mov r13, r15	; actual = actual->next
 	jmp .loop
 .end:

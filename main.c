@@ -6,7 +6,7 @@
 /*   By: juligonz <juligonz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/05/22 13:23:35 by juligonz          #+#    #+#             */
-/*   Updated: 2020/08/15 16:35:30 by juligonz         ###   ########.fr       */
+/*   Updated: 2021/02/13 02:10:30 by juligonz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -287,7 +287,7 @@ void test_ft_create_elem()
 	print_title("ft_create_elem"); printf("%s", _GREEN);
 	t_list	*elem = ft_create_elem("test");
 	printf("elem (%p) :\n", elem);
-	printf("  data : \"%s\"\n", elem ? elem->data : "(NULL), not my fault ! malloc failed !");
+	printf("  data : \"%s\"\n", elem ? (char *)elem->data : "(NULL), not my fault ! malloc failed !");
 	printf("  next : \"%p\"\n", elem ? elem->next : 0);
 	if (elem)
 		free(elem);
@@ -300,7 +300,7 @@ void print_list(t_list *lst, char *color)
 	while (lst)
 	{
 		printf("%s   %d : %p\n", color, i, lst);
-		printf("%s       data : \"%s\"\n", color, lst ? lst->data : "(NULL)");
+		printf("%s       data : \"%s\"\n", color, lst ? (char *)lst->data : "(NULL)");
 		printf("%s       next : \"%p\"\n\n", color, lst ? lst->next : 0);
 		i++;
 		lst = lst->next;
