@@ -371,6 +371,11 @@ https://www.thegeekstuff.com/2010/10/linux-error-codes/
 man errno
 man error
 
+#### Are the Prologue and Epilogue mandatory ?
+Not really...But usefull still...
+
+- https://stackoverflow.com/questions/42208087/are-the-prologue-and-epilogue-mandatory-when-writing-assembly-functions 
+
 ### errors
 
 ##### undefined reference to ... (linux and macos):
@@ -405,6 +410,27 @@ https://nasm.us/doc/nasmdoc7.html#section-7.2.1
 https://nasm.us/doc/nasmdoc3.html#section-3.3
 https://stackoverflow.com/questions/26394359/mach-o-64-bit-format-does-not-support-32-bit-absolute-addresses-nasm   
 https://forum.nasm.us/index.php?topic=1970.0   
+
+##### Linux: GCC and PIE : relocation R_X86_64_PC32 against symbol `malloc' can not be used when making a PIE object; recompile with -fPIE
+
+While calling like that :  
+`call malloc`
+The Linker is lost trying to make a PIE.
+So use `wrt ..plt`:
+`call malloc wrt ..plt`
+
+```
+Referring to a procedure name using wrt ..plt causes the linker to build a procedure linkage table entry for the symbol, and the reference gives the address of the PLT entry. You can only use this in contexts which would generate a PC-relative relocation normally (i.e. as the destination for CALL or JMP), since ELF contains no relocation type to refer to PLT entries absolutely.
+```
+
+Of course in order to make a position independent executable, you should address all in relative. (except data section maybe ??)
+`call [rel malloc wrt ..plt]` or DEFAULT REL.....
+
+- https://stackoverflow.com/questions/28699032/assembly-coding-strdup-malloc-calling-in-shared-library
+- https://www.nasm.us/xdoc/2.11.08/html/nasmdoc7.html#section-7.9.3
+- https://stackoverflow.com/questions/58106310/nasm-linux-shared-object-error-relocation-r-x86-64-32s-against-data
+-
+
 
 ##### Segfault (stack_not_16_byte_aligned_error) :
 http://sevanspowell.net/posts/learning-nasm-on-macos.html
